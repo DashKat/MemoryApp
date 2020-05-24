@@ -3746,4 +3746,5 @@ function NameSelect() {
     var name = firstNames[firstNameNum] + " " + lastNames[lastNameNum]
 
     document.getElementById('nameOut').innerHTML = name;
+    names.push(name);
 }

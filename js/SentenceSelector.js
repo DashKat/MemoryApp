@@ -3437,4 +3437,5 @@ function SentenceSelect() {
     var sentence = articles[articleNum1].charAt(0).toUpperCase() + articles[articleNum1].slice(1) + " " + adjectives[adjectiveNum] + " " + nouns[nounNum1] + " " + verbs[verbNum] + " " + prepositions[prepositionNum] + " " + articles[articleNum2] + " " + nouns[nounNum2]+ ".";
 
     document.getElementById('sentenceOut').innerHTML = sentence;
+    sentences.push(sentence);
 }

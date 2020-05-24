@@ -15,7 +15,7 @@ function clearRands() {
 
 
 function easyMode() {
-    numTimes = 2;
+    numTimes = 5;
     timeDuring =  40* 1000;
     timeBetween = 15 * 1000;
 }
@@ -35,14 +35,19 @@ function hardMode() {
 function setRandsInterval(callback) {
     var x = 0;
     changeRands();
-    console.log('test');
     setInterval(function() {
-        if(x == numTimes) {
+        if(x == numTimes - 1) {
             clearRands();
+            localStorage.setItem("numbers", JSON.stringify(numbers));
+            localStorage.setItem("names", JSON.stringify(names));
+            localStorage.setItem("sentences", JSON.stringify(sentences));
+            localStorage.setItem("cardSuits", JSON.stringify(cardSuits));
+            localStorage.setItem("cardNums", JSON.stringify(cardNums));
             setTimeout(function() {location.href = 'grader.html';}, timeBetween);
         }
-        for(x; x < numTimes; x++) {
-                changeRands(); 
+        if(x != numTimes - 1) {
+            changeRands();
+            x++;
         }    
     }, timeDuring);
 }

@@ -45,4 +45,6 @@ function CardSelect() {
 
     path = path + number + "_of_" + suit + ".png";
     document.getElementById('cardOut').src = path;
+    cardSuits.push(suit);
+    cardNums.push(number);
 }
