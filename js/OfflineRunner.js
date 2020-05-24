@@ -15,9 +15,9 @@ function clearRands() {
 
 
 function easyMode() {
-    numTimes = 1;
-    timeDuring = 40 * 1000;
-    timeBetween = 10 * 1000;
+    numTimes = 2;
+    timeDuring =  40* 1000;
+    timeBetween = 15 * 1000;
 }
 
 function mediumMode() {
@@ -32,28 +32,17 @@ function hardMode() {
     timeBetween = 60;
 }
 
-function setRandsInterval() {
+function setRandsInterval(callback) {
     var x = 0;
-    numTimes--;
     changeRands();
-    setTimeout(function() {
-        clearRands();
-    }, timeDuring)
-
-    setTimeout(function() {
-    }, timeBetween)
-
-    var intervalID = setInterval(function() {
-    changeRands();
-
-    setTimeout(function() {
-        x++
-        clearRands();
+    console.log('test');
+    setInterval(function() {
         if(x == numTimes) {
-            window.clearInterval(intervalID);
+            clearRands();
+            setTimeout(function() {location.href = 'grader.html';}, timeBetween);
         }
-
+        for(x; x < numTimes; x++) {
+                changeRands(); 
+        }    
     }, timeDuring);
-
-    }, timeBetween + timeDuring);
 }

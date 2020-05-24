@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: #363554;
+  background-color: #3AAFA9;
 }
 
 h1 {
@@ -18,19 +18,18 @@ h1 {
   margin-bottom: 1em;
   font-weight: 700;
   font-size: 2rem;
+  color: black
 }
 
-nav {
-  width: 100%;
-  height: 100px;
-  background-color: #DC143C;
-  display: inline-block;;
+input {
+  color: black;
+  
 }
 
 /* Navbar container */
 .navbar {
   overflow: hidden;
-  background-color: #DC143C;
+  background-color: #17252a;
   font-family: Arial;
 }
 
