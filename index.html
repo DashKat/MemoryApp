@@ -7,12 +7,20 @@
     </head>
 
     <body id = "index">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="offlineGame.html">Offline Practice</a></li>
-            </ul>
-        </nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">Offline Mode
+                    <i class="fa fa-caret-down"></i>
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="offlineEasy.html">Easy</a>
+                    <a href="offlineMedium.html">Medium</a>
+                    <a href="offlineHard.html">Hard</a>
+                </div>
+            </div>
+        </div>
         
     </body>
 </html>
