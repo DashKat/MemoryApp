@@ -47,10 +47,18 @@ function minusName() {
 
 function plusSentence() {
     var table = document.getElementById('sentenceDisplay');
-
+    var sentenceIn = document.getElementById('sentenceIn').value;
     var row = table.insertRow(table.rows.length);
     var cell = row.insertCell(0);
-    cell.innerHTML = document.getElementById('sentenceIn').value;
+    
+    if(sentenceIn[sentenceIn.length - 1] != "." && sentenceIn != "") {
+        cell.innerHTML = sentenceIn + ".";
+    }
+
+    else {
+        cell.innerHTML = sentenceIn;
+    }
+
     document.getElementById('sentenceIn').value = "";
     document.querySelectorAll('table tr').forEach(function(e, i) {
         if (e.textContent.trim().length == 0) { // if row is empty

@@ -17,6 +17,10 @@ function grade() {
     var userCards = JSON.parse(localStorage.getItem("userCards"));
     localStorage.removeItem("userCards");
     
+    console.log(numbers);
+    console.log(userNumbers);
+
+
     var numberScore = 0;
     var nameScore = 0;
     var sentenceScore = 0;
