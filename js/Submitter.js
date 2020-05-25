@@ -92,6 +92,10 @@ function minusNumber() {
 }
 
 function submit() {
+    document.getElementById('namePlusBtn').click();
+    document.getElementById('numberPlusBtn').click();
+    document.getElementById('sentencePlusBtn').click();
+
     var nameCells = document.getElementById('nameDisplay').getElementsByTagName('td');
     var userNames = [];
 
@@ -118,6 +122,5 @@ function submit() {
         userNumbers.push(nuCell.innerHTML);
     }
     localStorage.setItem('userNumbers', JSON.stringify(userNumbers));
-
     setTimeout(location.href = "grader.html", 500)
 }
