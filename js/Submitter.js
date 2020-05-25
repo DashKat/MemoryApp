@@ -117,9 +117,9 @@ function minusCard() {
 
 
 function submit() { 
-    if(document.getElementById('sentencePlusBtn').value != "") {document.getElementById('namePlusBtn').click();}
-    if(document.getElementById('numberIn').value != "") {document.getElementById('numberPlusBtn').click();}
-    if(document.getElementById('sentencePlusBtn').value != "") {document.getElementById('sentencePlusBtn').click();}
+    document.getElementById('namePlusBtn').click();
+    document.getElementById('numberPlusBtn').click();
+    document.getElementById('sentencePlusBtn').click();
     if(document.getElementById('cardNumber').value != "emptyNum") {document.getElementById('cardPlusBtn').click();}
 
     var nameCells = document.getElementById('nameDisplay').getElementsByTagName('td');

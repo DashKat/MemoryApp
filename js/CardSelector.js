@@ -10,37 +10,37 @@ function CardSelect() {
     }
 
     else if(rand == 11) {
-        number = "jack";
+        number = "Jack";
     }
 
     else if(rand == 12) {
-        number = "queen";
+        number = "Queen";
     }
 
     else if(rand == 13) {
-        number = "king";
+        number = "King";
     }
 
     else if(rand == 1) {
-        number = "ace";
+        number = "Ace";
     }
 
 
 
     if(suitNum == 1) {
-        suit = "clubs";
+        suit = "Clubs";
     }
 
     else if(suitNum == 2) {
-        suit = "diamonds";
+        suit = "Diamonds";
     }
 
     else if(suitNum == 3) {
-        suit = "hearts";
+        suit = "Hearts";
     }
 
     else if(suitNum == 4) {
-        suit = "spades";
+        suit = "Spades";
     }
 
     path = path + number + "_of_" + suit + ".png";
