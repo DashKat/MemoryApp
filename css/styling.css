@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700); /*delete the http: before sending to github*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700); /*delete the http: before sending to github*/
 
 * {
   margin: 2;
@@ -13,6 +13,13 @@ body {
   background-color: #3AAFA9;
 }
 
+th {
+  color: black;
+  font-weight: bold;
+  font-size: 125%;
+  text-align: left;
+}
+
 button {
   color: black;
 }
@@ -23,6 +30,17 @@ h1 {
   font-weight: 700;
   font-size: 2rem;
   color: black
+}
+select {
+  color: black;
+}
+
+option {
+  color: black;
+}
+
+.hearts {
+  color: red;
 }
 
 label {

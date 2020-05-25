@@ -11,7 +11,7 @@
         <div class="navbar">
             <a href="index.html">Home</a>
             <div class="dropdown">
-                <button class="dropbtn">Offline Mode
+                <button class="dropbtn">Offline Mode&#9660;
                     <i class="fa fa-caret-down"></i>
                 </button>
 
@@ -53,6 +53,38 @@
         <input type="text" id = "numberIn">
         <button onclick = "plusNumber()" id = "numberPlusBtn">+</button>
         <button onclick = "minusNumber()" id = numberMinusBtn>-</button><br><br>
+
+        <label for = "cardIn">Card:</label>
+        <table id = "cardDisplay">
+            <tr>
+                <td></td>
+            </tr>
+        </table><br>
+        <select id="cardNumber">
+            <option value="emptyNum"></option>
+            <option value="Ace">Ace</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="Jack">Jack</option>
+            <option value="Queen">Queen</option>
+            <option value="King">King</option>
+        </select>
+        <select id="cardSuit">
+            <option value="emptySuit"></option>
+            <option value="Clubs">&clubs;</option>
+            <option value="Spades">&spades;</option>
+            <option value="Hearts">&#9825;</option>
+            <option value="Diamonds">&#9826;</option>
+        </select>
+        <button onclick = "plusCard()" id = "cardPlusBtn">+</button>
+        <button onclick = "minusCard()" id = cardMinusBtn>-</button><br><br>
 
         <button onclick = "submit()" id = "submitBtn">Submit</button>
 
@@ -190,5 +222,51 @@
             
             }
         </script>
+
+        <script>
+            highlight_row_card();
+            function highlight_row_card() {
+                var table = document.getElementById('cardDisplay');
+                var cells = table.getElementsByTagName('td');
+                
+                setInterval(function() {
+                    for (var i = 0; i < cells.length; i++) {
+                        // Take each cell
+                        var cell = cells[i];
+                        // do something on onclick event for cell
+                        
+                        cell.onclick = function () {
+                            
+                            // Get the row id where the cell exists
+                            var rowId = this.parentNode.rowIndex;
+                
+                            var rowsNotSelected = table.getElementsByTagName('tr');
+                            for (var row = 0; row < rowsNotSelected.length; row++) {
+                                rowsNotSelected[row].style.backgroundColor = "";
+                                rowsNotSelected[row].style.border = "";
+                                rowsNotSelected[row].classList.remove('selected');
+                            }
+                            var rowSelected = table.getElementsByTagName('tr')[rowId];
+                            
+                            if(localStorage.getItem('currentCellNum') != i.toString()) {
+                                localStorage.setItem('selectedRowName', rowId.toString());
+                                rowSelected.style.backgroundColor = "#B4D5FE";
+                                rowSelected.className += " selected";
+                                localStorage.setItem('currentCellNum', i.toString())
+                            }
+
+                            else {
+                                localStorage.removeItem('selectedRowName');
+                                rowSelected.style.backgroundColor = "";
+                                rowSelected.className -= " selected";
+                                localStorage.removeItem('currentCellNum');
+                            }
+                        }
+                    }
+                }, 1000);
+            
+            }
+        </script>
+
     </body>
 </html>

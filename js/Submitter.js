@@ -91,10 +91,36 @@ function minusNumber() {
     catch {}
 }
 
-function submit() {
-    document.getElementById('namePlusBtn').click();
-    document.getElementById('numberPlusBtn').click();
-    document.getElementById('sentencePlusBtn').click();
+function plusCard() {
+    var table = document.getElementById('cardDisplay');
+
+    var row = table.insertRow(table.rows.length);
+    var cell = row.insertCell(0);
+    cell.innerHTML = document.getElementById('cardNumber').value + " of " + document.getElementById('cardSuit').value;
+    document.getElementById('cardNumber').value = 'emptyNum';
+    document.getElementById('cardSuit').value = 'emptySuit';
+    document.querySelectorAll('table tr').forEach(function(e, i) {
+        if (e.textContent.trim().length == 0) { // if row is empty
+            e.parentNode.removeChild(e);
+        }
+    })
+}
+
+function minusCard() {
+    var rowID = localStorage.getItem('selectedRowCard');
+    try {
+        document.getElementById('cardDisplay').deleteRow(parseInt(rowID, 10));
+        localStorage.removeItem('selectedRowCard');
+    }
+    catch {}
+}
+
+
+function submit() { 
+    if(document.getElementById('sentencePlusBtn').value != "") {document.getElementById('namePlusBtn').click();}
+    if(document.getElementById('numberIn').value != "") {document.getElementById('numberPlusBtn').click();}
+    if(document.getElementById('sentencePlusBtn').value != "") {document.getElementById('sentencePlusBtn').click();}
+    if(document.getElementById('cardNumber').value != "emptyNum") {document.getElementById('cardPlusBtn').click();}
 
     var nameCells = document.getElementById('nameDisplay').getElementsByTagName('td');
     var userNames = [];
@@ -122,5 +148,16 @@ function submit() {
         userNumbers.push(nuCell.innerHTML);
     }
     localStorage.setItem('userNumbers', JSON.stringify(userNumbers));
+    
+
+    var cardCells = document.getElementById('cardDisplay').getElementsByTagName('td');
+    var userCards = [];
+
+    for (var i = 0; i < cardCells.length; i++) {
+        var cCell = cardCells[i];
+        userCards.push(cCell.innerHTML);
+    }
+    localStorage.setItem('userCards', JSON.stringify(userCards));
+
     setTimeout(location.href = "grader.html", 500)
 }

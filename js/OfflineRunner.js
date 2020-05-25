@@ -12,26 +12,24 @@ function clearRands() {
     document.getElementById('cardOut').src = "";
 }
 
-
-
 function easyMode() {
-    numTimes = 1;
-    timeDuring =  40 * 1000;
-    timeBetween = 15 * 1000;
+    localStorage.setItem('numTimes', '1');
+    timeDuring =  1 * 1000;
+    timeBetween = 1 * 1000;
     document.getElementById("timer").innerHTML = " " + (timeDuring/1000).toString();
 }
 
 function mediumMode() {
-    numTimes = 3;
+    localStorage.setItem('numTimes', '3');
     timeDuring = 30 * 1000;
     timeBetween = 30 * 1000;
     document.getElementById("timer").innerHTML = " " + (timeDuring/1000).toString();
 }
 
 function hardMode() {
-    numTimes = 5;
+    localStorage.setItem('numTimes', '5');
     timeDuring = 20 * 1000;
-    timeBetween = 60;
+    timeBetween = 60 * 1000;
     document.getElementById("timer").innerHTML = " " + (timeDuring/1000).toString();
 }
 
@@ -48,30 +46,32 @@ function timerBetweenSetter() {
 }
 
 function setRandsInterval(callback) {
+    var numTimes = parseInt(localStorage.getItem('numTimes'), 10);
     localStorage.setItem('timerState', "");
     var x = 0;
     changeRands();
     setInterval(function() {
         if(x == numTimes - 1) {
             clearRands();
+            document.getElementById("timer").innerHTML = " 0";
             localStorage.setItem("numbers", JSON.stringify(numbers));
             localStorage.setItem("names", JSON.stringify(names));
             localStorage.setItem("sentences", JSON.stringify(sentences));
-            localStorage.setItem("cardSuits", JSON.stringify(cardSuits));
-            localStorage.setItem("cardNums", JSON.stringify(cardNums));
+            localStorage.setItem("cards", JSON.stringify(cards));
             setTimeout(function() {location.href = 'submission.html';}, timeBetween);
         }
-        if(x != numTimes - 1) {
+        else if(x != numTimes - 1) {
             changeRands();
+            timeDuring2 = timeDuring;
             x++;
-        }    
+            document.getElementById("timer").innerHTML = " 0";
+        }
     }, timeDuring);
 
     var timeDuring2 = timeDuring;
     timeDuring2 -= 1000;
     var duringTimer = setInterval(function() {
-        document.getElementById("timer").innerHTML = " " + (timeDuring2/1000).toString();
-        if(timeDuring2 == 0) {
+        if(numTimes - 1 == x && timeDuring2 == 0) {
             timerBetweenSetter();
             document.getElementById("timer").innerHTML = " " + (timeBetween/1000).toString();
             document.getElementById("nameHead").style.display = "none";
@@ -89,7 +89,11 @@ function setRandsInterval(callback) {
             document.getElementById("timerEnd").style.fontSize = "500%";
             clearInterval(duringTimer);
         }
-        timeDuring2 -= 1000;
+        else {
+            document.getElementById("timer").innerHTML = " " + (timeDuring2/1000).toString();
+            timeDuring2 -= 1000;
+        }
+        
     }, 1000);
     
 }
