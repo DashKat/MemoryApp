@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Offline Practice: Submit</title>
+        <title>Offline Mode: Results</title>
         <link rel = "stylesheet" href = "css/styling.css">
         <link rel = "icon" href = "projectFiles/icon.ico">
-        <script src = "js/Submitter.js"></script>
+        <script src = "js/Grader.js"></script>
     </head>
 
     <body>
@@ -22,66 +22,11 @@
                 </div>
             </div>
         </div>
-        
-        <label for = "nameIn">Name:</label><br>
-        <table id = "nameDisplay">
-            <tr>
-                <td></td>
-            </tr>
-        </table><br>
-        <input type="text" id = "nameIn">
-        <button onclick = "plusName()" id = "namePlusBtn">+</button>
-        <button onclick = "minusName()" id = nameMinusBtn>-</button><br><br>
 
-        <label for = "sentenceIn">Sentence:</label>
-        <input type="text" id = "sentenceIn"><br><br>
-
-        <label for = "numberIn">Number:</label>
-        <input type="text" id = "numberIn"><br><br>
-
+        <label>Score:</label>
+        <label id = "Score"></label>
         <script>
-            highlight_row_name();
-            function highlight_row_name() {
-                var table = document.getElementById('nameDisplay');
-                var cells = table.getElementsByTagName('td');
-                
-                setInterval(function() {
-                    for (var i = 0; i < cells.length; i++) {
-                        // Take each cell
-                        var cell = cells[i];
-                        // do something on onclick event for cell
-                        
-                        cell.onclick = function () {
-                            
-                            // Get the row id where the cell exists
-                            var rowId = this.parentNode.rowIndex;
-                
-                            var rowsNotSelected = table.getElementsByTagName('tr');
-                            for (var row = 0; row < rowsNotSelected.length; row++) {
-                                rowsNotSelected[row].style.backgroundColor = "";
-                                rowsNotSelected[row].style.border = "";
-                                rowsNotSelected[row].classList.remove('selected');
-                            }
-                            var rowSelected = table.getElementsByTagName('tr')[rowId];
-                            localStorage.setItem('selectedRowName', rowId.toString());
-                            if(localStorage.getItem('currentCellNumName') != i.toString()) {
-                                rowSelected.style.backgroundColor = "#B4D5FE";
-                                localStorage.setItem('nameHighlight', rowSelected);
-                                rowSelected.className += " selected";
-                                localStorage.setItem('currentCellNumName', i.toString())
-                            }
-
-                            else {
-                                localStorage.removeItem('selectedRowName');
-                                rowSelected.style.backgroundColor = "";
-                                rowSelected.className -= " selected";
-                                localStorage.removeItem('currentCellNumName');
-                            }
-                        }
-                    }
-                }, 1000);
-            
-            }
+            grade();
         </script>
     </body>
 </html>

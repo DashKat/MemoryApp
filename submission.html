@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Offline Practice: Submit</title>
+        <link rel = "stylesheet" href = "css/styling.css">
+        <link rel = "icon" href = "projectFiles/icon.ico">
+        <script src = "js/Submitter.js"></script>
+    </head>
+
+    <body>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">Offline Mode
+                    <i class="fa fa-caret-down"></i>
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="offlineEasy.html">Easy</a>
+                    <a href="offlineMedium.html">Medium</a>
+                    <a href="offlineHard.html">Difficult</a>
+                </div>
+            </div>
+        </div>
+        
+        <label for = "nameIn">Name:</label><br>
+        <table id = "nameDisplay">
+            <tr>
+                <td></td>
+            </tr>
+        </table><br>
+        <input type="text" id = "nameIn">
+        <button onclick = "plusName()" id = "namePlusBtn">+</button>
+        <button onclick = "minusName()" id = nameMinusBtn>-</button><br><br>
+
+        <label for = "sentenceIn">Sentence:</label>
+        <table id = "sentenceDisplay">
+            <tr>
+                <td></td>
+            </tr>
+        </table><br>
+        <input type="text" id = "sentenceIn">
+        <button onclick = "plusSentence()" id = "sentencePlusBtn">+</button>
+        <button onclick = "minusSentence()" id = sentenceMinusBtn>-</button><br><br>
+        
+
+        <label for = "numberIn">Number:</label>
+        <table id = "numberDisplay">
+            <tr>
+                <td></td>
+            </tr>
+        </table><br>
+        <input type="text" id = "numberIn">
+        <button onclick = "plusNumber()" id = "numberPlusBtn">+</button>
+        <button onclick = "minusNumber()" id = numberMinusBtn>-</button><br><br>
+
+        <button onclick = "submit()" id = "submitBtn">Submit</button>
+
+        <script>
+            highlight_row_name();
+            function highlight_row_name() {
+                var table = document.getElementById('nameDisplay');
+                var cells = table.getElementsByTagName('td');
+                
+                setInterval(function() {
+                    for (var i = 0; i < cells.length; i++) {
+                        // Take each cell
+                        var cell = cells[i];
+                        // do something on onclick event for cell
+                        
+                        cell.onclick = function () {
+                            
+                            // Get the row id where the cell exists
+                            var rowId = this.parentNode.rowIndex;
+                
+                            var rowsNotSelected = table.getElementsByTagName('tr');
+                            for (var row = 0; row < rowsNotSelected.length; row++) {
+                                rowsNotSelected[row].style.backgroundColor = "";
+                                rowsNotSelected[row].style.border = "";
+                                rowsNotSelected[row].classList.remove('selected');
+                            }
+                            var rowSelected = table.getElementsByTagName('tr')[rowId];
+                            
+                            if(localStorage.getItem('currentCellNum') != i.toString()) {
+                                localStorage.setItem('selectedRowName', rowId.toString());
+                                rowSelected.style.backgroundColor = "#B4D5FE";
+                                rowSelected.className += " selected";
+                                localStorage.setItem('currentCellNum', i.toString())
+                            }
+
+                            else {
+                                localStorage.removeItem('selectedRowName');
+                                rowSelected.style.backgroundColor = "";
+                                rowSelected.className -= " selected";
+                                localStorage.removeItem('currentCellNum');
+                            }
+                        }
+                    }
+                }, 1000);
+            
+            }
+        </script>
+
+        <script>
+            highlight_row_sentence();
+            function highlight_row_sentence() {
+                var table = document.getElementById('sentenceDisplay');
+                var cells = table.getElementsByTagName('td');
+                
+                setInterval(function() {
+                    for (var i = 0; i < cells.length; i++) {
+                        // Take each cell
+                        var cell = cells[i];
+                        // do something on onclick event for cell
+                        
+                        cell.onclick = function () {
+                            
+                            // Get the row id where the cell exists
+                            var rowId = this.parentNode.rowIndex;
+                
+                            var rowsNotSelected = table.getElementsByTagName('tr');
+                            for (var row = 0; row < rowsNotSelected.length; row++) {
+                                rowsNotSelected[row].style.backgroundColor = "";
+                                rowsNotSelected[row].style.border = "";
+                                rowsNotSelected[row].classList.remove('selected');
+                            }
+                            var rowSelected = table.getElementsByTagName('tr')[rowId];
+                            
+                            if(localStorage.getItem('currentCellNum') != i.toString()) {
+                                localStorage.setItem('selectedRowSentence', rowId.toString());
+                                rowSelected.style.backgroundColor = "#B4D5FE";
+                                rowSelected.className += " selected";
+                                localStorage.setItem('currentCellNum', i.toString())
+                            }
+
+                            else {
+                                localStorage.removeItem('selectedRowSentence');
+                                rowSelected.style.backgroundColor = "";
+                                rowSelected.className -= " selected";
+                                localStorage.removeItem('currentCellNum');
+                            }
+                        }
+                    }
+                }, 1000);
+            
+            }
+        </script>
+
+        <script>
+            highlight_row_number();
+            function highlight_row_number() {
+                var table = document.getElementById('numberDisplay');
+                var cells = table.getElementsByTagName('td');
+                
+                setInterval(function() {
+                    for (var i = 0; i < cells.length; i++) {
+                        // Take each cell
+                        var cell = cells[i];
+                        // do something on onclick event for cell
+                        
+                        cell.onclick = function () {
+                            
+                            // Get the row id where the cell exists
+                            var rowId = this.parentNode.rowIndex;
+                
+                            var rowsNotSelected = table.getElementsByTagName('tr');
+                            for (var row = 0; row < rowsNotSelected.length; row++) {
+                                rowsNotSelected[row].style.backgroundColor = "";
+                                rowsNotSelected[row].style.border = "";
+                                rowsNotSelected[row].classList.remove('selected');
+                            }
+                            var rowSelected = table.getElementsByTagName('tr')[rowId];
+                            
+                            if(localStorage.getItem('currentCellNum') != i.toString()) {
+                                localStorage.setItem('selectedRowNumber', rowId.toString());
+                                rowSelected.style.backgroundColor = "#B4D5FE";
+                                rowSelected.className += " selected";
+                                localStorage.setItem('currentCellNum', i.toString())
+                            }
+
+                            else {
+                                localStorage.removeItem('selectedRowNumber');
+                                rowSelected.style.backgroundColor = "";
+                                rowSelected.className -= " selected";
+                                localStorage.removeItem('currentCellNum');
+                            }
+                        }
+                    }
+                }, 1000);
+            
+            }
+        </script>
+    </body>
+</html>
