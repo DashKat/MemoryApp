@@ -43,7 +43,7 @@ function CardSelect() {
         suit = "Spades";
     }
 
-    path = path + number + "_of_" + suit + ".png";
+    path = path + number.toLowerCase() + "_of_" + suit.toLowerCase() + ".png";
     document.getElementById('cardOut').src = path;
     cards.push(number + " of " + suit);
 }
@@ -93,7 +93,7 @@ function CardSelectCustom() {
         suit = "Spades";
     }
 
-    path = path + number + "_of_" + suit + ".png";
+    path = path + number.toLowerCase() + "_of_" + suit.toLowerCase() + ".png";
     document.getElementById('cardOut').src = path;
     var cards = JSON.parse(localStorage.getItem('cards'));
     cards.push(number + " of " + suit);
