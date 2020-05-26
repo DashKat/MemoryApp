@@ -65,6 +65,10 @@ function formSubmit() {
         var names = [];
         var sentences = [];
         var cards = [];
+        localStorage.setItem("numbers", JSON.stringify(numbers));
+        localStorage.setItem("names", JSON.stringify(names));
+        localStorage.setItem("sentences", JSON.stringify(sentences));
+        localStorage.setItem("cards", JSON.stringify(cards));
         setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, timeBetween);
     }
 

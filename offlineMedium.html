@@ -15,6 +15,16 @@
         <div class="navbar">
             <a href="index.html">Home</a>
             <div class="dropdown">
+                <button class="dropbtn">Online Mode &#9660;
+                    <i class="fa fa-caret-down"></i>
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="onlineCreate.html">Create</a>
+                    <a href="onlineJoin.html">Join</a>
+                </div>
+            </div>
+            <div class="dropdown">
                 <button class="dropbtn">Offline Mode &#9660;
                     <i class="fa fa-caret-down"></i>
                 </button>
@@ -53,6 +63,10 @@
         var names = [];
         var sentences = [];
         var cards = [];
+        localStorage.setItem("numbers", JSON.stringify(numbers));
+        localStorage.setItem("names", JSON.stringify(names));
+        localStorage.setItem("sentences", JSON.stringify(sentences));
+        localStorage.setItem("cards", JSON.stringify(cards));
         mediumMode();
         setRandsInterval();
     </script>
