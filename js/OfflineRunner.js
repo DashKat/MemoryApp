@@ -21,8 +21,8 @@ function clearRands() {
 }
 
 function easyMode() {
-    localStorage.setItem('numTimes', '1');
-    timeDuring =  4 * 1000;
+    localStorage.setItem('numTimes', '2');
+    timeDuring =  1 * 1000;
     timeBetween = 1 * 1000;
     document.getElementById("timer").innerHTML = " " + (timeDuring/1000).toString();
 }
@@ -63,7 +63,7 @@ function formSubmit() {
         document.getElementById('myForm').style.display = "none";
         var numbers = [];
         var names = [];
-        var sentences = ["test"];
+        var sentences = [];
         var cards = [];
         setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, timeBetween);
     }
@@ -139,10 +139,6 @@ function setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, ti
     setInterval(function() {
         if(x == numTimes - 1) {
             clearRands();
-            localStorage.setItem("numbers", JSON.stringify(numbers));
-            localStorage.setItem("names", JSON.stringify(names));
-            localStorage.setItem("sentences", JSON.stringify(sentences));
-            localStorage.setItem("cards", JSON.stringify(cards));
             setTimeout(function() {location.href = 'submission.html';}, timeBetween);
         }
         else if(x != numTimes - 1) {

@@ -16,9 +16,6 @@ function grade() {
     localStorage.removeItem("userSentences");
     var userCards = JSON.parse(localStorage.getItem("userCards"));
     localStorage.removeItem("userCards");
-    
-    console.log(numbers);
-    console.log(userNumbers);
 
 
     var numberScore = 0;
@@ -27,6 +24,34 @@ function grade() {
     var cardScore = 0;
 
     var possibleScore = 0;
+
+    for(var j = 0; j < userNumbers.length; j++) {
+        var table = document.getElementById('userNumberDisplay');
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = userNumbers[j];
+    }
+
+    for(var j = 0; j < userNames.length; j++) {
+        var table = document.getElementById('userNameDisplay');
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = userNames[j];
+    }
+
+    for(var j = 0; j < userSentences.length; j++) {
+        var table = document.getElementById('userSentenceDisplay');
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = userSentences[j];
+    }
+
+    for(var j = 0; j < userCards.length; j++) {
+        var table = document.getElementById('userCardDisplay');
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = userCards[j];
+    }
 
     for(var i = 0; i < numbers.length; i++) {
         var table = document.getElementById('realNumberDisplay');
@@ -37,11 +62,6 @@ function grade() {
             if(numbers[i] == userNumbers[j] && i == j) {
                 numberScore++;
             }
-
-            var table = document.getElementById('userNumberDisplay');
-            var row = table.insertRow(table.rows.length);
-            var cell = row.insertCell(0);
-            cell.innerHTML = userNumbers[j];
         }
         possibleScore++;
     }
@@ -55,11 +75,6 @@ function grade() {
             if(names[i] == userNames[j] && i == j) {
                 nameScore++;
             }
-
-            var table = document.getElementById('userNameDisplay');
-            var row = table.insertRow(table.rows.length);
-            var cell = row.insertCell(0);
-            cell.innerHTML = userNames[j];
         }
         possibleScore++;
     }
@@ -74,11 +89,6 @@ function grade() {
             if(sentences[i].toUpperCase() == userSentences[j].toUpperCase() && i == j) {
                 sentenceScore++;
             }
-
-            var table = document.getElementById('userSentenceDisplay');
-            var row = table.insertRow(table.rows.length);
-            var cell = row.insertCell(0);
-            cell.innerHTML = userSentences[j];
         }
         possibleScore++;
     }
@@ -93,11 +103,6 @@ function grade() {
             if(cards[i].toUpperCase() == userCards[j].toUpperCase() && i == j) {
                 cardScore++;
             }
-
-            var table = document.getElementById('userCardDisplay');
-            var row = table.insertRow(table.rows.length);
-            var cell = row.insertCell(0);
-            cell.innerHTML = userCards[j];
         }
         possibleScore++;
     }
