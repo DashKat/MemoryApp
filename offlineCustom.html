@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Offline Practice: Medium</title>
+        <title>Offline Practice: Custom</title>
         <link rel = "stylesheet" href = "css/styling.css">
         <link rel = "icon" href = "projectFiles/icon.ico">
         <script src = "js/NameSelector.js"></script>
@@ -11,7 +11,7 @@
         <script src = "js/OfflineRunner.js"></script>
     </head>
 
-    <body id = "offlineGame" oncopy = "return false" oncut = "return false"></body>
+    <body>
         <div class="navbar">
             <a href="index.html">Home</a>
             <div class="dropdown">
@@ -28,6 +28,23 @@
             </div>
         </div>
 
+        <div class="form-popup" id="myForm" name = "myForm">
+            <form class="form-container">
+                <h1>Customize</h1>
+            
+                <label for="numTimes"><b>Rounds</b></label>
+                <input type="text" placeholder="Number of Rounds" id = "numTimes" required>
+            
+                <label for="timeDuring"><b>Round Duration</b></label>
+                <input type="text" placeholder="Round Duration (seconds)" id = "timeDuring" required>
+            
+                <label for="timeBetween"><b>Waiting Period</b></label>
+                <input type="text" placeholder="Waiting Period (seconds)" id = "timeBetween" required>
+
+                <button type="button" class="btn" id = "formSubmitter" onclick="formSubmit()">Start</button>
+            </form>
+        </div>
+        
         <label id = "timerHead">Time:</label>
         <label id = "timer"></label>
         <label id = "timerEnd"> Seconds</label>
@@ -47,13 +64,4 @@
         <h1 id = "imageHead">Image:</h1>
         <img id = "imageOut">
     </body>
-
-    <script>
-        var numbers = [];
-        var names = [];
-        var sentences = [];
-        var cards = [];
-        mediumMode();
-        setRandsInterval();
-    </script>
 </html>
