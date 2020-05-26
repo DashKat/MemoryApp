@@ -21,9 +21,9 @@ function clearRands() {
 }
 
 function easyMode() {
-    localStorage.setItem('numTimes', '2');
-    timeDuring =  1 * 1000;
-    timeBetween = 1 * 1000;
+    localStorage.setItem('numTimes', '1');
+    timeDuring =  40 * 1000;
+    timeBetween = 15 * 1000;
     document.getElementById("timer").innerHTML = " " + (timeDuring/1000).toString();
 }
 
