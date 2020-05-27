@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Online Mode: Create a Game</title>
+        <title>Online Mode: Start Game</title>
         <link rel = "stylesheet" href = "css/styling.css">
         <link rel = "icon" href = "projectFiles/icon.ico">
-        <script src = "js/NameSelector.js"></script>
-        <script src = "js/NumberSelector.js"></script>
-        <script src = "js/SentenceSelector.js"></script>
-        <script src = "js/CardSelector.js"></script>
-        <script src = "js/generateGame.js"></script>
+        <script src="js/generateGame.js"></script>
     </head>
 
-    <body>
+    <body id = "index">
         <div class="navbar">
             <a href="index.html">Home</a>
             <div class="dropdown">
@@ -37,21 +33,8 @@
                 </div>
             </div>
         </div>
-        <form class="form-container">
-            <label for="numTimes"><b>Rounds</b></label>
-            <input type="text" placeholder="Number of Rounds" id = "numTimes" required>
         
-            <label for="timeDuring"><b>Round Duration</b></label>
-            <input type="text" placeholder="Round Duration (seconds)" id = "timeDuring" required>
-        
-            <label for="timeBetween"><b>Waiting Period</b></label>
-            <input type="text" placeholder="Waiting Period (seconds)" id = "timeBetween" required>
-
-            <label for="password"><b>Password</b></label>
-            <input type="text" placeholder="Create a password to rejoin" id = "password" required>
-
-            <button type="button" class="btn" id = "createGame" onclick="generateGame()">Create</button>
-        </form>
+        <button id = "gameStart" onclick="startGame()">Start</button>
 
         <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>

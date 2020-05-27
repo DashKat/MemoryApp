@@ -146,6 +146,9 @@ function CardUpdate() {
     }
 
     var cards = JSON.parse(localStorage.getItem('cards'));
-    cards.push(number + " of " + suit);
+    var cardsGrade = JSON.parse(localStorage.getItem('cardsGrade'));
+    cards.push(path + number.toLowerCase() + "_of_" + suit.toLowerCase() + ".png");
+    cardsGrade.push(number + " of " + suit);
     localStorage.setItem("cards", JSON.stringify(cards));
+    localStorage.setItem("cardsGrade", JSON.stringify(cardsGrade));
 }

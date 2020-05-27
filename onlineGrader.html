@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Mode: Results</title>
+        <link rel = "stylesheet" href = "css/styling.css">
+        <link rel = "icon" href = "projectFiles/icon.ico">
+        <script src = "js/OnlineGrader.js"></script>
+    </head>
+
+    <body>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">Online Mode &#9660;
+                    <i class="fa fa-caret-down"></i>
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="onlineCreate.html">Create</a>
+                    <a href="onlineJoin.html">Join</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Offline Mode &#9660;
+                    <i class="fa fa-caret-down"></i>
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="offlineEasy.html">Easy</a>
+                    <a href="offlineMedium.html">Medium</a>
+                    <a href="offlineHard.html">Difficult</a>
+                    <a href="offlineCustom.html">Custom</a>
+                </div>
+            </div>
+        </div>
+
+        <label>Score:</label>
+        <label id = "Score"></label><br><br>
+
+        <label>Names:</label><br>
+        <table id = "realNameDisplay">
+            <tr>
+                <th>Correct Answer(s)</th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table><br>
+        <table id = "userNameDisplay">
+            <tr>
+                <th>Your Answer(s)</th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table><br><br>
+
+        <label>Numbers:</label><br>
+        <table id = "realNumberDisplay">
+            <tr>
+                <th>Correct Answer(s)</th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table><br>
+        <table id = "userNumberDisplay">
+            <tr>
+                <th>Your Answer(s)</th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table><br><br>
+
+        <label>Sentences:</label><br>
+        <table id = "realSentenceDisplay">
+            <tr>
+                <th>Correct Answer(s)</th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table><br>
+        <table id = "userSentenceDisplay">
+            <tr>
+                <th>Your Answer(s)</th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table><br><br>
+
+        <label>Cards:</label><br>
+        <table id = "realCardDisplay">
+            <tr>
+                <th>Correct Answer(s)</th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table><br>
+        <table id = "userCardDisplay">
+            <tr>
+                <th>Your Answer(s)</th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table><br><br>
+
+        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+
+        <script>
+            grade();
+        </script>
+    </body>
+</html>

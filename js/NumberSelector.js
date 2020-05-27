@@ -15,7 +15,6 @@ function NumberSelectCustom() {
 function NumberUpdate() {
     var number = (Math.round(Math.random() * 8999) + 1000).toString();
     var numbers = JSON.parse(localStorage.getItem('numbers'));
-    console.log('yuhh');
     numbers.push(number);
     localStorage.setItem("numbers", JSON.stringify(numbers));
 }
