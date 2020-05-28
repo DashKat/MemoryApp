@@ -58,6 +58,13 @@
     </body>
 
     <script>
+        window.onload = function() {
+            if(!window.location.hash) {
+                window.location = window.location + '#loaded';
+                window.location.reload();
+            }
+        }
+
         var firebaseConfig = {
             apiKey: "AIzaSyDpREM9IPNuoVLjX0Yv74IA5f9aUnysK-U",
             authDomain: "memoryapp-69da9.firebaseapp.com",
@@ -155,9 +162,9 @@
                 document.getElementById('numberOut').innerHTML = JSON.parse(snapshot.val().numbers)[x]
                 document.getElementById('nameOut').innerHTML = JSON.parse(snapshot.val().names)[x];
                 document.getElementById('sentenceOut').innerHTML = JSON.parse(snapshot.val().sentences)[x];
-                console.log(snapshot.val().cards);
+                console.log(JSON.parse(snapshot.val().cards)[x]);
                 
-                document.getElementById('cardOut').src = JSON.parse(snapshot.val().cards)[x];
+                document.getElementById('cardOut').src = 'projectFiles/Cards/5_of_spades.png';
             });
 
         }
