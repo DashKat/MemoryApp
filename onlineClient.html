@@ -155,6 +155,8 @@
                 document.getElementById('numberOut').innerHTML = JSON.parse(snapshot.val().numbers)[x]
                 document.getElementById('nameOut').innerHTML = JSON.parse(snapshot.val().names)[x];
                 document.getElementById('sentenceOut').innerHTML = JSON.parse(snapshot.val().sentences)[x];
+                console.log(snapshot.val().cards);
+                
                 document.getElementById('cardOut').src = JSON.parse(snapshot.val().cards)[x];
             });
 
