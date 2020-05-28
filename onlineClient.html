@@ -62,6 +62,7 @@
             setTimeout(function() {
                 if(!window.location.hash) {
                     window.location = window.location + '#loaded';
+                    window.location.reload();
                 }
             }, 1000);
         }
@@ -161,7 +162,7 @@
                 document.getElementById('sentenceOut').innerHTML = JSON.parse(snapshot.val().sentences)[x];
                 console.log(JSON.parse(snapshot.val().cards)[x]);
                 
-                document.getElementById('cardOut').src = 'projectFiles/Cards/5_of_spades.png';
+                document.getElementById('cardOut').src = JSON.parse(snapshot.val().cards)[x];
             });
 
         }
