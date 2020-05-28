@@ -59,10 +59,11 @@
 
     <script>
         window.onload = function() {
-            if(!window.location.hash) {
-                window.location = window.location + '#loaded';
-                window.location.reload();
-            }
+            setTimeout(function() {
+                if(!window.location.hash) {
+                    window.location = window.location + '#loaded';
+                }
+            }, 500);
         }
 
         var firebaseConfig = {
@@ -96,11 +97,7 @@
             var x = parseInt(localStorage.getItem('x'), 10);
             if(x == numTimes - 1) {
                 clearRands();
-                document.getElementById("timer").innerHTML = " 0";/*
-                localStorage.setItem("numbers", JSON.stringify(numbers));
-                localStorage.setItem("names", JSON.stringify(names));
-                localStorage.setItem("sentences", JSON.stringify(sentences));
-                localStorage.setItem("cards", JSON.stringify(cards));*/
+                document.getElementById("timer").innerHTML = " 0";
                 setTimeout(function() {location.href = 'onlineSubmission.html';}, timeBetween);
             }
             else if(x != numTimes - 1) {
