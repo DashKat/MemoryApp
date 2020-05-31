@@ -58,13 +58,11 @@
         
         <script>
             window.onload = function() {
-                setTimeout(function() {
-                    if(!window.location.hash) {
-                        window.location = window.location + '#loaded';
-                        window.location.reload();
-                        localStorage.setItem('reload', 'false');
-                    }
-                }, 1);
+                if(!window.location.hash) {
+                    window.location = window.location + '#loaded';
+                    window.location.reload();
+                    localStorage.setItem('reload', 'false');
+                }
             }
             
             if(localStorage.getItem('reload') == 'false') {
