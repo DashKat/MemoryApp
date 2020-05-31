@@ -18,7 +18,7 @@ function grade() {
         localStorage.setItem('numbers', snapshot.val().numbers);
         localStorage.setItem('names', snapshot.val().names);
         localStorage.setItem('sentences', snapshot.val().sentences);
-        localStorage.setItem('cards', snapshot.val().cardsGrade);
+        localStorage.setItem('cardsGrade', snapshot.val().cardsGrade);
     });
 
     var numbers = JSON.parse(localStorage.getItem("numbers"));
@@ -27,7 +27,7 @@ function grade() {
     localStorage.removeItem("names");
     var sentences = JSON.parse(localStorage.getItem("sentences"));
     localStorage.removeItem("sentences");
-    var cards = JSON.parse(localStorage.getItem("cards"));
+    var cards = JSON.parse(localStorage.getItem("cardsGrade"));
     localStorage.removeItem("cards");
 
     var userNumbers = JSON.parse(localStorage.getItem("userNumbers"));
