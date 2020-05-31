@@ -103,7 +103,7 @@ function CardSelectCustom() {
 function CardUpdate() {
     var rand = Math.round(Math.random() * 12) + 1;
     var number = "";
-    var path = "/projectFiles/Cards/";
+    var path = "projectFiles/Cards/";
     var suitNum = Math.round(Math.random()*3) + 1;
     var suit = "";
 

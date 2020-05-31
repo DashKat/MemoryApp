@@ -17,9 +17,19 @@ function join() {
             
             if(snapshot2.val() == true && snapshot3.val() == false) {
                 localStorage.setItem('clientID', document.getElementById('joinGame').value)
+                var ID = localStorage.getItem('clientID');
                 localStorage.setItem('clientName', document.getElementById('clientName').value.toString());
+                database.ref().child('GameInfo/' + ID).once('value').then(function(snapshot) {
+                    localStorage.setItem('numTimes', snapshot.val().numTimes);
+                    localStorage.setItem('timeDuring', snapshot.val().timeDuring);
+                    localStorage.setItem('timeBetween', snapshot.val().timeBetween);
+                    localStorage.setItem('names', snapshot.val().names);
+                    localStorage.setItem('numbers', snapshot.val().numbers);
+                    localStorage.setItem('sentences', snapshot.val().sentences);
+                    localStorage.setItem('cards', snapshot.val().cards);
+                });
                 setTimeout(function() {location.href = 'onlineLobby.html';}, 500);
-                return database.ref().child('ClientNames/' + document.getElementById('joinGame').value + '/value').once('value').then(function(snapshot) {
+                database.ref().child('ClientNames/' + document.getElementById('joinGame').value + '/value').once('value').then(function(snapshot) {
                     clientNames = JSON.parse(snapshot.val());
                     
                     clientNames.push(document.getElementById('clientName').value.toString());
