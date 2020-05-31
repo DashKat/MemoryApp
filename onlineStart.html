@@ -34,13 +34,49 @@
             </div>
         </div>
         <label id = "gameCode"></label><br><br>
-        <button id = "gameStart" onclick="startGame()">Start</button>
+        <button id = "gameStart" onclick="startGame()">Start</button><br><br>
+
+        <label>Users Joined:</label>
+        <table id = 'clientsJoined'>
+            <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
 
         <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
 
         <script>
             document.getElementById('gameCode').innerHTML = "Share this code with people so they can join your game: " + localStorage.getItem('gameID');
+
+            var firebaseConfig = {
+                apiKey: "AIzaSyDpREM9IPNuoVLjX0Yv74IA5f9aUnysK-U",
+                authDomain: "memoryapp-69da9.firebaseapp.com",
+                databaseURL: "https://memoryapp-69da9.firebaseio.com",
+                projectId: "memoryapp-69da9",
+                storageBucket: "memoryapp-69da9.appspot.com",
+                messagingSenderId: "315432298371",
+                appId: "1:315432298371:web:df4285484600df6af438b6"
+            };
+            try {firebase.initializeApp(firebaseConfig);}
+            catch {}
+            var database = firebase.database();
+            var ID = localStorage.getItem('SuperID');
+
+            database.ref('ClientNames/' + ID + '/value').on('value', function(snapshot) {
+                var names = JSON.parse(snapshot.val());
+                
+                var table = document.getElementById('clientsJoined');
+                table.innerHTML = "";
+
+                for(var i = 0; i < names.length; i++) {
+                    var row = table.insertRow(table.rows.length);
+                    var cell = row.insertCell(0);
+                    cell.innerHTML = names[i];
+                }
+            });
         </script>
     </body>
 </html>

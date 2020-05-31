@@ -32,9 +32,6 @@
                 </div>
             </div>
         </div>
-        
-        <label>Status:</label>
-        <label id = "gameStatus"></label>
 
         <table id = "scoreDisplay">
             <tr>
@@ -51,7 +48,6 @@
         <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
 
         <script>
-            document.getElementById('gameStatus').innerHTML = "Running"
             var firebaseConfig = {
                 apiKey: "AIzaSyDpREM9IPNuoVLjX0Yv74IA5f9aUnysK-U",
                 authDomain: "memoryapp-69da9.firebaseapp.com",
@@ -66,8 +62,25 @@
             var database = firebase.database();
             var ID = localStorage.getItem('clientID');
 
-            database.ref('ClientScores/' + ID).on('value', function(snapshot3) {
-                
+            database.ref('ClientNames/' + ID + '/value').once('value').then(function(snapshot2) {
+                localStorage.setItem('finalNames', snapshot2.val());
+
+            });
+
+            database.ref('ClientScores/' + ID).on('value', function(snapshot2) {
+                var names = JSON.parse(localStorage.getItem('finalNames'));
+                var table = document.getElementById('scoreDisplay');
+
+                for(var i = 0; i < names.length; i++) {
+                    var row = table.insertRow(table.rows.length);
+                    var cell0 = row.insertCell(0);
+                    var cell1 = row.insertCell(1);
+                    
+                    cell0.innerHTML = names[i];
+                    database.ref('ClientScores/' + ID + '/' + names[i]).once('value').then(function(snapshot) {
+                        cell1.innerHTML = snapshot.val().value;
+                    });
+                }
             });
         </script>
     </body>

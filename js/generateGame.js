@@ -22,6 +22,7 @@ function generateGame() {
     var gameInfoRef = database.ref('GameInfo');
     var thisGame = gameInfoRef.push();
     var thisGameID = thisGame.toString().slice(thisGame.toString().indexOf("GameInfo/") + 9, thisGame.toString().length);
+    localStorage.setItem('SuperID', thisGameID);
 
 
     var numTimes = document.getElementById('numTimes').value;

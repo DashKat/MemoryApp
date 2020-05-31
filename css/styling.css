@@ -73,6 +73,10 @@ img {
   display: none;
 }
 
+td
+{
+    padding:0 15px;
+}
 
 img[src] {
  display: block;
