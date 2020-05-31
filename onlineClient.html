@@ -55,91 +55,17 @@
 
         <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
-    </body>
-
-    <script>
-        window.onload = function() {
-            setTimeout(function() {
-                if(!window.location.hash) {
-                    window.location = window.location + '#loaded';
-                    window.location.reload();
-                }
-            }, 1000);
-        }
-
-        var firebaseConfig = {
-            apiKey: "AIzaSyDpREM9IPNuoVLjX0Yv74IA5f9aUnysK-U",
-            authDomain: "memoryapp-69da9.firebaseapp.com",
-            databaseURL: "https://memoryapp-69da9.firebaseio.com",
-            projectId: "memoryapp-69da9",
-            storageBucket: "memoryapp-69da9.appspot.com",
-            messagingSenderId: "315432298371",
-            appId: "1:315432298371:web:df4285484600df6af438b6"
-        };
-        try {firebase.initializeApp(firebaseConfig);}
-        catch {}
-        var database = firebase.database();
-
-        var ID = localStorage.getItem('clientID');
-        database.ref().child('GameInfo/' + ID).once('value').then(function(snapshot) {
-            localStorage.setItem('numTimes', snapshot.val().numTimes);
-            localStorage.setItem('timeDuring', snapshot.val().timeDuring);
-            localStorage.setItem('timeBetween', snapshot.val().timeBetween);
-        });
-
-        var timeDuring = parseInt(localStorage.getItem('timeDuring'), 10);
-        document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
-        var timeBetween = parseInt(localStorage.getItem('timeBetween'), 10);
-        var numTimes = parseInt(localStorage.getItem('numTimes'), 10);
-        localStorage.setItem('timerState', "");
-        localStorage.setItem('x', '0');
-        setRands();
-        setInterval(function() {
-            var x = parseInt(localStorage.getItem('x'), 10);
-            if(x == numTimes - 1) {
-                clearRands();
-                document.getElementById("timer").innerHTML = " 0";
-                setTimeout(function() {location.href = 'onlineSubmission.html';}, timeBetween);
+        
+        <script>
+            window.onload = function() {
+                setTimeout(function() {
+                    if(!window.location.hash) {
+                        window.location = window.location + '#loaded';
+                        window.location.reload();
+                    }
+                }, 1000);
             }
-            else if(x != numTimes - 1) {
-                x++;
-                localStorage.setItem('x', x);
-                setRands();
-                timeDuring2 = timeDuring;
-                document.getElementById("timer").innerHTML = " 0";
-            }
-        }, timeDuring);
-
-        var timeDuring2 = timeDuring;
-        timeDuring2 -= 1000;
-        var duringTimer = setInterval(function() {
-            var x = parseInt(localStorage.getItem('x'), 10);
-            if(numTimes - 1 == x && timeDuring2 == 0) {
-                timerBetweenSetter();
-                document.getElementById("timer").innerHTML = " " + (timeBetween/1000).toString();
-                document.getElementById("nameHead").style.display = "none";
-                document.getElementById("nameOut").style.display = "none";
-                document.getElementById("numberHead").style.display = "none";
-                document.getElementById("numberOut").style.display = "none";
-                document.getElementById("sentenceHead").style.display = "none";
-                document.getElementById("sentenceOut").style.display = "none";
-                document.getElementById("cardHead").style.display = "none";
-                document.getElementById("cardOut").style.display = "none";
-                document.getElementById("imageHead").style.display = "none";
-                document.getElementById("imageOut").style.display = "none";
-                document.getElementById("timerHead").style.fontSize = "500%";
-                document.getElementById("timer").style.fontSize = "500%";
-                document.getElementById("timerEnd").style.fontSize = "500%";
-                clearInterval(duringTimer);
-            }
-            else {
-                document.getElementById("timer").innerHTML = " " + (timeDuring2/1000).toString();
-                timeDuring2 -= 1000;
-            }
-            
-        }, 1000);
-
-        function setRands() {
+    
             var firebaseConfig = {
                 apiKey: "AIzaSyDpREM9IPNuoVLjX0Yv74IA5f9aUnysK-U",
                 authDomain: "memoryapp-69da9.firebaseapp.com",
@@ -152,38 +78,112 @@
             try {firebase.initializeApp(firebaseConfig);}
             catch {}
             var database = firebase.database();
-
+    
             var ID = localStorage.getItem('clientID');
-            var x = parseInt(localStorage.getItem('x'), 10);
-
-            return database.ref().child('GameInfo/' + ID).once('value').then(function(snapshot) {
-                document.getElementById('numberOut').innerHTML = JSON.parse(snapshot.val().numbers)[x]
-                document.getElementById('nameOut').innerHTML = JSON.parse(snapshot.val().names)[x];
-                document.getElementById('sentenceOut').innerHTML = JSON.parse(snapshot.val().sentences)[x];
-                console.log(JSON.parse(snapshot.val().cards)[x]);
-                
-                document.getElementById('cardOut').src = JSON.parse(snapshot.val().cards)[x];
+            database.ref().child('GameInfo/' + ID).once('value').then(function(snapshot) {
+                localStorage.setItem('numTimes', snapshot.val().numTimes);
+                localStorage.setItem('timeDuring', snapshot.val().timeDuring);
+                localStorage.setItem('timeBetween', snapshot.val().timeBetween);
             });
-
-        }
-
-        function clearRands() {
-            document.getElementById('sentenceOut').innerHTML = "";
-            document.getElementById('nameOut').innerHTML = "";
-            document.getElementById('numberOut').innerHTML = "";
-            document.getElementById('cardOut').src = "";
-        }
-
-        function timerBetweenSetter() {
-            var timeBetween2 = timeBetween;
-            timeBetween2 -= 1000;
-            var betweenTimer = setInterval(function() {
-                document.getElementById("timer").innerHTML = " " + (timeBetween2/1000).toString();
-                if(timeBetween2 == 0) {
-                    clearInterval(betweenTimer);
+    
+            var timeDuring = parseInt(localStorage.getItem('timeDuring'), 10);
+            document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
+            var timeBetween = parseInt(localStorage.getItem('timeBetween'), 10);
+            var numTimes = parseInt(localStorage.getItem('numTimes'), 10);
+            localStorage.setItem('timerState', "");
+            localStorage.setItem('x', '0');
+            setRands();
+            setInterval(function() {
+                var x = parseInt(localStorage.getItem('x'), 10);
+                if(x == numTimes - 1) {
+                    clearRands();
+                    document.getElementById("timer").innerHTML = " 0";
+                    setTimeout(function() {location.href = 'onlineSubmission.html';}, timeBetween);
                 }
-                timeBetween2 -= 1000;
+                else if(x != numTimes - 1) {
+                    x++;
+                    localStorage.setItem('x', x);
+                    setRands();
+                    timeDuring2 = timeDuring;
+                    document.getElementById("timer").innerHTML = " 0";
+                }
+            }, timeDuring);
+    
+            var timeDuring2 = timeDuring;
+            timeDuring2 -= 1000;
+            var duringTimer = setInterval(function() {
+                var x = parseInt(localStorage.getItem('x'), 10);
+                if(numTimes - 1 == x && timeDuring2 == 0) {
+                    timerBetweenSetter();
+                    document.getElementById("timer").innerHTML = " " + (timeBetween/1000).toString();
+                    document.getElementById("nameHead").style.display = "none";
+                    document.getElementById("nameOut").style.display = "none";
+                    document.getElementById("numberHead").style.display = "none";
+                    document.getElementById("numberOut").style.display = "none";
+                    document.getElementById("sentenceHead").style.display = "none";
+                    document.getElementById("sentenceOut").style.display = "none";
+                    document.getElementById("cardHead").style.display = "none";
+                    document.getElementById("cardOut").style.display = "none";
+                    document.getElementById("imageHead").style.display = "none";
+                    document.getElementById("imageOut").style.display = "none";
+                    document.getElementById("timerHead").style.fontSize = "500%";
+                    document.getElementById("timer").style.fontSize = "500%";
+                    document.getElementById("timerEnd").style.fontSize = "500%";
+                    clearInterval(duringTimer);
+                }
+                else {
+                    document.getElementById("timer").innerHTML = " " + (timeDuring2/1000).toString();
+                    timeDuring2 -= 1000;
+                }
+                
             }, 1000);
-        }
-    </script>
+    
+            function setRands() {
+                var firebaseConfig = {
+                    apiKey: "AIzaSyDpREM9IPNuoVLjX0Yv74IA5f9aUnysK-U",
+                    authDomain: "memoryapp-69da9.firebaseapp.com",
+                    databaseURL: "https://memoryapp-69da9.firebaseio.com",
+                    projectId: "memoryapp-69da9",
+                    storageBucket: "memoryapp-69da9.appspot.com",
+                    messagingSenderId: "315432298371",
+                    appId: "1:315432298371:web:df4285484600df6af438b6"
+                };
+                try {firebase.initializeApp(firebaseConfig);}
+                catch {}
+                var database = firebase.database();
+    
+                var ID = localStorage.getItem('clientID');
+                var x = parseInt(localStorage.getItem('x'), 10);
+    
+                return database.ref().child('GameInfo/' + ID).once('value').then(function(snapshot) {
+                    document.getElementById('numberOut').innerHTML = JSON.parse(snapshot.val().numbers)[x]
+                    document.getElementById('nameOut').innerHTML = JSON.parse(snapshot.val().names)[x];
+                    document.getElementById('sentenceOut').innerHTML = JSON.parse(snapshot.val().sentences)[x];
+                    console.log(JSON.parse(snapshot.val().cards)[x]);
+                    
+                    document.getElementById('cardOut').src = JSON.parse(snapshot.val().cards)[x];
+                });
+    
+            }
+    
+            function clearRands() {
+                document.getElementById('sentenceOut').innerHTML = "";
+                document.getElementById('nameOut').innerHTML = "";
+                document.getElementById('numberOut').innerHTML = "";
+                document.getElementById('cardOut').src = "";
+            }
+    
+            function timerBetweenSetter() {
+                var timeBetween2 = timeBetween;
+                timeBetween2 -= 1000;
+                var betweenTimer = setInterval(function() {
+                    document.getElementById("timer").innerHTML = " " + (timeBetween2/1000).toString();
+                    if(timeBetween2 == 0) {
+                        clearInterval(betweenTimer);
+                    }
+                    timeBetween2 -= 1000;
+                }, 1000);
+            }
+        </script>
+    </body>
 </html>

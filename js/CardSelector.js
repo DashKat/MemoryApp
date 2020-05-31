@@ -127,8 +127,6 @@ function CardUpdate() {
         number = "Ace";
     }
 
-
-
     if(suitNum == 1) {
         suit = "Clubs";
     }
