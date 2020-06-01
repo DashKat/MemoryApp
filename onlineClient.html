@@ -3,55 +3,91 @@
     <head>
         <title>Offline Practice: Easy</title>
         <link rel = "stylesheet" href = "css/styling.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <script src="js/CSS.js"></script>
         <link rel = "icon" href = "projectFiles/icon.ico">
         <script src="js/joinGame.js"></script>
     </head>
 
     <body id = "offlineGame" oncopy = "return false" oncut = "return false">
-        <div class="navbar">
+        <div id = "mySidenav" class="navbar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.html">Home</a>
-            <div class="dropdown">
-                <button class="dropbtn">Online Mode &#9660;
-                    <i class="fa fa-caret-down"></i>
-                </button>
+            <button class="dropbtn">Online Mode
+                <i class="fa fa-caret-down"></i>
+            </button>
 
-                <div class="dropdown-content">
-                    <a href="onlineCreate.html">Create</a>
-                    <a href="onlineJoin.html">Join</a>
-                </div>
+            <div class="dropdown-content">
+                <a href="onlineCreate.html">Create</a>
+                <a href="onlineJoin.html">Join</a>
             </div>
-            <div class="dropdown">
-                <button class="dropbtn">Offline Mode &#9660;
-                    <i class="fa fa-caret-down"></i>
-                </button>
+            <button class="dropbtn">Offline Mode
+                <i class="fa fa-caret-down"></i>
+            </button>
 
-                <div class="dropdown-content">
-                    <a href="offlineEasy.html">Easy</a>
-                    <a href="offlineMedium.html">Medium</a>
-                    <a href="offlineHard.html">Difficult</a>
-                    <a href="offlineCustom.html">Custom</a>
-                </div>
+            <div class="dropdown-content">
+                <a href="offlineEasy.html">Easy</a>
+                <a href="offlineMedium.html">Medium</a>
+                <a href="offlineHard.html">Difficult</a>
+                <a href="offlineCustom.html">Custom</a>
             </div>
         </div>
 
-        <label id = "timerHead">Time:</label>
-        <label id = "timer"></label>
-        <label id = "timerEnd"> Seconds</label>
+        <script>
+            var dropdown = document.getElementsByClassName("dropbtn");
+            var i;
 
-        <h1 id = "nameHead">Name:</h1>
-        <label id = "nameOut"></label><br>
-        
-        <h1 id = "numberHead">Number:</h1>
-        <label id = "numberOut"></label><br>
-        
-        <h1 id = "sentenceHead">Sentence:</h1>
-        <label id = "sentenceOut"></label><br>
-        
-        <h1 id = "cardHead">Card:</h1>
-        <img id = "cardOut" width = "125", height = "181.5"><br>
-        
-        <h1 id = "imageHead">Image:</h1>
-        <img id = "imageOut">
+            for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+                } else {
+                dropdownContent.style.display = "block";
+                }
+            });
+            }
+        </script>
+
+        <div id="main">
+            <div class = "container" onclick = "openNav()">
+                <div class = 'line1'></div>
+                <div class = 'line2'></div>
+                <div class = 'line3'></div>
+            </div>
+
+            <div class = "varContainer">
+                <span class = "dot"></span>
+                
+                <label id = "timer" class = "time"></label>
+
+                <div class = "nameV" id = "nameV"></div>
+                <div class = "nameH1" id = "nameH1"></div>
+                <div class = "nameH2" id = "nameH2"></div>
+                <label id = "nameHead" class = "nameHead">&nbsp;name&nbsp;</label>
+                <label id = "nameOut" class = "nameOut"></label><br>
+                
+                <div class = "numberV" id = "numberV"></div>
+                <div class = "numberH1" id = "numberH1"></div>
+                <div class = "numberH2" id = "numberH2"></div>
+                <label id = "numberHead" class = "numberHead">&nbsp;number&nbsp;</label>
+                <label id = "numberOut" class = "numberOut"></label><br>
+                
+                <div class = "sentenceH1" id = "sentenceH1"></div>
+                <div class = "sentenceH2" id = "sentenceH2"></div>
+                <div class = "sentenceV1" id = "sentenceV1"></div>
+                <div class = "sentenceV2" id = "sentenceV2"></div>
+                <label id = "sentenceHead" class = "sentenceHead">&nbsp;sentence&nbsp;</label>
+                <label id = "sentenceOut" class = "sentenceOut"></label><br>
+                
+
+                <div class = "cardV" id = "cardV"></div>
+                <div class = "cardH1" id = "cardH1"></div>
+                <div class = "cardH2" id = "cardH2"></div>
+                <label id = "cardHead" class = "cardHead">&nbsp;card&nbsp;</label>
+                <img id = "cardOut" class = "cardOut"><br>
+            </div>
 
         <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
@@ -92,7 +128,6 @@
                     var x = parseInt(localStorage.getItem('x'), 10);
                     if(x == numTimes - 1) {
                         clearRands();
-                        document.getElementById("timer").innerHTML = " 0";
                         setTimeout(function() {location.href = 'onlineSubmission.html';}, timeBetween);
                     }
                     else if(x != numTimes - 1) {
@@ -100,7 +135,6 @@
                         localStorage.setItem('x', x);
                         setRands();
                         timeDuring2 = timeDuring;
-                        document.getElementById("timer").innerHTML = " 0";
                     }
                 }, timeDuring);
         
@@ -110,24 +144,32 @@
                     var x = parseInt(localStorage.getItem('x'), 10);
                     if(numTimes - 1 == x && timeDuring2 == 0) {
                         timerBetweenSetter();
-                        document.getElementById("timer").innerHTML = " " + (timeBetween/1000).toString();
+                        document.getElementById("timer").innerHTML = (timeBetween/1000).toString();
+                        document.getElementById("nameV").style.display = "none";
+                        document.getElementById("nameH1").style.display = "none";
+                        document.getElementById("nameH2").style.display = "none";
                         document.getElementById("nameHead").style.display = "none";
                         document.getElementById("nameOut").style.display = "none";
+                        document.getElementById("numberH1").style.display = "none";
+                        document.getElementById("numberH2").style.display = "none";
+                        document.getElementById("numberV").style.display = "none";
                         document.getElementById("numberHead").style.display = "none";
                         document.getElementById("numberOut").style.display = "none";
+                        document.getElementById("sentenceH1").style.display = "none";
+                        document.getElementById("sentenceH2").style.display = "none";
+                        document.getElementById("sentenceV1").style.display = "none";
+                        document.getElementById("sentenceV2").style.display = "none";
                         document.getElementById("sentenceHead").style.display = "none";
                         document.getElementById("sentenceOut").style.display = "none";
+                        document.getElementById("cardH1").style.display = "none";
+                        document.getElementById("cardH2").style.display = "none";
+                        document.getElementById("cardV").style.display = "none";
                         document.getElementById("cardHead").style.display = "none";
                         document.getElementById("cardOut").style.display = "none";
-                        document.getElementById("imageHead").style.display = "none";
-                        document.getElementById("imageOut").style.display = "none";
-                        document.getElementById("timerHead").style.fontSize = "500%";
-                        document.getElementById("timer").style.fontSize = "500%";
-                        document.getElementById("timerEnd").style.fontSize = "500%";
                         clearInterval(duringTimer);
                     }
                     else {
-                        document.getElementById("timer").innerHTML = " " + (timeDuring2/1000).toString();
+                        document.getElementById("timer").innerHTML = (timeDuring2/1000).toString();
                         timeDuring2 -= 1000;
                     }
                     
@@ -169,7 +211,7 @@
                 var timeBetween2 = timeBetween;
                 timeBetween2 -= 1000;
                 var betweenTimer = setInterval(function() {
-                    document.getElementById("timer").innerHTML = " " + (timeBetween2/1000).toString();
+                    document.getElementById("timer").innerHTML = (timeBetween2/1000).toString();
                     if(timeBetween2 == 0) {
                         clearInterval(betweenTimer);
                     }
@@ -177,5 +219,6 @@
                 }, 1000);
             }
         </script>
+        </div>
     </body>
 </html>

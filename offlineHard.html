@@ -3,6 +3,8 @@
     <head>
         <title>Offline Practice: Difficult</title>
         <link rel = "stylesheet" href = "css/styling.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <script src="js/CSS.js"></script>
         <link rel = "icon" href = "projectFiles/icon.ico">
         <script src = "js/NameSelector.js"></script>
         <script src = "js/NumberSelector.js"></script>
@@ -12,50 +14,84 @@
     </head>
 
     <body id = "offlineGame" oncopy = "return false" oncut = "return false">
-        <div class="navbar">
+        <div id = "mySidenav" class="navbar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.html">Home</a>
-            <div class="dropdown">
-                <button class="dropbtn">Online Mode &#9660;
-                    <i class="fa fa-caret-down"></i>
-                </button>
+            <button class="dropbtn">Online Mode
+                <i class="fa fa-caret-down"></i>
+            </button>
 
-                <div class="dropdown-content">
-                    <a href="onlineCreate.html">Create</a>
-                    <a href="onlineJoin.html">Join</a>
-                </div>
+            <div class="dropdown-content">
+                <a href="onlineCreate.html">Create</a>
+                <a href="onlineJoin.html">Join</a>
             </div>
-            <div class="dropdown">
-                <button class="dropbtn">Offline Mode &#9660;
-                    <i class="fa fa-caret-down"></i>
-                </button>
+            <button class="dropbtn">Offline Mode
+                <i class="fa fa-caret-down"></i>
+            </button>
 
-                <div class="dropdown-content">
-                    <a href="offlineEasy.html">Easy</a>
-                    <a href="offlineMedium.html">Medium</a>
-                    <a href="offlineHard.html">Difficult</a>
-                    <a href="offlineCustom.html">Custom</a>
-                </div>
+            <div class="dropdown-content">
+                <a href="offlineEasy.html">Easy</a>
+                <a href="offlineMedium.html">Medium</a>
+                <a href="offlineHard.html">Difficult</a>
+                <a href="offlineCustom.html">Custom</a>
             </div>
         </div>
 
-        <label id = "timerHead">Time:</label>
-        <label id = "timer"></label>
-        <label id = "timerEnd"> Seconds</label>
+        <script>
+            var dropdown = document.getElementsByClassName("dropbtn");
+            var i;
 
-        <h1 id = "nameHead">Name:</h1>
-        <label id = "nameOut"></label><br>
-        
-        <h1 id = "numberHead">Number:</h1>
-        <label id = "numberOut"></label><br>
-        
-        <h1 id = "sentenceHead">Sentence:</h1>
-        <label id = "sentenceOut"></label><br>
-        
-        <h1 id = "cardHead">Card:</h1>
-        <img id = "cardOut" width = "125", height = "181.5"><br>
-        
-        <h1 id = "imageHead">Image:</h1>
-        <img id = "imageOut">
+            for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+                } else {
+                dropdownContent.style.display = "block";
+                }
+            });
+            }
+        </script>
+
+        <div id="main">
+            <div class = "container" onclick = "openNav()">
+                <div class = 'line1'></div>
+                <div class = 'line2'></div>
+                <div class = 'line3'></div>
+            </div>
+
+            <div class = "varContainer">
+                <span class = "dot"></span>
+                
+                <label id = "timer" class = "time"></label>
+
+                <div class = "nameV" id = "nameV"></div>
+                <div class = "nameH1" id = "nameH1"></div>
+                <div class = "nameH2" id = "nameH2"></div>
+                <label id = "nameHead" class = "nameHead">&nbsp;name&nbsp;</label>
+                <label id = "nameOut" class = "nameOut"></label><br>
+                
+                <div class = "numberV" id = "numberV"></div>
+                <div class = "numberH1" id = "numberH1"></div>
+                <div class = "numberH2" id = "numberH2"></div>
+                <label id = "numberHead" class = "numberHead">&nbsp;number&nbsp;</label>
+                <label id = "numberOut" class = "numberOut"></label><br>
+                
+                <div class = "sentenceH1" id = "sentenceH1"></div>
+                <div class = "sentenceH2" id = "sentenceH2"></div>
+                <div class = "sentenceV1" id = "sentenceV1"></div>
+                <div class = "sentenceV2" id = "sentenceV2"></div>
+                <label id = "sentenceHead" class = "sentenceHead">&nbsp;sentence&nbsp;</label>
+                <label id = "sentenceOut" class = "sentenceOut"></label><br>
+                
+
+                <div class = "cardV" id = "cardV"></div>
+                <div class = "cardH1" id = "cardH1"></div>
+                <div class = "cardH2" id = "cardH2"></div>
+                <label id = "cardHead" class = "cardHead">&nbsp;card&nbsp;</label>
+                <img id = "cardOut" class = "cardOut"><br>
+            </div>
         <script>
             var numbers = [];
             var names = [];
@@ -68,5 +104,6 @@
             hardMode();
             setRandsInterval();
         </script>
+        </div>
     </body>
 </html>

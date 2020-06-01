@@ -1,61 +1,16 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700); /*delete the http: before sending to github*/
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700); /*delete the http: before sending to github*/
-
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700);
 * {
   margin: 2;
   padding: 0;
   font-weight: 400;
   border-radius: 2px;
   font-family: "Open Sans";
-  color: white;
-}
-
-.form-popup {
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
-
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-}
-
-/* Full-width input fields */
-.form-container input[type=text] {
-  box-sizing : border-box;
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  right: 100px;
-  border: none;
-  background: #f1f1f1;
-}
-
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Set a style for the submit/login button */
-.form-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
 }
 
 body {
-  background-color: #3AAFA9;
+  background-color: #F6F6F2;
+  color: #388087;
 }
 
 th {
@@ -82,13 +37,6 @@ img[src] {
  display: block;
 }
 
-h1 {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  font-weight: 700;
-  font-size: 2rem;
-  color: black
-}
 select {
   color: black;
 }
@@ -112,70 +60,433 @@ input {
 
 /* Navbar container */
 .navbar {
-  overflow: hidden;
-  background-color: #17252a;
-  font-family: Arial;
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #6FB3B8; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  z-index: 20;
 }
 
 /* Links inside the navbar */
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
+.navbar a, .dropbtn{
+  padding: 6px 8px 6px 16px;
   text-decoration: none;
-}
-
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-/* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
+  font-size: 20px;
+  color: #000000;
+  display: inline-block;
   border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
   outline: none;
+  z-index: 30;
+}
+
+.navbar .closebtn {
+  position: absolute;
+  color: #000000;
+  top: 0;
+  right: -225px;
+  font-size: 36px;
+  margin-left: 100px;
+}
+
+.active {
   color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
 }
 
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
-}
-
-/* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: #388087;
+  padding-left: 8px;
+  z-index: 30;
+}
+
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+  z-index: 30;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .navbar {padding-top: 15px;}
+  .navbar a {font-size: 18px;}
+}
+
+.navbar a:hover, .dropbtn:hover {
+  color: #F1F1F1;
+}
+
+.container {
+  cursor: pointer;
+}
+
+.line1, .line2, .line3 {
+  width: 30px;
+  height: 5px;
+  background-color: #388087;
+  margin: 3px 0;
+  z-index: 15;
+}
+
+
+.varContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dot {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 19.531vw;
+  width: 19.531vw;
+  background-color: #388087;
+  border-radius: 50%;
+  display: inline-block;
+  z-index: 4;
+}
+
+.numberOut, .nameOut, .sentenceOut {
+  font-size: 2.6vw;
+}
+
+.numberOut, .nameOut, .sentenceOut, .cardOut {
+  border-color: #388087;
+  border-right: 0.625vw solid #388087;
+  border-left: 0.625vw solid #388087;
+  border-top: 0.625vw solid #388087;
+  border-bottom: 0.625vw solid #388087;
+}
+
+.nameHead, .numberHead, .sentenceHead, .cardHead {
+  font-family: monospace;
+  letter-spacing: 0.1vw;
+  border-right: 0.625vw solid #388087;
+  border-left: 0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  display: inline-block;
+  vertical-align: top;
+  position: fixed;
+  white-space: nowrap;
+  font-size: 1.2vw;
+  color: black;
+}
+
+.numberV {
+  border-left:0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  height: 11.7%;
+  position: fixed;
+  left: 75%;
+  margin-left: -3px;
+  top: 49.4%;
+  transform: translate(-50%, 0);
   z-index: 1;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+.numberH1 {
+  border-top: 0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  width: 12.3%;
+  position: fixed;
+  left: 50%;
+  margin-left: -3px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 1;
 }
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
+.numberH2 {
+  border-top: 0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  width: 5.7%;
+  position: fixed;
+  right: 25%;
+  margin-left: -3px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 1;
+}
+
+.numberHead {
+  top: 50%;
+  left: 62%;
+  transform: translate(0, -50%);
+}
+
+.numberOut {
+  position: fixed;
+  top: 66%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+}
+
+.nameOut {
+  position: fixed;
+  top: 33%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.nameH1 {
+  border-top: 0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  width: 23.5%;
+  position: fixed;
+  right: 50%;
+  margin-left: -3px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 1;
+}
+
+.nameH2 {
+  border-top: 0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  width: 6.8%;
+  position: fixed;
+  right: 78.6%;
+  margin-left: -3px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 1;
+}
+
+.nameV {
+  border-left:0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  height: 12.8%;
+  position: fixed;
+  left: 15%;
+  margin-left: -3px;
+  top: 50.6%;
+  transform: translate(-50%, -100%);
+}
+
+.nameHead {
+  top: 50%;
+  right: 70.5%;
+  transform: translate(-50%, -50%);
+}
+
+.sentenceV1 {
+  border-left:0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  height: 25.65%;
+  position: fixed;
+  left: 50%;
+  margin-left: -3px;
+  top: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+}
+
+.sentenceH1 {
+  border-top: 0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  width: 1.5%;
+  position: fixed;
+  right: 50%;
+  margin-left: -3px;
+  top: 75%;
+  transform: translate(0, -50%);
+  z-index: 1;
+}
+
+.sentenceH2 {
+  border-top: 0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  width: 1.9%;
+  position: fixed;
+  left: 38%;
+  margin-left: -3px;
+  top: 75%;
+  transform: translate(0, -50%);
+  z-index: 1;
+}
+
+.sentenceV2 {
+  border-left:0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  height: 10.7%;
+  position: fixed;
+  left: 38%;
+  margin-left: -3px;
+  top: 74.4%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+}
+
+.sentenceHead {
+  top: 75%;
+  right: 51.5%;
+  transform: translate(0, -50%);
+}
+
+.sentenceOut {
+  position: fixed;
+  white-space: nowrap;
+  top: 90%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+}
+
+.cardV {
+  border-left:0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  height: 25%;
+  position: fixed;
+  left: 50%;
+  margin-left: -3px;
+  top: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 1;
+}
+
+.cardH1 {
+  border-top: 0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  width: 15%;
+  position: fixed;
+  left: 50%;
+  margin-left: -3px;
+  top: 25%;
+  transform: translate(-0.313vw, -50%);
+  z-index: 1;
+}
+
+.cardH2 {
+  border-top: 0.625vw solid #388087;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  width: 6.8%;
+  position: fixed;
+  left: 70%;
+  margin-left: -3px;
+  top: 25%;
+  transform: translate(0, -50%);
+  z-index: 1;
+}
+
+.cardHead {
+  z-index: 5;
+  top: 25%;
+  right: 27%;
+  transform: translate(-50%, -50%);
+}
+
+.cardOut {
+  position: fixed;
+  top: 25%;
+  left: 82%;
+  transform: translate(-50%, -50%);
+  width: 9.766vw;
+  height: 14.180vw;
+  background-color: #388087;
+}
+
+.time {
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 5.469vw;
+  z-index: 5;
+}
+
+.form-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+}
+
+/* Add styles to the form container */
+.form-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-color: #000000;
+  color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text] {
+  box-sizing : border-box;
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus {
   background-color: #ddd;
+  outline: none;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+  cursor: pointer;
 }
+
