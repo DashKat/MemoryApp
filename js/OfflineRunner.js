@@ -22,7 +22,7 @@ function clearRands() {
 
 function easyMode() {
     localStorage.setItem('numTimes', '1');
-    timeDuring =  4 * 1000;
+    timeDuring =  40 * 1000;
     timeBetween = 15 * 1000;
     document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
 }

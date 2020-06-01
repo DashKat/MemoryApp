@@ -9,8 +9,8 @@
 }
 
 body {
-  background-color: #F6F6F2;
-  color: #388087;
+  background-color: #263542;
+  color: white;
 }
 
 th {
@@ -164,7 +164,7 @@ input {
 .numberOut, .nameOut, .sentenceOut {
   font-size: 2.6vw;
 }
-
+/*
 .numberOut, .nameOut, .sentenceOut, .cardOut {
   border-color: #388087;
   border-right: 0.625vw solid #388087;
@@ -172,7 +172,7 @@ input {
   border-top: 0.625vw solid #388087;
   border-bottom: 0.625vw solid #388087;
 }
-
+*/
 .nameHead, .numberHead, .sentenceHead, .cardHead {
   font-family: monospace;
   letter-spacing: 0.1vw;
@@ -186,7 +186,7 @@ input {
   position: fixed;
   white-space: nowrap;
   font-size: 1.2vw;
-  color: black;
+  color: #c96567;
 }
 
 .numberV {
@@ -194,7 +194,7 @@ input {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
-  height: 11.7%;
+  height: 12%;
   position: fixed;
   left: 75%;
   margin-left: -3px;
@@ -285,7 +285,7 @@ input {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
-  height: 12.8%;
+  height: 13%;
   position: fixed;
   left: 15%;
   margin-left: -3px;
@@ -346,7 +346,7 @@ input {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
-  height: 10.7%;
+  height: 11%;
   position: fixed;
   left: 38%;
   margin-left: -3px;
@@ -425,7 +425,6 @@ input {
   transform: translate(-50%, -50%);
   width: 9.766vw;
   height: 14.180vw;
-  background-color: #388087;
 }
 
 .time {
