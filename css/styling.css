@@ -459,6 +459,10 @@ input {
   cursor: pointer;
 }
 
+.nameInLabel, .numberInLabel, .sentenceInLabel, .cardInLabel {
+  color: #c96567;
+}
+
 .nameDisplay, .numberDisplay, .sentenceDisplay, .cardDisplay {
   table-layout: fixed;
   display: block;
