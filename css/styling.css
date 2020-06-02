@@ -149,7 +149,6 @@ input {
   z-index: 15;
 }
 
-
 .varContainer {
   position: relative;
   width: 100%;
@@ -460,7 +459,120 @@ input {
   cursor: pointer;
 }
 
-.submission {
-  padding-left: 0;
-  padding-right: 0;
+.nameDisplay, .numberDisplay, .sentenceDisplay, .cardDisplay {
+  table-layout: fixed;
+  display: block;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  height: 40vh;
+  width: 15.625vw;
+  background-color: white;
+  color: black;
+  cursor: default;
+}
+
+.nameDisplay td, .numberDisplay td, .sentenceDisplay td, .cardDisplay td {
+  display: block;
+  cursor: pointer;
+}
+
+.nameDisplay tr:nth-child(even), .numberDisplay tr:nth-child(even), .sentenceDisplay tr:nth-child(even), .cardDisplay tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.nameIn, .numberIn, .sentenceIn, .cardIn {
+  border-width:0;
+  border:none;
+  box-shadow: none;
+}
+
+.numberPlusBtn, .namePlusBtn, .sentencePlusBtn, .cardPlusBtn{
+  padding: 0;
+  margin: 0;
+  min-width: 1.328vw;
+}
+
+.numberMinusBtn, .nameMinusBtn, .sentenceMinusBtn, .cardMinusBtn {
+  padding: 0;
+  margin: 0;
+  min-width: 1.328vw;
+}
+
+.nameDisplay {
+  width: 19.531vw;
+}
+
+.nameDisplay td {
+  min-width: 15.59vw;
+}
+
+.nameSub {
+  position: fixed;
+  top: 40%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+.numberDisplay {
+  width: 7.031vw;
+}
+
+.numberDisplay td {
+  min-width: 3.09vw;
+}
+
+.numberIn {
+  width: 3.672vw;
+}
+
+.numberSub {
+  position: fixed;
+  top: 40%;
+  left: 33%;
+  transform: translate(-50%, -50%);
+}
+
+.sentenceIn {
+  width: 23.672vw;
+}
+
+.sentenceDisplay {
+  width: 31.250vw;
+}
+
+.sentenceDisplay td {
+  min-width: 27.344vw;
+}
+
+.sentenceSub {
+  position: fixed;
+  top: 40%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+}
+
+.cardDisplay td {
+  min-width: 11.719vw;
+}
+
+.cardSub {
+  position: fixed;
+  top: 40%;
+  left: 84%;
+  transform: translate(-50%, -50%);
+}
+
+.submitBtn {
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  width: 50%;
+  margin-bottom:10px;
+  opacity: 0.8;
+  cursor: pointer;
 }
