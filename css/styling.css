@@ -176,8 +176,6 @@ input {
 .nameHead, .numberHead, .sentenceHead, .cardHead {
   font-family: monospace;
   letter-spacing: 0.1vw;
-  border-right: 0.625vw solid #388087;
-  border-left: 0.625vw solid #388087;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -185,7 +183,7 @@ input {
   vertical-align: top;
   position: fixed;
   white-space: nowrap;
-  font-size: 1.2vw;
+  font-size: 1.6vw;
   color: #c96567;
 }
 
@@ -233,7 +231,7 @@ input {
 
 .numberHead {
   top: 50%;
-  left: 62%;
+  left: 62.0%;
   transform: translate(0, -50%);
 }
 
@@ -295,7 +293,7 @@ input {
 
 .nameHead {
   top: 50%;
-  right: 70.5%;
+  right: 70.0%;
   transform: translate(-50%, -50%);
 }
 
@@ -357,7 +355,7 @@ input {
 
 .sentenceHead {
   top: 75%;
-  right: 51.5%;
+  right: 51.0%;
   transform: translate(0, -50%);
 }
 
