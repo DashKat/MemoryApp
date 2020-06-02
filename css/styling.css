@@ -416,7 +416,7 @@ input {
   width: 80%;
   height: 80%;
   transform: translate(-50%, -50%);
-  z-index: 7;
+  z-index: 10;
 }
 
 /* Add styles to the form container */
