@@ -166,7 +166,7 @@ input {
   background-color: #388087;
   border-radius: 50%;
   display: inline-block;
-  z-index: 4;
+  z-index: 8;
 }
 
 .numberOut, .nameOut, .sentenceOut {
@@ -193,6 +193,7 @@ input {
   white-space: nowrap;
   font-size: 1.6vw;
   color: #c96567;
+  background-color: #263542;
 }
 
 .numberV {
@@ -202,10 +203,10 @@ input {
   border-radius: 0px;
   height: 12%;
   position: fixed;
-  left: 75%;
+  left: 75.313%;
   margin-left: -3px;
-  top: 49.4%;
-  transform: translate(-50%, 0);
+  top: 50%;
+  transform: translate(-0.625vw, -0.313vw);
   z-index: 1;
 }
 
@@ -214,23 +215,9 @@ input {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
-  width: 12.3%;
+  width: 25.313%;
   position: fixed;
   left: 50%;
-  margin-left: -3px;
-  top: 50%;
-  transform: translate(0, -50%);
-  z-index: 1;
-}
-
-.numberH2 {
-  border-top: 0.625vw solid #388087;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px;
-  width: 5.7%;
-  position: fixed;
-  right: 25%;
   margin-left: -3px;
   top: 50%;
   transform: translate(0, -50%);
@@ -241,6 +228,7 @@ input {
   top: 50%;
   left: 62.0%;
   transform: translate(0, -50%);
+  z-index: 4;
 }
 
 .numberOut {
@@ -250,39 +238,17 @@ input {
   transform: translate(-50%, -50%);
 }
 
-.nameOut {
-  position: fixed;
-  top: 33%;
-  left: 15%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
 .nameH1 {
   border-top: 0.625vw solid #388087;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
-  width: 23.5%;
+  width: 35%;
   position: fixed;
   right: 50%;
   margin-left: -3px;
   top: 50%;
-  transform: translate(0, -50%);
-  z-index: 1;
-}
-
-.nameH2 {
-  border-top: 0.625vw solid #388087;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px;
-  width: 6.8%;
-  position: fixed;
-  right: 78.6%;
-  margin-left: -3px;
-  top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(-0.313vw, -0.313vw);
   z-index: 1;
 }
 
@@ -295,14 +261,24 @@ input {
   position: fixed;
   left: 15%;
   margin-left: -3px;
-  top: 50.6%;
-  transform: translate(-50%, -100%);
+  bottom: 50%;
+  transform: translate(-0.313vw, 0.313vw);
+  z-index: 1;
 }
 
 .nameHead {
   top: 50%;
   right: 70.0%;
   transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+.nameOut {
+  position: fixed;
+  top: 33%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 .sentenceV1 {
@@ -312,10 +288,11 @@ input {
   border-radius: 0px;
   height: 25.65%;
   position: fixed;
-  left: 50%;
-  margin-left: -3px;
+  
+  margin-right: 3px;
+  right: 50%;
   top: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(50%, 0);
   z-index: 1;
 }
 
@@ -324,28 +301,15 @@ input {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
-  width: 1.5%;
+  width: 12.625vw;
   position: fixed;
-  right: 50%;
+  left: 37.375%;
   margin-left: -3px;
-  top: 75%;
-  transform: translate(0, -50%);
+  top: 75.65%;
+  transform: translate(0.313vw, -0.616vw);
   z-index: 1;
 }
 
-.sentenceH2 {
-  border-top: 0.625vw solid #388087;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px;
-  width: 1.9%;
-  position: fixed;
-  left: 38%;
-  margin-left: -3px;
-  top: 75%;
-  transform: translate(0, -50%);
-  z-index: 1;
-}
 
 .sentenceV2 {
   border-left:0.625vw solid #388087;
@@ -354,17 +318,18 @@ input {
   border-radius: 0px;
   height: 11%;
   position: fixed;
-  left: 38%;
   margin-left: -3px;
-  top: 74.4%;
-  transform: translate(-50%, 0);
-  z-index: 1;
+  left: 37.688%;
+  top: 75.65%;
+  transform: translate(0, -0.616vw);
+  z-index: 2;
 }
 
 .sentenceHead {
   top: 75%;
   right: 51.0%;
   transform: translate(0, -50%);
+  z-index: 4;
 }
 
 .sentenceOut {
@@ -441,7 +406,7 @@ input {
   transform: translate(-50%, -50%);
 
   font-size: 8vw;
-  z-index: 5;
+  z-index: 9;
 }
 
 .form-popup {
@@ -495,3 +460,7 @@ input {
   cursor: pointer;
 }
 
+.submission {
+  padding-left: 0;
+  padding-right: 0;
+}

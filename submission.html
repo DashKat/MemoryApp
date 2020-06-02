@@ -57,71 +57,72 @@
                 <div class = 'line3'></div>
             </div>
         
-        <label for = "nameIn">Name:</label><br>
-        <table id = "nameDisplay">
-            <tr>
-                <td></td>
-            </tr>
-        </table><br>
-        <input type="text" id = "nameIn">
-        <button onclick = "plusName()" id = "namePlusBtn">+</button>
-        <button onclick = "minusName()" id = nameMinusBtn>-</button><br><br>
+        <div class = "submission">
+            <label for = "nameIn">Name:</label><br>
+            <table id = "nameDisplay">
+                <tr>
+                    <td></td>
+                </tr>
+            </table><br>
+            <input type="text" id = "nameIn" placeholder="Names">
+            <button onclick = "plusName()" id = "namePlusBtn">+</button>
+            <button onclick = "minusName()" id = nameMinusBtn>-</button><br><br>
 
-        <label for = "numberIn">Number:</label>
-        <table id = "numberDisplay">
-            <tr>
-                <td></td>
-            </tr>
-        </table><br>
-        <input type="text" id = "numberIn">
-        <button onclick = "plusNumber()" id = "numberPlusBtn">+</button>
-        <button onclick = "minusNumber()" id = numberMinusBtn>-</button><br><br>
+            <label for = "numberIn">Number:</label>
+            <table id = "numberDisplay">
+                <tr>
+                    <td></td>
+                </tr>
+            </table><br>
+            <input type="text" id = "numberIn" placeholder="Numbers">
+            <button onclick = "plusNumber()" id = "numberPlusBtn">+</button>
+            <button onclick = "minusNumber()" id = numberMinusBtn>-</button><br><br>
 
-        <label for = "sentenceIn">Sentence:</label>
-        <table id = "sentenceDisplay">
-            <tr>
-                <td></td>
-            </tr>
-        </table><br>
-        <input type="text" id = "sentenceIn">
-        <button onclick = "plusSentence()" id = "sentencePlusBtn">+</button>
-        <button onclick = "minusSentence()" id = sentenceMinusBtn>-</button><br><br>
+            <label for = "sentenceIn">Sentence:</label>
+            <table id = "sentenceDisplay">
+                <tr>
+                    <td></td>
+                </tr>
+            </table><br>
+            <input type="text" id = "sentenceIn" placeholder="Sentences">
+            <button onclick = "plusSentence()" id = "sentencePlusBtn">+</button>
+            <button onclick = "minusSentence()" id = sentenceMinusBtn>-</button><br><br>
 
 
-        <label for = "cardIn">Card:</label>
-        <table id = "cardDisplay">
-            <tr>
-                <td></td>
-            </tr>
-        </table><br>
-        <select id="cardNumber">
-            <option value="emptyNum"></option>
-            <option value="Ace">Ace</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="Jack">Jack</option>
-            <option value="Queen">Queen</option>
-            <option value="King">King</option>
-        </select>
-        <select id="cardSuit">
-            <option value="emptySuit"></option>
-            <option value="Clubs">&clubs;</option>
-            <option value="Spades">&spades;</option>
-            <option value="Hearts">&#9825;</option>
-            <option value="Diamonds">&#9826;</option>
-        </select>
-        <button onclick = "plusCard()" id = "cardPlusBtn">+</button>
-        <button onclick = "minusCard()" id = cardMinusBtn>-</button><br><br>
+            <label for = "cardIn">Card:</label>
+            <table id = "cardDisplay">
+                <tr>
+                    <td></td>
+                </tr>
+            </table><br>
+            <select id="cardNumber">
+                <option value="emptyNum"></option>
+                <option value="Ace">Ace</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="Jack">Jack</option>
+                <option value="Queen">Queen</option>
+                <option value="King">King</option>
+            </select>
+            <select id="cardSuit">
+                <option value="emptySuit"></option>
+                <option value="Clubs">&clubs;</option>
+                <option value="Spades">&spades;</option>
+                <option value="Hearts">&#9825;</option>
+                <option value="Diamonds">&#9826;</option>
+            </select>
+            <button onclick = "plusCard()" id = "cardPlusBtn">+</button>
+            <button onclick = "minusCard()" id = cardMinusBtn>-</button><br><br>
 
-        <button onclick = "submit()" id = "submitBtn">Submit</button>
-
+            <button onclick = "submit()" id = "submitBtn">Submit</button>
+        </div>
         <script>
             highlight_row_name();
             function highlight_row_name() {
