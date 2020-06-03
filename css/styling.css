@@ -460,46 +460,59 @@ input {
 }
 
 .nameInLabel, .numberInLabel, .sentenceInLabel, .cardInLabel {
-  color: #c96567;
+  color: white;
+  font-size: 1.3vw;
 }
 
 .nameDisplay, .numberDisplay, .sentenceDisplay, .cardDisplay {
+  padding: 10;
+  margin: 0;
   table-layout: fixed;
   display: block;
   overflow-y: scroll;
-  overflow-x: scroll;
+  overflow-x: wrap;
   height: 40vh;
-  width: 15.625vw;
   background-color: white;
   color: black;
   cursor: default;
+  -ms-overflow-style: none;
 }
+
+.nameDisplay::-webkit-scrollbar, .numberDisplay::-webkit-scrollbar, .sentenceDisplay::-webkit-scrollbar, .cardDisplay::-webkit-scrollbar {
+  display: none;
+} 
+
+
 
 .nameDisplay td, .numberDisplay td, .sentenceDisplay td, .cardDisplay td {
   display: block;
   cursor: pointer;
+  font-size: 1.250vw;
 }
 
 .nameDisplay tr:nth-child(even), .numberDisplay tr:nth-child(even), .sentenceDisplay tr:nth-child(even), .cardDisplay tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-.nameIn, .numberIn, .sentenceIn, .cardIn {
+.nameIn, .numberIn, .sentenceIn, .cardNumberIn {
   border-width:0;
   border:none;
   box-shadow: none;
+  font-size: 1.1vw;
 }
 
-.numberPlusBtn, .namePlusBtn, .sentencePlusBtn, .cardPlusBtn{
+.namePlusBtn, .sentencePlusBtn, .cardPlusBtn{
   padding: 0;
   margin: 0;
-  min-width: 1.328vw;
+  width: 2.45vw;
+  font-size: 1.1vw;
 }
 
-.numberMinusBtn, .nameMinusBtn, .sentenceMinusBtn, .cardMinusBtn {
+.nameMinusBtn, .sentenceMinusBtn, .cardMinusBtn {
   padding: 0;
   margin: 0;
-  min-width: 1.328vw;
+  width: 4.55vw;
+  font-size: 1.1vw;
 }
 
 .nameDisplay {
@@ -507,7 +520,11 @@ input {
 }
 
 .nameDisplay td {
-  min-width: 15.59vw;
+  min-width: 16.9vw;
+}
+
+.nameIn {
+  width: 11.875vw;
 }
 
 .nameSub {
@@ -522,11 +539,21 @@ input {
 }
 
 .numberDisplay td {
-  min-width: 3.09vw;
+  width: 4.4vw;
 }
 
 .numberIn {
   width: 3.672vw;
+}
+
+.numberPlusBtn {
+  width: 1.328vw;
+  font-size: 1.1vw;
+}
+
+.numberMinusBtn {
+  width: 1.328vw;
+  font-size: 1.1vw;
 }
 
 .numberSub {
@@ -537,32 +564,36 @@ input {
 }
 
 .sentenceIn {
-  width: 23.672vw;
+  width: 20.422vw;
 }
 
 .sentenceDisplay {
-  width: 31.250vw;
+  width: 28.0vw;
 }
 
 .sentenceDisplay td {
-  min-width: 27.344vw;
+  width: 25.31vw;
 }
 
 .sentenceSub {
   position: fixed;
-  top: 40%;
-  left: 57%;
+  top: 40vh;
+  left: 55.5%;
   transform: translate(-50%, -50%);
 }
 
 .cardDisplay td {
-  min-width: 11.719vw;
+  width: 13.229vw;
+}
+
+.cardSuitIn {
+  font-size: 1.4vw;
 }
 
 .cardSub {
   position: fixed;
-  top: 40%;
-  left: 84%;
+  top: 40.6vh;
+  left: 82%;
   transform: translate(-50%, -50%);
 }
 
@@ -579,4 +610,9 @@ input {
   margin-bottom:10px;
   opacity: 0.8;
   cursor: pointer;
+  font-size: 2vw;
+}
+
+th {
+  color: white;
 }
