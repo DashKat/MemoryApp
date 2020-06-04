@@ -472,10 +472,15 @@ input {
   overflow-y: scroll;
   overflow-x: wrap;
   max-height: 40vh;
+  min-height: 4.2vh;
   background-color: white;
   color: black;
   cursor: default;
+  border-width:0;
+  border:none;
+  box-shadow: none;
   -ms-overflow-style: none;
+  background-color: white;
 }
 
 .nameDisplay::-webkit-scrollbar, .numberDisplay::-webkit-scrollbar, .sentenceDisplay::-webkit-scrollbar, .cardDisplay::-webkit-scrollbar {
@@ -490,7 +495,7 @@ input {
   font-size: 1.250vw;
 }
 
-.nameDisplay tr:nth-child(even), .numberDisplay tr:nth-child(even), .sentenceDisplay tr:nth-child(even), .cardDisplay tr:nth-child(even) {
+.nameDisplay tr:nth-child(odd), .numberDisplay tr:nth-child(odd), .sentenceDisplay tr:nth-child(odd), .cardDisplay tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
@@ -615,4 +620,49 @@ input {
 
 th {
   color: white;
+}
+
+.Score {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2vw;
+}
+
+.realNameDisplay, .realNumberDisplay, .realSentenceDisplay, .realCardDisplay, .userNameDisplay, .userNumberDisplay, .userSentenceDisplay, .userCardDisplay {
+  float: left;
+}
+
+.realNameDisplay td, .realNumberDisplay td, .realSentenceDisplay td, .realCardDisplay td, .userNameDisplay td, .userNumberDisplay td, .userSentenceDisplay td, .userCardDisplay td {
+  background-color: white;
+  color: black
+}
+
+.Name {
+  position: fixed;
+  top: 25%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.Number {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Sentence {
+  position: fixed;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Card {
+  position: fixed;
+  top: 25%;
+  left: 75%;
+  transform: translate(-50%, -50%);
 }

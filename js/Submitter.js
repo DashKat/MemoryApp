@@ -22,18 +22,20 @@ window.onload = function() {
 }
 
 function plusName() {
-    var table = document.getElementById('nameDisplay');
+    if(document.getElementById('nameIn').value != "") {
+        var table = document.getElementById('nameDisplay');
 
-    var row = table.insertRow(table.rows.length);
-    var cell = row.insertCell(0);
-    cell.innerHTML = document.getElementById('nameIn').value;
-    document.getElementById('nameIn').value = "";
-    for(var i = 0, row; row = table.rows[i]; i++) {
-        for (var j = 0, col; col = row.cells[j]; j++) {
-            if(col.textContent.trim().length == 0) {
-                col.parentNode.removeChild(col);
-            }
-          }  
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = document.getElementById('nameIn').value;
+        document.getElementById('nameIn').value = "";
+        for(var i = 0, row; row = table.rows[i]; i++) {
+            for (var j = 0, col; col = row.cells[j]; j++) {
+                if(col.textContent.trim().length == 0) {
+                    col.parentNode.removeChild(col);
+                }
+            }  
+        }
     }
 }
 
@@ -41,92 +43,106 @@ function plusName() {
 function minusName() {
     var rowID = localStorage.getItem('selectedRowName');
     try {
-        document.getElementById('nameDisplay').deleteRow(parseInt(rowID, 10));
-        localStorage.removeItem('selectedRowName');
+        if(document.getElementById('nameDisplay').rows[parseInt(rowID, 10)].cells[0].innerHTML != "") {
+            document.getElementById('nameDisplay').deleteRow(parseInt(rowID, 10));
+            localStorage.removeItem('selectedRowName');
+        }
     }
     catch {}
 }
 
 function plusSentence() {
-    var table = document.getElementById('sentenceDisplay');
-    var sentenceIn = document.getElementById('sentenceIn').value;
-    var row = table.insertRow(table.rows.length);
-    var cell = row.insertCell(0);
-    
-    if(sentenceIn[sentenceIn.length - 1] != "." && sentenceIn != "") {
-        cell.innerHTML = sentenceIn + ".";
-    }
+    if(document.getElementById('sentenceIn').value != "") {
+        var table = document.getElementById('sentenceDisplay');
+        var sentenceIn = document.getElementById('sentenceIn').value;
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        
+        if(sentenceIn[sentenceIn.length - 1] != "." && sentenceIn != "") {
+            cell.innerHTML = sentenceIn + ".";
+        }
 
-    else {
-        cell.innerHTML = sentenceIn;
-    }
+        else {
+            cell.innerHTML = sentenceIn;
+        }
 
-    document.getElementById('sentenceIn').value = "";
-    for(var i = 0, row; row = table.rows[i]; i++) {
-        for (var j = 0, col; col = row.cells[j]; j++) {
-            if(col.textContent.trim().length == 0) {
-                col.parentNode.removeChild(col);
-            }
-          }  
+        document.getElementById('sentenceIn').value = "";
+        for(var i = 0, row; row = table.rows[i]; i++) {
+            for (var j = 0, col; col = row.cells[j]; j++) {
+                if(col.textContent.trim().length == 0) {
+                    col.parentNode.removeChild(col);
+                }
+            }  
+        }
     }
 }
 
 function minusSentence() {
     var rowID = localStorage.getItem('selectedRowSentence');
     try {
-        document.getElementById('sentenceDisplay').deleteRow(parseInt(rowID, 10));
-        localStorage.removeItem('selectedRowSentence');
+        if(document.getElementById('sentenceDisplay').rows[parseInt(rowID, 10)].cells[0].innerHTML != "") {
+            document.getElementById('sentenceDisplay').deleteRow(parseInt(rowID, 10));
+            localStorage.removeItem('selectedRowSentence');
+        }
     }
     catch {}
 }
 
 function plusNumber() {
-    var table = document.getElementById('numberDisplay');
+    if(document.getElementById('numberIn').value != "") {
+        var table = document.getElementById('numberDisplay');
 
-    var row = table.insertRow(table.rows.length);
-    var cell = row.insertCell(0);
-    cell.innerHTML = document.getElementById('numberIn').value;
-    document.getElementById('numberIn').value = "";
-    for(var i = 0, row; row = table.rows[i]; i++) {
-        for (var j = 0, col; col = row.cells[j]; j++) {
-            if(col.textContent.trim().length == 0) {
-                col.parentNode.removeChild(col);
-            }
-          }  
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = document.getElementById('numberIn').value;
+        document.getElementById('numberIn').value = "";
+        for(var i = 0, row; row = table.rows[i]; i++) {
+            for (var j = 0, col; col = row.cells[j]; j++) {
+                if(col.textContent.trim().length == 0) {
+                    col.parentNode.removeChild(col);
+                }
+            }  
+        }
     }
 }
 
 function minusNumber() {
     var rowID = localStorage.getItem('selectedRowNumber');
     try {
-        document.getElementById('numberDisplay').deleteRow(parseInt(rowID, 10));
-        localStorage.removeItem('selectedRowNumber');
+        if(document.getElementById('numberDisplay').rows[parseInt(rowID, 10)].cells[0].innerHTML != "") {
+            document.getElementById('numberDisplay').deleteRow(parseInt(rowID, 10));
+            localStorage.removeItem('selectedRowNumber');
+        }
     }
     catch {}
 }
 
 function plusCard() {
-    var table = document.getElementById('cardDisplay');
+    if(document.getElementById('cardNumber').value != "emptyNum" && document.getElementById('cardSuit').value != "emptySuit") {
+        var table = document.getElementById('cardDisplay');
 
-    var row = table.insertRow(table.rows.length);
-    var cell = row.insertCell(0);
-    cell.innerHTML = document.getElementById('cardNumber').value + " of " + document.getElementById('cardSuit').value;
-    document.getElementById('cardNumber').value = 'emptyNum';
-    document.getElementById('cardSuit').value = 'emptySuit';
-    for(var i = 0, row; row = table.rows[i]; i++) {
-        for (var j = 0, col; col = row.cells[j]; j++) {
-            if(col.textContent.trim().length == 0) {
-                col.parentNode.removeChild(col);
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = document.getElementById('cardNumber').value + " of " + document.getElementById('cardSuit').value;
+        document.getElementById('cardNumber').value = 'emptyNum';
+        document.getElementById('cardSuit').value = 'emptySuit';
+        for(var i = 0, row; row = table.rows[i]; i++) {
+            for (var j = 0, col; col = row.cells[j]; j++) {
+                if(col.textContent.trim().length == 0) {
+                    col.parentNode.removeChild(col);
+                }  
             }
-          }  
+        }
     }
 }
 
 function minusCard() {
     var rowID = localStorage.getItem('selectedRowCard');
     try {
-        document.getElementById('cardDisplay').deleteRow(parseInt(rowID, 10));
-        localStorage.removeItem('selectedRowCard');
+        if(document.getElementById('cardDisplay').rows[parseInt(rowID, 10)].cells[0].innerHTML != "") {
+            document.getElementById('cardDisplay').deleteRow(parseInt(rowID, 10));
+            localStorage.removeItem('selectedRowCard');
+        }
     }
     catch {}
 }
