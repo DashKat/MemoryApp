@@ -28,11 +28,13 @@ function plusName() {
     var cell = row.insertCell(0);
     cell.innerHTML = document.getElementById('nameIn').value;
     document.getElementById('nameIn').value = "";
-    document.querySelectorAll('table tr').forEach(function(e, i) {
-        if (e.textContent.trim().length == 0) { // if row is empty
-            e.parentNode.removeChild(e);
-        }
-    })
+    for(var i = 0, row; row = table.rows[i]; i++) {
+        for (var j = 0, col; col = row.cells[j]; j++) {
+            if(col.textContent.trim().length == 0) {
+                col.parentNode.removeChild(col);
+            }
+          }  
+    }
 }
 
 
@@ -60,11 +62,13 @@ function plusSentence() {
     }
 
     document.getElementById('sentenceIn').value = "";
-    document.querySelectorAll('table tr').forEach(function(e, i) {
-        if (e.textContent.trim().length == 0) { // if row is empty
-            e.parentNode.removeChild(e);
-        }
-    })
+    for(var i = 0, row; row = table.rows[i]; i++) {
+        for (var j = 0, col; col = row.cells[j]; j++) {
+            if(col.textContent.trim().length == 0) {
+                col.parentNode.removeChild(col);
+            }
+          }  
+    }
 }
 
 function minusSentence() {
@@ -83,11 +87,13 @@ function plusNumber() {
     var cell = row.insertCell(0);
     cell.innerHTML = document.getElementById('numberIn').value;
     document.getElementById('numberIn').value = "";
-    document.querySelectorAll('table tr').forEach(function(e, i) {
-        if (e.textContent.trim().length == 0) { // if row is empty
-            e.parentNode.removeChild(e);
-        }
-    })
+    for(var i = 0, row; row = table.rows[i]; i++) {
+        for (var j = 0, col; col = row.cells[j]; j++) {
+            if(col.textContent.trim().length == 0) {
+                col.parentNode.removeChild(col);
+            }
+          }  
+    }
 }
 
 function minusNumber() {
@@ -107,11 +113,13 @@ function plusCard() {
     cell.innerHTML = document.getElementById('cardNumber').value + " of " + document.getElementById('cardSuit').value;
     document.getElementById('cardNumber').value = 'emptyNum';
     document.getElementById('cardSuit').value = 'emptySuit';
-    document.querySelectorAll('table tr').forEach(function(e, i) {
-        if (e.textContent.trim().length == 0) { // if row is empty
-            e.parentNode.removeChild(e);
-        }
-    })
+    for(var i = 0, row; row = table.rows[i]; i++) {
+        for (var j = 0, col; col = row.cells[j]; j++) {
+            if(col.textContent.trim().length == 0) {
+                col.parentNode.removeChild(col);
+            }
+          }  
+    }
 }
 
 function minusCard() {
