@@ -58,7 +58,10 @@
             </div>
 
             <div class = "varContainer">
-                <span class = "dot"></span>
+                <span class = "dot" id = "dot"></span>
+                <span class = "cDot" id = "cDot"></span>
+
+                <label id = "Sets" class = "Sets"></label>
                 
                 <label id = "timer" class = "time"></label>
 
@@ -124,6 +127,7 @@
                 localStorage.setItem('timerState', "");
                 localStorage.setItem('x', '0');
                 setRands();
+                document.getElementById('Sets').innerHTML = "Set: " + toString((x + 1)) + "/" + toString(numTimes);
                 setInterval(function() {
                     var x = parseInt(localStorage.getItem('x'), 10);
                     if(x == numTimes - 1) {
@@ -134,6 +138,7 @@
                         x++;
                         localStorage.setItem('x', x);
                         setRands();
+                        document.getElementById('Sets').innerHTML = "Set: " + toString((x + 1)) + "/" + toString(numTimes);
                         timeDuring2 = timeDuring;
                     }
                 }, timeDuring);
@@ -166,7 +171,12 @@
                         document.getElementById("cardV").style.display = "none";
                         document.getElementById("cardHead").style.display = "none";
                         document.getElementById("cardOut").style.display = "none";
+                        document.getElementById("Sets").style.display = "none";
+                        document.getElementById("dot").style.display = "none";
                         clearInterval(duringTimer);
+                        document.getElementById("timer").style.fontSize = 7 + 'vw';
+                        document.getElementById("timer").style.top = 50 + '%';
+                        document.getElementById("timer").style.left = 50 + 'vw';
                     }
                     else {
                         document.getElementById("timer").innerHTML = (timeDuring2/1000).toString();

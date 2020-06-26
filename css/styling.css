@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: #263542;
+  background-color: #388087;
   color: white;
 }
 
@@ -139,6 +139,7 @@ input {
 
 .container {
   cursor: pointer;
+  z-index: 14;
 }
 
 .line1, .line2, .line3 {
@@ -157,15 +158,47 @@ input {
 
 .dot {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 12%;
+  left: 20%;
   transform: translate(-50%, -50%);
-  height: 19.531vw;
-  width: 19.531vw;
-  background-color: #388087;
+  height: 4.531vw;
+  width: 4.531vw;
+  background-color: #263542;
   border-radius: 50%;
   display: inline-block;
   z-index: 8;
+}
+
+.time {
+  color: white;
+  position: fixed;
+  top: 12%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+
+  font-size: 2vw;
+  z-index: 9;
+}
+
+.cDot {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 14.531vw;
+  width: 14.531vw;
+  background-color: #263542;
+  border-radius: 50%;
+  display: inline-block;
+  z-index: 8;
+}
+
+.Sets {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
 }
 
 .numberOut, .nameOut, .sentenceOut {
@@ -173,11 +206,11 @@ input {
 }
 /*
 .numberOut, .nameOut, .sentenceOut, .cardOut {
-  border-color: #388087;
-  border-right: 0.625vw solid #388087;
-  border-left: 0.625vw solid #388087;
-  border-top: 0.625vw solid #388087;
-  border-bottom: 0.625vw solid #388087;
+  border-color: #263542;
+  border-right: 0.625vw solid #263542;
+  border-left: 0.625vw solid #263542;
+  border-top: 0.625vw solid #263542;
+  border-bottom: 0.625vw solid #263542;
 }
 */
 .nameHead, .numberHead, .sentenceHead, .cardHead {
@@ -191,12 +224,12 @@ input {
   position: fixed;
   white-space: nowrap;
   font-size: 1.6vw;
-  color: #c96567;
-  background-color: #263542;
+  color: #a35455;
+  background-color: #388087;
 }
 
 .numberV {
-  border-left:0.625vw solid #388087;
+  border-left:0.625vw solid #263542;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -210,7 +243,7 @@ input {
 }
 
 .numberH1 {
-  border-top: 0.625vw solid #388087;
+  border-top: 0.625vw solid #263542;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -238,7 +271,7 @@ input {
 }
 
 .nameH1 {
-  border-top: 0.625vw solid #388087;
+  border-top: 0.625vw solid #263542;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -252,7 +285,7 @@ input {
 }
 
 .nameV {
-  border-left:0.625vw solid #388087;
+  border-left:0.625vw solid #263542;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -281,7 +314,7 @@ input {
 }
 
 .sentenceV1 {
-  border-left:0.625vw solid #388087;
+  border-left:0.625vw solid #263542;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -296,7 +329,7 @@ input {
 }
 
 .sentenceH1 {
-  border-top: 0.625vw solid #388087;
+  border-top: 0.625vw solid #263542;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -311,7 +344,7 @@ input {
 
 
 .sentenceV2 {
-  border-left:0.625vw solid #388087;
+  border-left:0.625vw solid #263542;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -340,7 +373,7 @@ input {
 }
 
 .cardV {
-  border-left:0.625vw solid #388087;
+  border-left:0.625vw solid #263542;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -354,7 +387,7 @@ input {
 }
 
 .cardH1 {
-  border-top: 0.625vw solid #388087;
+  border-top: 0.625vw solid #263542;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -368,7 +401,7 @@ input {
 }
 
 .cardH2 {
-  border-top: 0.625vw solid #388087;
+  border-top: 0.625vw solid #263542;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -396,18 +429,6 @@ input {
   width: 9.766vw;
   height: 14.180vw;
 }
-
-.time {
-  color: white;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  font-size: 8vw;
-  z-index: 9;
-}
-
 .form-popup {
   position: fixed;
   top: 50%;

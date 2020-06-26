@@ -82,6 +82,7 @@ function setRandsInterval() {
     localStorage.setItem('timerState', "");
     var x = 0;
     changeRands();
+    document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString();
     setInterval(function() {
         if(x == numTimes - 1) {
             clearRands();
@@ -93,6 +94,7 @@ function setRandsInterval() {
         }
         else if(x != numTimes - 1) {
             changeRands();
+            document.getElementById('Sets').innerHTML = "Set: " + toString((x + 1)) + "/" + toString(numTimes);
             timeDuring2 = timeDuring;
             x++;
         }
@@ -125,7 +127,13 @@ function setRandsInterval() {
             document.getElementById("cardV").style.display = "none";
             document.getElementById("cardHead").style.display = "none";
             document.getElementById("cardOut").style.display = "none";
+            document.getElementById("Sets").style.display = "none";
+            document.getElementById("dot").style.display = "none";
             clearInterval(duringTimer);
+            document.getElementById("timer").style.fontSize = 7 + 'vw';
+            document.getElementById("timer").style.top = 50 + '%';
+            document.getElementById("timer").style.left = 50 + 'vw';
+
         }
         else {
             document.getElementById("timer").innerHTML = (timeDuring2/1000).toString();
@@ -146,6 +154,7 @@ function setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, ti
     localStorage.setItem('timerState', "");
     var x = 0;
     changeRandsCustom();
+    document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString();
     setInterval(function() {
         if(x == numTimes - 1) {
             clearRands();
@@ -153,6 +162,7 @@ function setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, ti
         }
         else if(x != numTimes - 1) {
             changeRandsCustom();
+            document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString();
             timeDuring2 = timeDuring;
             x++;
         }
@@ -193,7 +203,12 @@ function setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, ti
             document.getElementById("cardV").style.display = "none";
             document.getElementById("cardHead").style.display = "none";
             document.getElementById("cardOut").style.display = "none";
+            document.getElementById("Sets").style.display = "none";
+            document.getElementById("dot").style.display = "none";
             clearInterval(duringTimer);
+            document.getElementById("timer").style.fontSize = 7 + 'vw';
+            document.getElementById("timer").style.top = 50 + '%';
+            document.getElementById("timer").style.left = 50 + 'vw';
         }
         else {
             document.getElementById("timer").innerHTML = (timeDuring2/1000).toString();
