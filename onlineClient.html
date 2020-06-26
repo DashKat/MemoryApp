@@ -127,7 +127,7 @@
                 localStorage.setItem('timerState', "");
                 localStorage.setItem('x', '0');
                 setRands();
-                document.getElementById('Sets').innerHTML = "Set: " + toString((x + 1)) + "/" + toString(numTimes);
+                document.getElementById('Sets').innerHTML = "Set: " + (parseInt(localStorage.getItem('x'), 10) + 1).toString() + "/" + numTimes.toString();
                 setInterval(function() {
                     var x = parseInt(localStorage.getItem('x'), 10);
                     if(x == numTimes - 1) {
@@ -138,7 +138,7 @@
                         x++;
                         localStorage.setItem('x', x);
                         setRands();
-                        document.getElementById('Sets').innerHTML = "Set: " + toString((x + 1)) + "/" + toString(numTimes);
+                        document.getElementById('Sets').innerHTML = "Set: " + (parseInt(localStorage.getItem('x'), 10) + 1).toString() + "/" + numTimes.toString();
                         timeDuring2 = timeDuring;
                     }
                 }, timeDuring);
