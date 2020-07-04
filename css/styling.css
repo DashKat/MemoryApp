@@ -215,6 +215,8 @@ input {
   border-bottom: 0.625vw solid #263542;
 }
 */
+
+
 .nameHead, .numberHead, .sentenceHead, .cardHead {
   font-family: monospace;
   letter-spacing: 0.1vw;
@@ -225,8 +227,8 @@ input {
   vertical-align: top;
   position: fixed;
   white-space: nowrap;
-  font-size: 1.6vw;
-  color: #a35455;
+  font-size: 1.7vw;
+  color: #ffffff;
   background-color: #388087;
 }
 
@@ -330,19 +332,6 @@ input {
   z-index: 1;
 }
 
-.sentenceH1 {
-  border-top: 0.625vw solid #263542;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px;
-  width: 12.625vw;
-  position: fixed;
-  left: 37.375%;
-  margin-left: -3px;
-  top: 75.65%;
-  transform: translate(0.313vw, -0.616vw);
-  z-index: 1;
-}
 
 
 .sentenceV2 {
@@ -353,16 +342,16 @@ input {
   height: 11%;
   position: fixed;
   margin-left: -3px;
-  left: 37.688%;
+  left: 50%;
   top: 75.65%;
-  transform: translate(0, -0.616vw);
+  transform: translate(-50%, -0.616vw);
   z-index: 2;
 }
 
 .sentenceHead {
   top: 75.65%;
-  right: 51.0%;
-  transform: translate(0, -1.4vw);
+  right: 50.0%;
+  transform: translate(50%, -1.4vw);
   z-index: 4;
 }
 
@@ -370,7 +359,7 @@ input {
   position: fixed;
   white-space: nowrap;
   top: 90%;
-  left: 38%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -452,16 +441,23 @@ input {
   padding: 10px;
   background-color: #263542;
   color: white;
+  font-size: 1.2vw;
+}
+
+.form-container h1 {
+  font-size: 3vw;
 }
 
 /* Full-width input fields */
 .form-container input[type=text] {
   box-sizing : border-box;
   width: 100%;
+  height: 9.5vh;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
   background: #f1f1f1;
+  font-size: 1.5vw;
 }
 
 /* When the inputs get focus, do something */
@@ -477,9 +473,11 @@ input {
   padding: 16px 20px;
   border: none;
   width: 100%;
+  height: 11vh;
   margin-bottom:10px;
   opacity: 0.8;
   cursor: pointer;
+  font-size: 2vw;
 }
 
 .nameInLabel, .numberInLabel, .sentenceInLabel, .cardInLabel {
@@ -558,7 +556,7 @@ input {
 .nameSub {
   position: fixed;
   top: 40%;
-  left: 15%;
+  left: 13%;
   transform: translate(-50%, -50%);
 }
 
@@ -587,7 +585,7 @@ input {
 .numberSub {
   position: fixed;
   top: 40%;
-  left: 33%;
+  left: 31%;
   transform: translate(-50%, -50%);
 }
 
@@ -606,7 +604,7 @@ input {
 .sentenceSub {
   position: fixed;
   top: 40vh;
-  left: 55.5%;
+  left: 53.5%;
   transform: translate(-50%, -50%);
 }
 
@@ -615,13 +613,12 @@ input {
 }
 
 .cardSuitIn {
-  font-size: 1.4vw;
 }
 
 .cardSub {
   position: fixed;
-  top: 40.6vh;
-  left: 82%;
+  top: 40vh;
+  left: 80%;
   transform: translate(-50%, -50%);
 }
 
