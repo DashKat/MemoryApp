@@ -125,7 +125,7 @@
                 var timeBetween = parseInt(localStorage.getItem('timeBetween'), 10);
                 var numTimes = parseInt(localStorage.getItem('numTimes'), 10);
                 localStorage.setItem('timerState', "");
-                localStorage.setItem('x', '0');
+                localStorage.s etItem('x', '0');
                 setRands();
                 document.getElementById('Sets').innerHTML = "Set: " + (parseInt(localStorage.getItem('x'), 10) + 1).toString() + "/" + numTimes.toString();
                 setInterval(function() {
