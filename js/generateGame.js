@@ -52,7 +52,6 @@ function generateGame() {
                 numTimes: numTimes,
                 timeDuring: timeDuring,
                 timeBetween: timeBetween,
-                password: document.getElementById('password').value,
                 validCheck: true
             });
             database.ref('IsRunning/' + thisGameID).set({
