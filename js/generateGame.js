@@ -93,3 +93,4 @@ function startGame() {
 
     setTimeout(function() {location.href = 'onlineSupervisor.html';}, 1000);
 }
+
