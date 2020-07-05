@@ -687,3 +687,21 @@ th {
   left: 75%;
   transform: translate(-50%, -50%);
 }
+
+#waiter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.6vw;
+  overflow: visible;
+}
+
+.TestingStage {
+  position: fixed;
+  top: 10%;
+  left: 94%;
+  transform: translate(-50%, -50%);
+  height: 75px;
+  width: 75px;
+}

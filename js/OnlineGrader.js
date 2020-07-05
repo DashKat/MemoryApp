@@ -28,7 +28,8 @@ function grade() {
     var sentences = JSON.parse(localStorage.getItem("sentences"));
     localStorage.removeItem("sentences");
     var cards = JSON.parse(localStorage.getItem("cardsGrade"));
-    localStorage.removeItem("cards");
+    console.log(cards);
+    localStorage.removeItem("cardsGrade");
 
     var userNumbers = JSON.parse(localStorage.getItem("userNumbers"));
     if(userNumbers.length == null) {
