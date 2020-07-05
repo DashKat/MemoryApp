@@ -112,7 +112,7 @@ input {
 
 .dropdown-content {
   display: none;
-  background-color: #388087;
+  background-color: #263542;
   padding-left: 8px;
   z-index: 30;
 }
@@ -640,6 +640,7 @@ input {
 
 th {
   color: white;
+  font-size: 1.5vw;
 }
 
 .Score {
@@ -650,7 +651,7 @@ th {
   font-size: 2vw;
 }
 
-.realNameDisplay, .realNumberDisplay, .realSentenceDisplay, .realCardDisplay, .userNameDisplay, .userNumberDisplay, .userSentenceDisplay, .userCardDisplay {
+.realNameDisplay, .realNumberDisplay, .realSentenceDisplay, .realCardDisplay, .userNameDisplay, .userNumberDisplay, .userSentenceDisplay, .userCardDisplay, .spacer {
   float: left;
 }
 

@@ -94,9 +94,9 @@ function setRandsInterval() {
         }
         else if(x != numTimes - 1) {
             changeRands();
-            document.getElementById('Sets').innerHTML = "Set: " + toString((x + 1)) + "/" + toString(numTimes);
             timeDuring2 = timeDuring;
             x++;
+            document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString()
         }
     }, timeDuring);
 
