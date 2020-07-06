@@ -56,82 +56,118 @@
                 <div class = 'line2'></div>
                 <div class = 'line3'></div>
             </div>
-        <label id = "gameCode"></label>
-        <button class = "codeCopy" onclick="copyCode()"></button><br><br>
-        <button id = "gameStart" onclick="startGame()" data-label = "Click to copy">Start</button><br><br>
 
-        <label>Users Joined:</label>
-        <table id = 'clientsJoined'>
-            <tbody>
-                <tr>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+            <div class = "code">
+                <label id = "gameCode"></label>
+                <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type = "image" src = "projectFiles/copy.png" onclick="copyCode()" height="25vw" width="27vw" /><br><br>
+            </div>
+            
+            <button id = "gameStart" onclick="startGame()">Start</button><br><br>
 
-        <style>
-            .codeCopy {
-                background-image: url("/projectFiles/copy.png");
-                height: 1vw;
-            }
-        </style>
+            <label class = "joinedLabel">Users Joined:</label><br><br>
+            <table  width="100%" id = 'clientsJoined' >
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
 
-        <script>
-            document.getElementById('gameCode').innerHTML = "Share this code with people so they can join your game: " + localStorage.getItem('gameID');
+            <script>
+                document.getElementById('gameCode').innerHTML = "Game Code: " + localStorage.getItem('gameID');
 
-            var firebaseConfig = {
-                apiKey: "AIzaSyDpREM9IPNuoVLjX0Yv74IA5f9aUnysK-U",
-                authDomain: "memoryapp-69da9.firebaseapp.com",
-                databaseURL: "https://memoryapp-69da9.firebaseio.com",
-                projectId: "memoryapp-69da9",
-                storageBucket: "memoryapp-69da9.appspot.com",
-                messagingSenderId: "315432298371",
-                appId: "1:315432298371:web:df4285484600df6af438b6"
-            };
-            try {firebase.initializeApp(firebaseConfig);}
-            catch {}
-            var database = firebase.database();
-            var ID = localStorage.getItem('SuperID');
+                var firebaseConfig = {
+                    apiKey: "AIzaSyDpREM9IPNuoVLjX0Yv74IA5f9aUnysK-U",
+                    authDomain: "memoryapp-69da9.firebaseapp.com",
+                    databaseURL: "https://memoryapp-69da9.firebaseio.com",
+                    projectId: "memoryapp-69da9",
+                    storageBucket: "memoryapp-69da9.appspot.com",
+                    messagingSenderId: "315432298371",
+                    appId: "1:315432298371:web:df4285484600df6af438b6"
+                };
+                try {firebase.initializeApp(firebaseConfig);}
+                catch {}
+                var database = firebase.database();
+                var ID = localStorage.getItem('SuperID');
 
-            database.ref('ClientNames/' + ID + '/value').on('value', function(snapshot) {
-                var names = JSON.parse(snapshot.val());
-                
-                var table = document.getElementById('clientsJoined');
-                table.innerHTML = "";
+                database.ref('ClientNames/' + ID + '/value').on('value', function(snapshot) {
+                    var names = JSON.parse(snapshot.val());
+                    
+                    var table = document.getElementById('clientsJoined');
 
-                for(var i = 0; i < names.length; i++) {
-                    var row = table.insertRow(table.rows.length);
-                    var cell = row.insertCell(0);
-                    cell.innerHTML = names[i];
+                    for(var i = document.getElementById('clientsJoined').rows.length; i > 0;i--) {
+                        document.getElementById('clientsJoined').deleteRow(i -1);
+                    }
+                    
+                    table.insertRow(0);
+                    var row = table.rows[0];
+                    var cell0 = row.insertCell(0);
+                    var cell1 = row.insertCell(1);
+                    var cell2 = row.insertCell(2);
+                    cell0.innerHTML = "";
+                    cell1.innerHTML = "";
+                    cell2.innerHTML = "";
+
+                    for(var i = 0; i < names.length; i++) {
+                        if (table.rows[table.rows.length - 1].cells[0].innerHTML != "" && table.rows[table.rows.length - 1].cells[1].innerHTML != "" && table.rows[table.rows.length - 1].cells[2].innerHTML == "") {
+                            table.rows[table.rows.length - 1].cells[2].innerHTML = names[i];
+                            table.rows[table.rows.length - 1].cells[2].style.fontSize = "1.6vw";
+                        }
+
+                        else if (table.rows[table.rows.length - 1].cells[0].innerHTML != "" && table.rows[table.rows.length - 1].cells[1].innerHTML == "" && table.rows[table.rows.length - 1].cells[2].innerHTML == "") {
+                            table.rows[table.rows.length - 1].cells[1].innerHTML = names[i];
+                            table.rows[table.rows.length - 1].cells[1].style.fontSize = "1.6vw";
+                        }
+
+                        else if(table.rows[table.rows.length - 1].cells[0].innerHTML == "" && table.rows[table.rows.length - 1].cells[1].innerHTML == "" && table.rows[table.rows.length - 1].cells[2].innerHTML == "") {
+                            table.rows[table.rows.length - 1].cells[0].innerHTML = names[i];
+                            table.rows[table.rows.length - 1].cells[0].style.fontSize = "1.6vw";
+                        }
+                        
+
+                        else {
+                            row = table.insertRow(-1);
+                            var cell0 = row.insertCell(0);
+                            var cell1 = row.insertCell(1);
+                            var cell2 = row.insertCell(2);
+                            cell0.innerHTML = names[i];
+                            cell0.style.fontSize = "1.6vw";
+                            cell1.innerHTML = "";
+                            cell2.innerHTML = "";
+                        }
+                    }
+                });
+
+                function copyStringToClipboard(str) {
+                    // Create new element
+                    var el = document.createElement('textarea');
+                    // Set value (string to be copied)
+                    el.value = str;
+                    // Set non-editable to avoid focus and move outside of view
+                    el.setAttribute('readonly', '');
+                    el.style = {position: 'absolute', left: '-9999px'};
+                    document.body.appendChild(el);
+                    // Select text inside element
+                    el.select();
+                    // Copy text to clipboard
+                    document.execCommand('copy');
+                    // Remove temporary element
+                    document.body.removeChild(el);
                 }
-            });
 
-            function copyStringToClipboard(str) {
-                // Create new element
-                var el = document.createElement('textarea');
-                // Set value (string to be copied)
-                el.value = str;
-                // Set non-editable to avoid focus and move outside of view
-                el.setAttribute('readonly', '');
-                el.style = {position: 'absolute', left: '-9999px'};
-                document.body.appendChild(el);
-                // Select text inside element
-                el.select();
-                // Copy text to clipboard
-                document.execCommand('copy');
-                // Remove temporary element
-                document.body.removeChild(el);
-            }
+                function copyCode() {
+                    copyStringToClipboard(document.getElementById('gameCode').innerHTML.substring(11));
 
-            function copyCode() {
-                copyStringToClipboard(document.getElementById('gameCode').innerHTML.substring(55));
-
-                alert("Copied!");
-            }
-        </script>
+                    alert("Copied!");
+                }
+            </script>
         </div>
+    
     </body>
 </html>

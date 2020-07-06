@@ -705,3 +705,46 @@ th {
   height: 75px;
   width: 75px;
 }
+
+#gameStart {
+  position: fixed;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  width: 95%;
+  height: 11vh;
+  margin-bottom:10px;
+  cursor: pointer;
+  font-size: 2vw;
+}
+
+.code {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.3vw;
+}
+
+.clientsJoined{
+  display: block;
+  text-align: center;
+  overflow-y: scroll;
+  font-size: 5vw;
+  max-height: 70%;
+}
+
+.clientsJoined tbody {
+  display: block;
+  max-height: 70%;
+  overflow-y: scroll;
+  font-size: 1.7vw;
+}
+
+.joinedLabel {
+  font-size: 1.8vw;
+}

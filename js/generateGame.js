@@ -61,7 +61,6 @@ function generateGame() {
                 value: JSON.stringify(ClientNames)
             });
             localStorage.setItem('gameID', thisGameID);
-            console.log(thisGameID);
             
             clearInterval(intSet);
             setTimeout(function() {location.href = 'onlineStart.html';}, 1000);

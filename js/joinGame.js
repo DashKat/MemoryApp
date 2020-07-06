@@ -42,8 +42,6 @@ function join() {
 
             else if(snapshot3.val() == true) {
                 alert('Game has already begun. Please enter a valid game code');
-                console.log('test');
-                
             }
 
             else {
