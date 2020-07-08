@@ -27,6 +27,7 @@ th {
   font-size: 125%;
   text-align: left;
 }
+/*This is for the button text color*/
 
 button {
   color: black;
@@ -731,11 +732,8 @@ th {
 }
 
 .clientsJoined{
-  display: block;
   text-align: center;
-  overflow-y: scroll;
   font-size: 5vw;
-  max-height: 70%;
 }
 
 .clientsJoined tbody {
@@ -747,4 +745,29 @@ th {
 
 .joinedLabel {
   font-size: 1.8vw;
+}
+
+#gameStatus {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.3vw;
+}
+
+#scoreDisplay {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#scoreDisplay td {
+  font-size: 1.5vw;
+}
+
+#scoreDisplay tbody {
+  display: block;
+  max-height: 70%;
+  overflow-y: scroll;
 }

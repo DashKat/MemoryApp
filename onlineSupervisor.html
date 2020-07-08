@@ -56,56 +56,122 @@
                 <div class = 'line3'></div>
             </div>
 
-        <table id = "scoreDisplay">
-            <tr>
-                <th>Name</th>
-                <th>Score</th>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-        </table><br>
+            <table id = "scoreDisplay">
+                <thead>
+                    <tr>
+                        <th colspan="2" scope="colgroup" style = "text-align: center; font-size: 2vw;">Scores</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table><br>
 
-        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+            <label id = "gameStatus">Game Status: Running</label>
 
-        <script>
-            var firebaseConfig = {
-                apiKey: "AIzaSyDpREM9IPNuoVLjX0Yv74IA5f9aUnysK-U",
-                authDomain: "memoryapp-69da9.firebaseapp.com",
-                databaseURL: "https://memoryapp-69da9.firebaseio.com",
-                projectId: "memoryapp-69da9",
-                storageBucket: "memoryapp-69da9.appspot.com",
-                messagingSenderId: "315432298371",
-                appId: "1:315432298371:web:df4285484600df6af438b6"
-            };
-            try {firebase.initializeApp(firebaseConfig);}
-            catch {}
-            var database = firebase.database();
-            var ID = localStorage.getItem('clientID');
+            <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
 
-            database.ref('ClientNames/' + ID + '/value').once('value').then(function(snapshot2) {
-                localStorage.setItem('finalNames', snapshot2.val());
+            <script>
+                var firebaseConfig = {
+                    apiKey: "AIzaSyDpREM9IPNuoVLjX0Yv74IA5f9aUnysK-U",
+                    authDomain: "memoryapp-69da9.firebaseapp.com",
+                    databaseURL: "https://memoryapp-69da9.firebaseio.com",
+                    projectId: "memoryapp-69da9",
+                    storageBucket: "memoryapp-69da9.appspot.com",
+                    messagingSenderId: "315432298371",
+                    appId: "1:315432298371:web:df4285484600df6af438b6"
+                };
+                try {firebase.initializeApp(firebaseConfig);}
+                catch {}
+                var database = firebase.database();
+                var ID = localStorage.getItem('clientID');
 
-            });
+                database.ref('ClientNames/' + ID + '/value').once('value').then(function(snapshot2) {
+                    localStorage.setItem('finalNames', snapshot2.val());
 
-            database.ref('ClientScores/' + ID).on('value', function(snapshot2) {
-                var names = JSON.parse(localStorage.getItem('finalNames'));
-                var table = document.getElementById('scoreDisplay');
+                });
 
-                for(var i = 0; i < names.length; i++) {
-                    var row = table.insertRow(table.rows.length);
-                    var cell0 = row.insertCell(0);
-                    var cell1 = row.insertCell(1);
-                    
-                    cell0.innerHTML = names[i];
-                    database.ref('ClientScores/' + ID + '/' + names[i]).once('value').then(function(snapshot) {
-                        cell1.innerHTML = snapshot.val().value;
-                    });
-                }
-            });
-        </script>
+                database.ref('ClientScores/' + ID).on('value', function(snapshot2) {
+                    var names = JSON.parse(localStorage.getItem('finalNames'));
+                    var table = document.getElementById('scoreDisplay');
+
+                    for(var i = 0; i < names.length; i++)  {
+                        var userName = names[i];                                        
+                        var row = table.insertRow(table.rows.length);
+                        var cell0 = row.insertCell(0);
+                        var cell1 = row.insertCell(1);
+                        
+                        
+                        database.ref('ClientScores/' + ID + '/' + names[i]).once('value').then(function(snapshot) {
+                            if(snapshot.val().value.includes('/')) {
+                                cell0.innerHTML = userName + ": "; //Fixing the spacing issues
+                                cell1.innerHTML = snapshot.val().value;
+                            }
+                        });
+                    }
+
+                    console.log(document.getElementById('scoreDisplay').getElementsByTagName('tr').length);
+                });
+
+                database.ref('GameInfo/' + ID).once('value').then(function(snapshot) {
+                    var names = JSON.parse(localStorage.getItem('finalNames'));
+                    var numTimes = snapshot.val().numTimes;
+                    var timeDuring = snapshot.val().timeDuring;
+                    var timeBetween = snapshot.val().timeBetween;
+                    var x = 0;
+
+                    var timeDuring2 = timeDuring;
+                    timeDuring2 -= 1000;
+
+                    setInterval (function() {
+                        if(x == numTimes - 1 && x!= 99.123054309420932478423) {
+                            document.getElementById("gameStatus").innerHTML = "Game Status: Waiting to submit";
+                            x = 99.123054309420932478423;
+                            setTimeout(function() {document.getElementById("gameStatus").innerHTML = "Game Status: Submitting";}, timeBetween);
+                        }
+                        else if(x != numTimes - 1 && x!= 99.123054309420932478423) {
+                            timeDuring2 = timeDuring;
+                            x++;
+                            document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString()
+                        }
+                    }, timeDuring);
+
+                    function timerBetweenSetter() {
+                        var timeBetween2 = timeBetween;
+                        timeBetween2 -= 1000;
+                        var betweenTimer = setInterval(function() {
+                            if(timeBetween2 == 0 && x!= 99.123054309420932478423) {
+                                clearInterval(betweenTimer);
+                            }
+                            timeBetween2 -= 1000;
+                        }, 1000);
+                    }
+
+
+                    var duringTimer = setInterval(function() {
+                        if(numTimes - 1 == x && timeDuring2 == 0 && x!= 99.123054309420932478423) {
+                            timerBetweenSetter();
+                            clearInterval(duringTimer);
+                            document.getElementById("gameStatus").innerHTML = "Game Status: Running (Round " + (x + 1).toString() + ")";
+
+                        }
+                        else if (x!= 99.123054309420932478423) {
+                            document.getElementById("gameStatus").innerHTML = "Game Status: Running (Round " + (x + 1).toString() + ")";
+                            timeDuring2 -= 1000;
+                        }
+                        
+                    }, 1000);
+
+                    if(document.getElementById('scoreDisplay').getElementsByTagName('tr').length - 2 == names.length) {                      
+                        document.getElementById("gameStatus").innerHTML = "Game Status: Complete";
+                    }
+                });
+            </script>
         </div>
     </body>
 </html>
