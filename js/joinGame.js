@@ -15,7 +15,7 @@ function join() {
     return database.ref('IsRunning/' + document.getElementById('joinGame').value + '/value').once('value').then(function(snapshot3) {
         return database.ref('GameInfo/' + document.getElementById('joinGame').value + "/validCheck").once('value').then(function(snapshot2) {
             
-            if((snapshot2.val() == true && snapshot3.val() == false) || snapshot3.val() == true) {
+            if(snapshot2.val() == true && snapshot3.val() == false) {
                 localStorage.setItem('clientID', document.getElementById('joinGame').value)
                 var ID = localStorage.getItem('clientID');
                 localStorage.setItem('clientName', document.getElementById('clientName').value.toString());
