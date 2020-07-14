@@ -1,1 +1,3 @@
 Leaderboard (Online & Offline)
+Change color of grading page text based on if it's correct or incorrect
+Customize offline fix background (Start button doesn't fit in it)
