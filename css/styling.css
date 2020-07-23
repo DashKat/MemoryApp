@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: #388087;
+  background-color: #3B8BEB;
   color: white;
 }
 
@@ -75,7 +75,7 @@ input {
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: #6FB3B8; /* Black*/
+  background-color: #C4DBF6; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -113,7 +113,7 @@ input {
 
 .dropdown-content {
   display: none;
-  background-color: #263542;
+  background-color: #8590AA;
   padding-left: 8px;
   z-index: 30;
 }
@@ -147,7 +147,7 @@ input {
 .line1, .line2, .line3 {
   width: 30px;
   height: 5px;
-  background-color: #263542;
+  background-color: #C4DBF6;
   margin: 3px 0;
   z-index: 15;
 }
@@ -230,7 +230,7 @@ input {
   white-space: nowrap;
   font-size: 1.7vw;
   color: #ffffff;
-  background-color: #388087;
+  background-color: #3B8BEB;
 }
 
 .numberV {
