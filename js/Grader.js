@@ -25,34 +25,6 @@ function grade() {
 
     var possibleScore = 0;
 
-    for(var j = 0; j < userNumbers.length; j++) {
-        var table = document.getElementById('userNumberDisplay');
-        var row = table.insertRow(table.rows.length);
-        var cell = row.insertCell(0);
-        cell.innerHTML = userNumbers[j];
-    }
-
-    for(var j = 0; j < userNames.length; j++) {
-        var table = document.getElementById('userNameDisplay');
-        var row = table.insertRow(table.rows.length);
-        var cell = row.insertCell(0);
-        cell.innerHTML = userNames[j];
-    }
-
-    for(var j = 0; j < userSentences.length; j++) {
-        var table = document.getElementById('userSentenceDisplay');
-        var row = table.insertRow(table.rows.length);
-        var cell = row.insertCell(0);
-        cell.innerHTML = userSentences[j];
-    }
-
-    for(var j = 0; j < userCards.length; j++) {
-        var table = document.getElementById('userCardDisplay');
-        var row = table.insertRow(table.rows.length);
-        var cell = row.insertCell(0);
-        cell.innerHTML = userCards[j];
-    }
-
     for(var i = 0; i < numbers.length; i++) {
         var table = document.getElementById('realNumberDisplay');
         var row = table.insertRow(table.rows.length);
@@ -72,7 +44,7 @@ function grade() {
         var cell = row.insertCell(0);
         cell.innerHTML = names[i];
         for(var j = 0; j < userNames.length; j++) {
-            if(names[i] == userNames[j] && i == j) {
+            if(names[i].toUpperCase() == userNames[j].toUpperCase() && i == j) {
                 nameScore++;
             }
         }
@@ -107,6 +79,97 @@ function grade() {
         possibleScore++;
     }
 
+    for(var j = 0; j < userNumbers.length; j++) {
+        var table = document.getElementById('userNumberDisplay');
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = userNumbers[j];
 
-    document.getElementById("Score").innerHTML = (numberScore + nameScore + sentenceScore + cardScore).toString() + "/" + possibleScore.toString();
+        if (userNumbers[j] == numbers[j]) {
+            cell.style.color = 'green';
+        }
+
+        else {
+            cell.style.color = 'red';
+        }
+    }
+
+    for(var j = 0; j < userNames.length; j++) {
+        var table = document.getElementById('userNameDisplay');
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = userNames[j];
+
+        if (userNames[j].toUpperCase() == names[j].toUpperCase()) {
+            cell.style.color = 'green';
+        }
+
+        else {
+            cell.style.color = 'red';
+        }
+    }
+
+    for(var j = 0; j < userSentences.length; j++) {
+        var table = document.getElementById('userSentenceDisplay');
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = userSentences[j];
+
+        if (userSentences[j].toUpperCase() == sentences[j].toUpperCase()) {
+            cell.style.color = 'green';
+        }
+
+        else {
+            cell.style.color = 'red';
+        }
+    }
+
+    for(var j = 0; j < userCards.length; j++) {
+        var table = document.getElementById('userCardDisplay');
+        var row = table.insertRow(table.rows.length);
+        var cell = row.insertCell(0);
+        cell.innerHTML = userCards[j];
+
+        if (userCards[j].toUpperCase() == cards[j].toUpperCase()) {
+            cell.style.color = 'green';
+        }
+
+        else {
+            cell.style.color = 'red';
+        }
+    }
+
+
+    var totalScore = (numberScore + nameScore + sentenceScore + cardScore);
+    var scoreRatio = totalScore/possibleScore;
+    var scoreVal = totalScore.toString() + "/" + possibleScore.toString();
+    var scoreMessage;
+    if(scoreRatio >= 0.5) {
+        scoreMessage = "You got " + scoreVal + " right. Great Job!"
+    }
+
+    else {
+        scoreMessage = "You got " + scoreVal + " right. Maybe try again?"
+    }
+    document.getElementById("Score").innerHTML = scoreMessage;
+}
+
+function replay() {
+    var type = localStorage.getItem('gameType');
+    console.log(type);
+    if(type == "easy") {
+        location.href = 'offlineEasy.html';
+    }
+    
+    else if (type == "medium") {
+        location.href = 'offlineMedium.html';
+    }
+
+    else if (type == "hard") {
+        location.href = 'offlineHard.html';
+    }
+
+    else if (type == "custom") {
+        location.href = 'offlineCustom.html';
+    }
 }

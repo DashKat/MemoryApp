@@ -156,40 +156,66 @@ function submit() {
 
     var nameCells = document.getElementById('nameDisplay').getElementsByTagName('td');
     var userNames = [];
-
-    for (var i = 0; i < nameCells.length; i++) {
-        var naCell = nameCells[i];
-        userNames.push(naCell.innerHTML);
-    }
-    localStorage.setItem('userNames', JSON.stringify(userNames));
-
+    
     var sentenceCells = document.getElementById('sentenceDisplay').getElementsByTagName('td');
     var userSentences = [];
-
-    for (var i = 0; i < sentenceCells.length; i++) {
-        var sCell = sentenceCells[i];
-        userSentences.push(sCell.innerHTML);
-    }
-    localStorage.setItem('userSentences', JSON.stringify(userSentences));
-
+    
     var numberCells = document.getElementById('numberDisplay').getElementsByTagName('td');
     var userNumbers = [];
-
-    for (var i = 0; i < numberCells.length; i++) {
-        var nuCell = numberCells[i];
-        userNumbers.push(nuCell.innerHTML);
-    }
-    localStorage.setItem('userNumbers', JSON.stringify(userNumbers));
-    
 
     var cardCells = document.getElementById('cardDisplay').getElementsByTagName('td');
     var userCards = [];
 
+    var numbers = JSON.parse(localStorage.getItem("numbers"));
+
+    var names = JSON.parse(localStorage.getItem("names"));
+
+    var sentences = JSON.parse(localStorage.getItem("sentences"));
+
+    var cards = JSON.parse(localStorage.getItem("cards"));
+    
+    for (var i = 0; i < nameCells.length; i++) {
+        var naCell = nameCells[i];
+        if(naCell.innerHTML != "") {
+            userNames.push(naCell.innerHTML);
+        }
+    }
+
+    for (var i = 0; i < sentenceCells.length; i++) {
+        var sCell = sentenceCells[i];
+        if(sCell.innerHTML != "") {
+            userSentences.push(sCell.innerHTML);
+        }
+    }
+
+    for (var i = 0; i < numberCells.length; i++) {
+        var nuCell = numberCells[i];
+        if(nuCell.innerHTML != "") {
+            userNumbers.push(nuCell.innerHTML);
+        }
+    }
+
     for (var i = 0; i < cardCells.length; i++) {
         var cCell = cardCells[i];
-        userCards.push(cCell.innerHTML);
+        if(cCell.innerHTML != "") {
+            userCards.push(cCell.innerHTML);
+        }
     }
-    localStorage.setItem('userCards', JSON.stringify(userCards));
 
-    setTimeout(location.href = "grader.html", 500)
+    if(userNames.length == names.length && userNumbers.length == numbers.length && userSentences.length == sentences.length && userCards.length == cards.length) {
+        
+        localStorage.setItem('userNames', JSON.stringify(userNames));
+        
+        localStorage.setItem('userSentences', JSON.stringify(userSentences));    
+        
+        localStorage.setItem('userNumbers', JSON.stringify(userNumbers));  
+        
+        localStorage.setItem('userCards', JSON.stringify(userCards));
+    
+        setTimeout(location.href = "grader.html", 500)
+    }
+    
+    else {
+        alert("Please make sure you are submitting the correct number of items for each category.")
+    }
 }

@@ -12,6 +12,9 @@ function changeRandsCustom() {
     CardSelectCustom();
 }
 
+function skip() {
+    localStorage.setItem('skipVar', "true")
+}
 
 function clearRands() {
     document.getElementById('sentenceOut').innerHTML = "";
@@ -22,13 +25,15 @@ function clearRands() {
 
 function easyMode() {
     localStorage.setItem('numTimes', '1');
+    localStorage.setItem('gameType', "easy");
     timeDuring =  40 * 1000;
-    timeBetween = 15 * 1000;
+    timeBetween = 5 * 1000;
     document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
 }
 
 function mediumMode() {
     localStorage.setItem('numTimes', '3');
+    localStorage.setItem('gameType', "medium");
     timeDuring = 30 * 1000;
     timeBetween = 30 * 1000;
     document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
@@ -36,6 +41,7 @@ function mediumMode() {
 
 function hardMode() {
     localStorage.setItem('numTimes', '5');
+    localStorage.setItem('gameType', "hard");
     timeDuring = 20 * 1000;
     timeBetween = 60 * 1000;
     document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
@@ -78,6 +84,7 @@ function formSubmit() {
 }
 
 function setRandsInterval() {
+    localStorage.setItem('skipVar', "false");
     var numTimes = parseInt(localStorage.getItem('numTimes'), 10);
     localStorage.setItem('timerState', "");
     var x = 0;
@@ -99,6 +106,57 @@ function setRandsInterval() {
             document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString()
         }
     }, timeDuring);
+
+    setInterval(function() {
+        if(localStorage.getItem('skipVar') == "true") {
+            if(x == numTimes - 1) {
+                clearRands();
+                localStorage.setItem("numbers", JSON.stringify(numbers));
+                localStorage.setItem("names", JSON.stringify(names));
+                localStorage.setItem("sentences", JSON.stringify(sentences));
+                localStorage.setItem("cards", JSON.stringify(cards));
+                setTimeout(function() {location.href = 'submission.html';}, timeBetween);
+                timerBetweenSetter();
+                document.getElementById("timer").innerHTML = (timeBetween/1000).toString();
+                document.getElementById("nameV").style.display = "none";
+                document.getElementById("nameH1").style.display = "none";
+                document.getElementById("nameH2").style.display = "none";
+                document.getElementById("nameHead").style.display = "none";
+                document.getElementById("nameOut").style.display = "none";
+                document.getElementById("numberH1").style.display = "none";
+                document.getElementById("numberH2").style.display = "none";
+                document.getElementById("numberV").style.display = "none";
+                document.getElementById("numberHead").style.display = "none";
+                document.getElementById("numberOut").style.display = "none";
+                document.getElementById("sentenceH1").style.display = "none";
+                document.getElementById("sentenceH2").style.display = "none";
+                document.getElementById("sentenceV1").style.display = "none";
+                document.getElementById("sentenceV2").style.display = "none";
+                document.getElementById("sentenceHead").style.display = "none";
+                document.getElementById("sentenceOut").style.display = "none";
+                document.getElementById("cardH1").style.display = "none";
+                document.getElementById("cardH2").style.display = "none";
+                document.getElementById("cardV").style.display = "none";
+                document.getElementById("cardHead").style.display = "none";
+                document.getElementById("cardOut").style.display = "none";
+                document.getElementById("Sets").style.display = "none";
+                document.getElementById("dot").style.display = "none";
+                document.getElementById("skip").style.display = "none";
+                clearInterval(duringTimer);
+                document.getElementById("timer").style.fontSize = 7 + 'vw';
+                document.getElementById("timer").style.top = 50 + '%';
+                document.getElementById("timer").style.left = 50 + 'vw';
+
+            }
+            else if(x != numTimes - 1) {
+                changeRands();
+                timeDuring2 = timeDuring;
+                x++;
+                document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString()
+            }
+            localStorage.setItem('skipVar', "false");
+        }
+    }, 10);
 
     var timeDuring2 = timeDuring;
     timeDuring2 -= 1000;
@@ -129,6 +187,7 @@ function setRandsInterval() {
             document.getElementById("cardOut").style.display = "none";
             document.getElementById("Sets").style.display = "none";
             document.getElementById("dot").style.display = "none";
+            document.getElementById("skip").style.display = "none";
             clearInterval(duringTimer);
             document.getElementById("timer").style.fontSize = 7 + 'vw';
             document.getElementById("timer").style.top = 50 + '%';
@@ -145,10 +204,12 @@ function setRandsInterval() {
 }
 
 function setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, timeBetween) {
+    localStorage.setItem('skipVar', "false");
     localStorage.setItem("numbers", JSON.stringify(numbers));
     localStorage.setItem("names", JSON.stringify(names));
     localStorage.setItem("sentences", JSON.stringify(sentences));
     localStorage.setItem("cards", JSON.stringify(cards));
+    localStorage.setItem('gameType', "custom");
 
     var numTimes = parseInt(localStorage.getItem('numTimes'), 10);
     localStorage.setItem('timerState', "");
@@ -165,8 +226,65 @@ function setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, ti
             document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString();
             timeDuring2 = timeDuring;
             x++;
+            document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString()
         }
     }, timeDuring);
+
+    setInterval(function() {
+        if(localStorage.getItem('skipVar') == "true") {
+            if(x == numTimes - 1) {
+                clearRands();
+                setTimeout(function() {location.href = 'submission.html';}, timeBetween);
+                var timeBetween2 = timeBetween;
+                timeBetween2 -= 1000;
+                var betweenTimer = setInterval(function() {
+                    document.getElementById("timer").innerHTML = (timeBetween2/1000).toString();
+                    if(timeBetween2 == 0) {
+                        clearInterval(betweenTimer);
+                    }
+                    timeBetween2 -= 1000;
+                }, 1000);
+                document.getElementById("timer").innerHTML = (timeBetween/1000).toString();
+                document.getElementById("nameV").style.display = "none";
+                document.getElementById("nameH1").style.display = "none";
+                document.getElementById("nameH2").style.display = "none";
+                document.getElementById("nameHead").style.display = "none";
+                document.getElementById("nameOut").style.display = "none";
+                document.getElementById("numberH1").style.display = "none";
+                document.getElementById("numberH2").style.display = "none";
+                document.getElementById("numberV").style.display = "none";
+                document.getElementById("numberHead").style.display = "none";
+                document.getElementById("numberOut").style.display = "none";
+                document.getElementById("sentenceH1").style.display = "none";
+                document.getElementById("sentenceH2").style.display = "none";
+                document.getElementById("sentenceV1").style.display = "none";
+                document.getElementById("sentenceV2").style.display = "none";
+                document.getElementById("sentenceHead").style.display = "none";
+                document.getElementById("sentenceOut").style.display = "none";
+                document.getElementById("cardH1").style.display = "none";
+                document.getElementById("cardH2").style.display = "none";
+                document.getElementById("cardV").style.display = "none";
+                document.getElementById("cardHead").style.display = "none";
+                document.getElementById("cardOut").style.display = "none";
+                document.getElementById("Sets").style.display = "none";
+                document.getElementById("dot").style.display = "none";
+                document.getElementById("skip").style.display = "none";
+                clearInterval(duringTimer);
+                document.getElementById("timer").style.fontSize = 7 + 'vw';
+                document.getElementById("timer").style.top = 50 + '%';
+                document.getElementById("timer").style.left = 50 + 'vw';
+
+            }
+            else if(x != numTimes - 1) {
+                changeRandsCustom();
+                document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString();
+                timeDuring2 = timeDuring;
+                x++;
+                document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString()
+            }
+            localStorage.setItem('skipVar', "false");
+        }
+    }, 10);
 
     var timeDuring2 = timeDuring;
     timeDuring2 -= 1000;
@@ -205,6 +323,7 @@ function setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, ti
             document.getElementById("cardOut").style.display = "none";
             document.getElementById("Sets").style.display = "none";
             document.getElementById("dot").style.display = "none";
+            document.getElementById("skip").style.display = "none";
             clearInterval(duringTimer);
             document.getElementById("timer").style.fontSize = 7 + 'vw';
             document.getElementById("timer").style.top = 50 + '%';

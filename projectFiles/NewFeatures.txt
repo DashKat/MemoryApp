@@ -1,3 +1,13 @@
-Leaderboard (Online & Offline)
+Leaderboard (Offline)
+Scoreboard (Online)
 Change color of grading page text based on if it's correct or incorrect
 Customize offline fix background (Start button doesn't fit in it)
+Fix submission card suit scaling
+Add instructions for submitting
+Online client not starting when start button is clicked
+Add score messages depending on how well they depending
+Add instructions page
+Sentence case
+Add button to skip
+Restrict # of responses if they're too high or too low (alert if too low)
+Check score update on online supervisor

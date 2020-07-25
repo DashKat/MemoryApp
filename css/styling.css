@@ -195,6 +195,13 @@ input {
   z-index: 8;
 }
 
+.skip {
+  position: fixed;
+  top: 25%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
 .Sets {
   position: fixed;
   top: 50%;
@@ -440,7 +447,7 @@ input {
   width: 100%;
   height: 100%;
   padding: 10px;
-  background-color: #263542;
+  background-color: #477DC0;
   color: white;
   font-size: 1.2vw;
 }
@@ -476,7 +483,6 @@ input {
   width: 100%;
   height: 11vh;
   margin-bottom:10px;
-  opacity: 0.8;
   cursor: pointer;
   font-size: 2vw;
 }
@@ -614,6 +620,7 @@ input {
 }
 
 .cardSuitIn {
+  font-size: 1.08vw;
 }
 
 .cardSub {
@@ -650,6 +657,13 @@ th {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2vw;
+}
+
+.replay {
+  position: fixed;
+  top: 10%;
+  left: 90%;
+  transform: translate(-50%, -50%);
 }
 
 .realNameDisplay, .realNumberDisplay, .realSentenceDisplay, .realCardDisplay, .userNameDisplay, .userNumberDisplay, .userSentenceDisplay, .userCardDisplay, .spacer {
