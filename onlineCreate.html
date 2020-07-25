@@ -13,7 +13,7 @@
 
 
 
-        <title>Competition Mode: Create a Game</title>
+        <title>Memory App</title>
         <link rel = "stylesheet" href = "css/styling.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <script src="js/CSS.js"></script>
@@ -78,13 +78,13 @@
                 <h1>Create</h1>
 
                 <label for="numTimes"><b>Rounds</b></label>
-                <input type="text" placeholder="Number of Rounds" id = "numTimes" required>
+                <input type="number" placeholder="Number of Rounds" id = "numTimes" required>
             
                 <label for="timeDuring"><b>Round Duration</b></label>
-                <input type="text" placeholder="Round Duration (seconds)" id = "timeDuring" required>
+                <input type="number" placeholder="Round Duration (seconds)" id = "timeDuring" required>
             
                 <label for="timeBetween"><b>Waiting Period</b></label>
-                <input type="text" placeholder="Waiting Period (seconds)" id = "timeBetween" required>
+                <input type="number" placeholder="Waiting Period (seconds)" id = "timeBetween" required>
 
                 <button type="button" class="btn" id = "createGame" onclick="generateGame()">Go</button>
             </form>

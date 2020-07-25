@@ -48,6 +48,7 @@ function minusName() {
 function plusSentence() {
     var table = document.getElementById('sentenceDisplay');
     var sentenceIn = document.getElementById('sentenceIn').value;
+    sentenceIn = sentenceIn[0].toUpperCase() + sentenceIn.slice(1);
     var row = table.insertRow(table.rows.length);
     var cell = row.insertCell(0);
     
