@@ -22,7 +22,8 @@ function generateGame() {
     var gameInfoRef = database.ref('GameInfo');
     var thisGame = gameInfoRef.push();
     var thisGameID = thisGame.toString().slice(thisGame.toString().indexOf("GameInfo/") + 9, thisGame.toString().length);
-    localStorage.setItem('SuperID', thisGameID);
+    sessionStorage.setItem('SuperID', thisGameID);
+    console.log(thisGameID);
 
 
     var numTimes = document.getElementById('numTimes').value;
@@ -34,21 +35,21 @@ function generateGame() {
     var cards = [];
     var cardsGrade = [];
     var ClientNames = [];
-    localStorage.setItem("numbers", JSON.stringify(numbers));
-    localStorage.setItem("names", JSON.stringify(names));
-    localStorage.setItem("sentences", JSON.stringify(sentences));
-    localStorage.setItem("cards", JSON.stringify(cards));
-    localStorage.setItem("cardsGrade", JSON.stringify(cardsGrade));
+    sessionStorage.setItem("numbers", JSON.stringify(numbers));
+    sessionStorage.setItem("names", JSON.stringify(names));
+    sessionStorage.setItem("sentences", JSON.stringify(sentences));
+    sessionStorage.setItem("cards", JSON.stringify(cards));
+    sessionStorage.setItem("cardsGrade", JSON.stringify(cardsGrade));
 
     var x = 0;
     var intSet = setInterval(function() {
         if(x == numTimes) {
             thisGame.set({
-                sentences: localStorage.getItem('sentences'),
-                names: localStorage.getItem('names'),
-                numbers: localStorage.getItem('numbers'),
-                cards: localStorage.getItem('cards'),
-                cardsGrade: localStorage.getItem('cardsGrade'),
+                sentences: sessionStorage.getItem('sentences'),
+                names: sessionStorage.getItem('names'),
+                numbers: sessionStorage.getItem('numbers'),
+                cards: sessionStorage.getItem('cards'),
+                cardsGrade: sessionStorage.getItem('cardsGrade'),
                 numTimes: numTimes,
                 timeDuring: timeDuring,
                 timeBetween: timeBetween,
@@ -60,7 +61,7 @@ function generateGame() {
             database.ref('ClientNames/' + thisGameID).set({
                 value: JSON.stringify(ClientNames)
             });
-            localStorage.setItem('gameID', thisGameID);
+            sessionStorage.setItem('gameID', thisGameID);
             
             clearInterval(intSet);
             setTimeout(function() {location.href = 'onlineStart.html';}, 1000);
@@ -86,7 +87,7 @@ function startGame() {
     catch {}
     var database = firebase.database();
 
-    database.ref('IsRunning/' + localStorage.getItem('gameID')).set({
+    database.ref('IsRunning/' + sessionStorage.getItem('gameID')).set({
         value: true
     });
 

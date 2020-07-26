@@ -6879,9 +6879,9 @@ function SentenceSelectCustom() {
     var sentence = articles[articleNum1].charAt(0).toUpperCase() + articles[articleNum1].slice(1) + " " + adjectives[adjectiveNum] + " " + nouns[nounNum1] + " " + verbs[verbNum] + " " + prepositions[prepositionNum] + " " + articles[articleNum2] + " " + nouns[nounNum2]+ ".";
 
     document.getElementById('sentenceOut').innerHTML = sentence;
-    var sentences = JSON.parse(localStorage.getItem('sentences'));
+    var sentences = JSON.parse(sessionStorage.getItem('sentences'));
     sentences.push(sentence);
-    localStorage.setItem("sentences", JSON.stringify(sentences));
+    sessionStorage.setItem("sentences", JSON.stringify(sentences));
 }
 function SentenceUpdate() {
     var nouns = ["accelerator",
@@ -10321,7 +10321,7 @@ function SentenceUpdate() {
 
     var sentence = articles[articleNum1].charAt(0).toUpperCase() + articles[articleNum1].slice(1) + " " + adjectives[adjectiveNum] + " " + nouns[nounNum1] + " " + verbs[verbNum] + " " + prepositions[prepositionNum] + " " + articles[articleNum2] + " " + nouns[nounNum2]+ ".";
 
-    var sentences = JSON.parse(localStorage.getItem('sentences'));
+    var sentences = JSON.parse(sessionStorage.getItem('sentences'));
     sentences.push(sentence);
-    localStorage.setItem("sentences", JSON.stringify(sentences));
+    sessionStorage.setItem("sentences", JSON.stringify(sentences));
 }

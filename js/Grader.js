@@ -1,21 +1,21 @@
 function grade() {
-    var numbers = JSON.parse(localStorage.getItem("numbers"));
-    localStorage.removeItem("numbers");
-    var names = JSON.parse(localStorage.getItem("names"));
-    localStorage.removeItem("names");
-    var sentences = JSON.parse(localStorage.getItem("sentences"));
-    localStorage.removeItem("sentences");
-    var cards = JSON.parse(localStorage.getItem("cards"));
-    localStorage.removeItem("cards");
+    var numbers = JSON.parse(sessionStorage.getItem("numbers"));
+    sessionStorage.removeItem("numbers");
+    var names = JSON.parse(sessionStorage.getItem("names"));
+    sessionStorage.removeItem("names");
+    var sentences = JSON.parse(sessionStorage.getItem("sentences"));
+    sessionStorage.removeItem("sentences");
+    var cards = JSON.parse(sessionStorage.getItem("cards"));
+    sessionStorage.removeItem("cards");
 
-    var userNumbers = JSON.parse(localStorage.getItem("userNumbers"));
-    localStorage.removeItem("userNumbers");
-    var userNames = JSON.parse(localStorage.getItem("userNames"));
-    localStorage.removeItem("userNames");
-    var userSentences = JSON.parse(localStorage.getItem("userSentences"));
-    localStorage.removeItem("userSentences");
-    var userCards = JSON.parse(localStorage.getItem("userCards"));
-    localStorage.removeItem("userCards");
+    var userNumbers = JSON.parse(sessionStorage.getItem("userNumbers"));
+    sessionStorage.removeItem("userNumbers");
+    var userNames = JSON.parse(sessionStorage.getItem("userNames"));
+    sessionStorage.removeItem("userNames");
+    var userSentences = JSON.parse(sessionStorage.getItem("userSentences"));
+    sessionStorage.removeItem("userSentences");
+    var userCards = JSON.parse(sessionStorage.getItem("userCards"));
+    sessionStorage.removeItem("userCards");
 
 
     var numberScore = 0;
@@ -155,7 +155,7 @@ function grade() {
 }
 
 function replay() {
-    var type = localStorage.getItem('gameType');
+    var type = sessionStorage.getItem('gameType');
     console.log(type);
     if(type == "easy") {
         location.href = 'offlineEasy.html';

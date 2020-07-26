@@ -25,6 +25,7 @@
         <div id = "mySidenav" class="navbar">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.html">Home</a>
+            <a href="instructions.html">Instructions</a>
             <button class="dropbtn">Competition Mode
                 <i class="fa fa-caret-down"></i>
             </button>
@@ -88,7 +89,7 @@
             catch {}
             var database = firebase.database();
 
-            database.ref('IsRunning/' + localStorage.getItem('clientID') + '/value').on('value', function(snapshot) {
+            database.ref('IsRunning/' + sessionStorage.getItem('clientID') + '/value').on('value', function(snapshot) {
                 if(snapshot.val() == true) {
                     document.getElementById('waiter').innerHTML = "Game begins in 3";
                     setTimeout(function() {document.getElementById('waiter').innerHTML = "Game begins in 2";}, 1000)

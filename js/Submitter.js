@@ -41,11 +41,11 @@ function plusName() {
 
 
 function minusName() {
-    var rowID = localStorage.getItem('selectedRowName');
+    var rowID = sessionStorage.getItem('selectedRowName');
     try {
         if(document.getElementById('nameDisplay').rows[parseInt(rowID, 10)].cells[0].innerHTML != "") {
             document.getElementById('nameDisplay').deleteRow(parseInt(rowID, 10));
-            localStorage.removeItem('selectedRowName');
+            sessionStorage.removeItem('selectedRowName');
         }
     }
     catch {}
@@ -79,11 +79,11 @@ function plusSentence() {
 }
 
 function minusSentence() {
-    var rowID = localStorage.getItem('selectedRowSentence');
+    var rowID = sessionStorage.getItem('selectedRowSentence');
     try {
         if(document.getElementById('sentenceDisplay').rows[parseInt(rowID, 10)].cells[0].innerHTML != "") {
             document.getElementById('sentenceDisplay').deleteRow(parseInt(rowID, 10));
-            localStorage.removeItem('selectedRowSentence');
+            sessionStorage.removeItem('selectedRowSentence');
         }
     }
     catch {}
@@ -108,11 +108,11 @@ function plusNumber() {
 }
 
 function minusNumber() {
-    var rowID = localStorage.getItem('selectedRowNumber');
+    var rowID = sessionStorage.getItem('selectedRowNumber');
     try {
         if(document.getElementById('numberDisplay').rows[parseInt(rowID, 10)].cells[0].innerHTML != "") {
             document.getElementById('numberDisplay').deleteRow(parseInt(rowID, 10));
-            localStorage.removeItem('selectedRowNumber');
+            sessionStorage.removeItem('selectedRowNumber');
         }
     }
     catch {}
@@ -138,11 +138,11 @@ function plusCard() {
 }
 
 function minusCard() {
-    var rowID = localStorage.getItem('selectedRowCard');
+    var rowID = sessionStorage.getItem('selectedRowCard');
     try {
         if(document.getElementById('cardDisplay').rows[parseInt(rowID, 10)].cells[0].innerHTML != "") {
             document.getElementById('cardDisplay').deleteRow(parseInt(rowID, 10));
-            localStorage.removeItem('selectedRowCard');
+            sessionStorage.removeItem('selectedRowCard');
         }
     }
     catch {}
@@ -167,13 +167,13 @@ function submit() {
     var cardCells = document.getElementById('cardDisplay').getElementsByTagName('td');
     var userCards = [];
 
-    var numbers = JSON.parse(localStorage.getItem("numbers"));
+    var numbers = JSON.parse(sessionStorage.getItem("numbers"));
 
-    var names = JSON.parse(localStorage.getItem("names"));
+    var names = JSON.parse(sessionStorage.getItem("names"));
 
-    var sentences = JSON.parse(localStorage.getItem("sentences"));
+    var sentences = JSON.parse(sessionStorage.getItem("sentences"));
 
-    var cards = JSON.parse(localStorage.getItem("cards"));
+    var cards = JSON.parse(sessionStorage.getItem("cards"));
     
     for (var i = 0; i < nameCells.length; i++) {
         var naCell = nameCells[i];
@@ -205,13 +205,13 @@ function submit() {
 
     if(userNames.length == names.length && userNumbers.length == numbers.length && userSentences.length == sentences.length && userCards.length == cards.length) {
         
-        localStorage.setItem('userNames', JSON.stringify(userNames));
+        sessionStorage.setItem('userNames', JSON.stringify(userNames));
         
-        localStorage.setItem('userSentences', JSON.stringify(userSentences));    
+        sessionStorage.setItem('userSentences', JSON.stringify(userSentences));    
         
-        localStorage.setItem('userNumbers', JSON.stringify(userNumbers));  
+        sessionStorage.setItem('userNumbers', JSON.stringify(userNumbers));  
         
-        localStorage.setItem('userCards', JSON.stringify(userCards));
+        sessionStorage.setItem('userCards', JSON.stringify(userCards));
     
         setTimeout(location.href = "grader.html", 500)
     }

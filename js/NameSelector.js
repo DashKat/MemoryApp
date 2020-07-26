@@ -7497,9 +7497,9 @@ function NameSelectCustom() {
     var name = firstNames[firstNameNum] + " " + lastNames[lastNameNum]
 
     document.getElementById('nameOut').innerHTML = name;
-    var names = JSON.parse(localStorage.getItem('names'));
+    var names = JSON.parse(sessionStorage.getItem('names'));
     names.push(name);
-    localStorage.setItem("names", JSON.stringify(names));
+    sessionStorage.setItem("names", JSON.stringify(names));
 }
 
 function NameUpdate() {
@@ -11249,7 +11249,7 @@ function NameUpdate() {
     var lastNameNum = Math.round(Math.random() * (lastNames.length - 1));
     var name = firstNames[firstNameNum] + " " + lastNames[lastNameNum]
 
-    var names = JSON.parse(localStorage.getItem('names'));
+    var names = JSON.parse(sessionStorage.getItem('names'));
     names.push(name);
-    localStorage.setItem("names", JSON.stringify(names));
+    sessionStorage.setItem("names", JSON.stringify(names));
 }

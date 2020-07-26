@@ -24,6 +24,7 @@
         <div id = "mySidenav" class="navbar">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.html">Home</a>
+            <a href="instructions.html">Instructions</a>
             <button class="dropbtn">Competition Mode
                 <i class="fa fa-caret-down"></i>
             </button>
@@ -101,37 +102,33 @@
                 try {firebase.initializeApp(firebaseConfig);}
                 catch {}
                 var database = firebase.database();
-                var ID = localStorage.getItem('clientID');
+                var ID = sessionStorage.getItem('SuperID');
 
-                database.ref('ClientNames/' + ID + '/value').once('value').then(function(snapshot2) {
-                    localStorage.setItem('finalNames', snapshot2.val());
-
-                });
+                
 
                 database.ref('ClientScores/' + ID).on('value', function(snapshot2) {
-                    var names = JSON.parse(localStorage.getItem('finalNames'));
-                    var table = document.getElementById('scoreDisplay');
-
-                    for(var i = 0; i < names.length; i++)  {
-                        var userName = names[i];                                        
-                        var row = table.insertRow(table.rows.length);
-                        var cell0 = row.insertCell(0);
-                        var cell1 = row.insertCell(1);
-                        
-                        
-                        database.ref('ClientScores/' + ID + '/' + names[i]).once('value').then(function(snapshot) {
-                            if(snapshot.val().value.includes('/')) {
-                                cell0.innerHTML = userName + ": "; //Fixing the spacing issues
-                                cell1.innerHTML = snapshot.val().value;
-                            }
-                        });
-                    }
-
-                    console.log(document.getElementById('scoreDisplay').getElementsByTagName('tr').length);
+                    database.ref('ClientNames/' + ID + '/value').once('value').then(function(snapshot3) {
+                        var names = JSON.parse(snapshot3.val());
+                        var table = document.getElementById('scoreDisplay');
+                        for(var i = 0; i < names.length; i++)  {
+                            var userName = names[i];
+                            var row = table.insertRow(table.rows.length);
+                            var cell0 = row.insertCell(0);
+                            var cell1 = row.insertCell(1);
+                            
+                            
+                            database.ref('ClientScores/' + ID + '/' + names[i]).once('value').then(function(snapshot) {
+                                if(snapshot.val().value.includes('/')) {
+                                    cell0.innerHTML = userName + ": "; //Fixing the spacing issues
+                                    cell1.innerHTML = snapshot.val().value;
+                                }
+                            });
+                        }
+                    });
                 });
 
                 database.ref('GameInfo/' + ID).once('value').then(function(snapshot) {
-                    var names = JSON.parse(localStorage.getItem('finalNames'));
+                    var names = JSON.parse(sessionStorage.getItem('finalNames'));
                     var numTimes = snapshot.val().numTimes;
                     var timeDuring = snapshot.val().timeDuring;
                     var timeBetween = snapshot.val().timeBetween;
@@ -163,7 +160,10 @@
                             timeBetween2 -= 1000;
                         }, 1000);
                     }
-
+                    
+                    setInterval(function() {
+                        sortTable();
+                    }, 100);
 
                     var duringTimer = setInterval(function() {
                         if(numTimes - 1 == x && timeDuring2 == 0 && x!= 99.123054309420932478423) {
@@ -183,6 +183,41 @@
                         document.getElementById("gameStatus").innerHTML = "Game Status: Complete";
                     }
                 });
+
+                function sortTable() {
+                    var table, rows, switching, i, x, y, shouldSwitch;
+                    table = document.getElementById("scoreDisplay");
+                    switching = true;
+                    /* Make a loop that will continue until
+                    no switching has been done: */
+                    while (switching) {
+                        // Start by saying: no switching is done:
+                        switching = false;
+                        rows = table.rows;
+                        /* Loop through all table rows (except the
+                        first, which contains table headers): */
+                        for (i = 1; i < (rows.length - 1); i++) {
+                        // Start by saying there should be no switching:
+                        shouldSwitch = false;
+                        /* Get the two elements you want to compare,
+                        one from current row and one from the next: */
+                        x = rows[i].getElementsByTagName("TD")[1];
+                        y = rows[i + 1].getElementsByTagName("TD")[1];
+                        // Check if the two rows should switch place:
+                        if (x.innerHTML.split("/", 1) > y.innerHTML.split("/", 1)) {
+                            // If so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                        }
+                        if (shouldSwitch) {
+                        /* If a switch has been marked, make the switch
+                        and mark that a switch has been done: */
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                        }
+                    }
+                }
             </script>
         </div>
     </body>

@@ -29,6 +29,7 @@
         <div id = "mySidenav" class="navbar">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.html">Home</a>
+            <a href="instructions.html">Instructions</a>
             <button class="dropbtn">Competition Mode
                 <i class="fa fa-caret-down"></i>
             </button>
@@ -116,10 +117,10 @@
             var names = [];
             var sentences = [];
             var cards = [];
-            localStorage.setItem("numbers", JSON.stringify(numbers));
-            localStorage.setItem("names", JSON.stringify(names));
-            localStorage.setItem("sentences", JSON.stringify(sentences));
-            localStorage.setItem("cards", JSON.stringify(cards));
+            sessionStorage.setItem("numbers", JSON.stringify(numbers));
+            sessionStorage.setItem("names", JSON.stringify(names));
+            sessionStorage.setItem("sentences", JSON.stringify(sentences));
+            sessionStorage.setItem("cards", JSON.stringify(cards));
             hardMode();
             setRandsInterval();
         </script>

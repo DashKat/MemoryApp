@@ -16,18 +16,18 @@ function join() {
         return database.ref('GameInfo/' + document.getElementById('joinGame').value + "/validCheck").once('value').then(function(snapshot2) {
             
             if(snapshot2.val() == true && snapshot3.val() == false) {
-                localStorage.setItem('clientID', document.getElementById('joinGame').value)
-                var ID = localStorage.getItem('clientID');
-                localStorage.setItem('clientName', document.getElementById('clientName').value.toString());
+                sessionStorage.setItem('clientID', document.getElementById('joinGame').value)
+                var ID = sessionStorage.getItem('clientID');
+                sessionStorage.setItem('clientName', document.getElementById('clientName').value.toString());
                 database.ref().child('GameInfo/' + ID).once('value').then(function(snapshot) {
-                    localStorage.setItem('numTimes', snapshot.val().numTimes);
-                    localStorage.setItem('timeDuring', snapshot.val().timeDuring);
-                    localStorage.setItem('timeBetween', snapshot.val().timeBetween);
-                    localStorage.setItem('names', snapshot.val().names);
-                    localStorage.setItem('numbers', snapshot.val().numbers);
-                    localStorage.setItem('sentences', snapshot.val().sentences);
-                    localStorage.setItem('cards', snapshot.val().cards);
-                    localStorage.setItem('cardsGrade', snapshot.val().cardsGrade);
+                    sessionStorage.setItem('numTimes', snapshot.val().numTimes);
+                    sessionStorage.setItem('timeDuring', snapshot.val().timeDuring);
+                    sessionStorage.setItem('timeBetween', snapshot.val().timeBetween);
+                    sessionStorage.setItem('names', snapshot.val().names);
+                    sessionStorage.setItem('numbers', snapshot.val().numbers);
+                    sessionStorage.setItem('sentences', snapshot.val().sentences);
+                    sessionStorage.setItem('cards', snapshot.val().cards);
+                    sessionStorage.setItem('cardsGrade', snapshot.val().cardsGrade);
                 });
                 setTimeout(function() {location.href = 'onlineLobby.html';}, 500);
                 database.ref().child('ClientNames/' + document.getElementById('joinGame').value + '/value').once('value').then(function(snapshot) {

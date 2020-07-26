@@ -18,23 +18,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <script src="js/CSS.js"></script>
         <link rel = "icon" href = "projectFiles/icon.ico">
-
-        <style>
-            .title {
-                top: 12%;
-                left: 50%;
-                transform: translate(35%, -50%);
-                z-index: 10;
-                display: inline-block;
-                font-size: 5vw;
-            }
-
-            body {
-                background-image: url(projectFiles/game-tricks-play-cheats-34591.jpg);
-                background-repeat: no-repeat;
-                background-size: 100vw;
-            }
-        </style>
     </head>
 
     <body id = "index">
@@ -62,23 +45,6 @@
             </div>
         </div>
 
-        <script>
-            var dropdown = document.getElementsByClassName("dropbtn");
-            var i;
-
-            for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
-                } else {
-                dropdownContent.style.display = "block";
-                }
-            });
-            }
-        </script>
-
         <div id="main" class = "mainDiv">
             <div class = "container" onclick = "openNav()">
                 <div class = 'line1'></div>
@@ -86,12 +52,14 @@
                 <div class = 'line3'></div>
             </div>
 
-            <img src="projectFiles/TestingStage/alpha.jpg" alt="alpha testing" class = "TestingStage">
-
-            <h1 class = "title">The Memory Application</h1>
-        <script>
-            sessionStorage.clear();
-        </script>
+            <h3>Welcome to the Memory App! This is the home of the Memory Competition, and also a fun brain training website. Here you will find activities designed to push your brain to its limits, and make your memory better than ever.</p>
+            <h2>How to play</h2>
+            <p>The game contains 4 variables that you must commit to your short-term memory within a short time frame. These variables are: Names, Cards, Numbers, and Sentences. You will have a certain amount of time to memorize each set of these 4 variables, and then you will respond with the correct answers after a set amount of time (designed to make the game a bit more difficult). You will then receive your results after submitting, along with all of your responses.</p>
+            <h2>Singleplayer Mode</h2>
+            <p>This is the game mode that you will use most often. Singleplayer Mode will allow you to play the game as much as you want, without the need for anyone else to play with (or against). There are 4 options within singleplayer mode: Easy, Medium, Difficult, and Custom. The first three are presets determined by us here at the Memory App, but the last one gives you complete control over your experience. You can make the game as easy or as hard as you would like, and play it until you can beat your previous record.</p>
+            <h2>Multiplayer Mode</h2>
+            <p>This mode will primarily be used to hold Memory Competitions, but it can also be used by you to play with friends or family. Simply create a game via the tab, share the code with whoever you would like to play with, and then hit start once everyone has joined!</p>
+            <p>Note: You will not be able to play the game under the create tab, that is only used for supervision. If you would like to host and play simultaneously, then open up a new join tab, and enjoy!</p>
         </div>
     </body>
 </html>

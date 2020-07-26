@@ -13,7 +13,7 @@ function changeRandsCustom() {
 }
 
 function skip() {
-    localStorage.setItem('skipVar', "true")
+    sessionStorage.setItem('skipVar', "true")
 }
 
 function clearRands() {
@@ -24,24 +24,24 @@ function clearRands() {
 }
 
 function easyMode() {
-    localStorage.setItem('numTimes', '1');
-    localStorage.setItem('gameType', "easy");
+    sessionStorage.setItem('numTimes', '1');
+    sessionStorage.setItem('gameType', "easy");
     timeDuring =  40 * 1000;
     timeBetween = 5 * 1000;
     document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
 }
 
 function mediumMode() {
-    localStorage.setItem('numTimes', '3');
-    localStorage.setItem('gameType', "medium");
+    sessionStorage.setItem('numTimes', '3');
+    sessionStorage.setItem('gameType', "medium");
     timeDuring = 30 * 1000;
     timeBetween = 30 * 1000;
     document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
 }
 
 function hardMode() {
-    localStorage.setItem('numTimes', '5');
-    localStorage.setItem('gameType', "hard");
+    sessionStorage.setItem('numTimes', '5');
+    sessionStorage.setItem('gameType', "hard");
     timeDuring = 20 * 1000;
     timeBetween = 60 * 1000;
     document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
@@ -62,7 +62,7 @@ function timerBetweenSetter() {
 
 function formSubmit() {
     if(document.getElementById('timeDuring').value != "" && document.getElementById('timeBetween').value != "" && document.getElementById('numTimes').value != "") {
-        localStorage.setItem('numTimes', document.getElementById('numTimes').value);
+        sessionStorage.setItem('numTimes', document.getElementById('numTimes').value);
         var timeDuring = parseInt(document.getElementById('timeDuring').value, 10) * 1000;
         var timeBetween = parseInt(document.getElementById('timeBetween').value, 10) * 1000;
         document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
@@ -71,10 +71,10 @@ function formSubmit() {
         var names = [];
         var sentences = [];
         var cards = [];
-        localStorage.setItem("numbers", JSON.stringify(numbers));
-        localStorage.setItem("names", JSON.stringify(names));
-        localStorage.setItem("sentences", JSON.stringify(sentences));
-        localStorage.setItem("cards", JSON.stringify(cards));
+        sessionStorage.setItem("numbers", JSON.stringify(numbers));
+        sessionStorage.setItem("names", JSON.stringify(names));
+        sessionStorage.setItem("sentences", JSON.stringify(sentences));
+        sessionStorage.setItem("cards", JSON.stringify(cards));
         setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, timeBetween);
     }
 
@@ -84,19 +84,19 @@ function formSubmit() {
 }
 
 function setRandsInterval() {
-    localStorage.setItem('skipVar', "false");
-    var numTimes = parseInt(localStorage.getItem('numTimes'), 10);
-    localStorage.setItem('timerState', "");
+    sessionStorage.setItem('skipVar', "false");
+    var numTimes = parseInt(sessionStorage.getItem('numTimes'), 10);
+    sessionStorage.setItem('timerState', "");
     var x = 0;
     changeRands();
     document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString();
     setInterval(function() {
         if(x == numTimes - 1) {
             clearRands();
-            localStorage.setItem("numbers", JSON.stringify(numbers));
-            localStorage.setItem("names", JSON.stringify(names));
-            localStorage.setItem("sentences", JSON.stringify(sentences));
-            localStorage.setItem("cards", JSON.stringify(cards));
+            sessionStorage.setItem("numbers", JSON.stringify(numbers));
+            sessionStorage.setItem("names", JSON.stringify(names));
+            sessionStorage.setItem("sentences", JSON.stringify(sentences));
+            sessionStorage.setItem("cards", JSON.stringify(cards));
             setTimeout(function() {location.href = 'submission.html';}, timeBetween);
         }
         else if(x != numTimes - 1) {
@@ -108,13 +108,13 @@ function setRandsInterval() {
     }, timeDuring);
 
     setInterval(function() {
-        if(localStorage.getItem('skipVar') == "true") {
+        if(sessionStorage.getItem('skipVar') == "true") {
             if(x == numTimes - 1) {
                 clearRands();
-                localStorage.setItem("numbers", JSON.stringify(numbers));
-                localStorage.setItem("names", JSON.stringify(names));
-                localStorage.setItem("sentences", JSON.stringify(sentences));
-                localStorage.setItem("cards", JSON.stringify(cards));
+                sessionStorage.setItem("numbers", JSON.stringify(numbers));
+                sessionStorage.setItem("names", JSON.stringify(names));
+                sessionStorage.setItem("sentences", JSON.stringify(sentences));
+                sessionStorage.setItem("cards", JSON.stringify(cards));
                 setTimeout(function() {location.href = 'submission.html';}, timeBetween);
                 timerBetweenSetter();
                 document.getElementById("timer").innerHTML = (timeBetween/1000).toString();
@@ -154,7 +154,7 @@ function setRandsInterval() {
                 x++;
                 document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString()
             }
-            localStorage.setItem('skipVar', "false");
+            sessionStorage.setItem('skipVar', "false");
         }
     }, 10);
 
@@ -204,15 +204,15 @@ function setRandsInterval() {
 }
 
 function setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, timeBetween) {
-    localStorage.setItem('skipVar', "false");
-    localStorage.setItem("numbers", JSON.stringify(numbers));
-    localStorage.setItem("names", JSON.stringify(names));
-    localStorage.setItem("sentences", JSON.stringify(sentences));
-    localStorage.setItem("cards", JSON.stringify(cards));
-    localStorage.setItem('gameType', "custom");
+    sessionStorage.setItem('skipVar', "false");
+    sessionStorage.setItem("numbers", JSON.stringify(numbers));
+    sessionStorage.setItem("names", JSON.stringify(names));
+    sessionStorage.setItem("sentences", JSON.stringify(sentences));
+    sessionStorage.setItem("cards", JSON.stringify(cards));
+    sessionStorage.setItem('gameType', "custom");
 
-    var numTimes = parseInt(localStorage.getItem('numTimes'), 10);
-    localStorage.setItem('timerState', "");
+    var numTimes = parseInt(sessionStorage.getItem('numTimes'), 10);
+    sessionStorage.setItem('timerState', "");
     var x = 0;
     changeRandsCustom();
     document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString();
@@ -231,7 +231,7 @@ function setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, ti
     }, timeDuring);
 
     setInterval(function() {
-        if(localStorage.getItem('skipVar') == "true") {
+        if(sessionStorage.getItem('skipVar') == "true") {
             if(x == numTimes - 1) {
                 clearRands();
                 setTimeout(function() {location.href = 'submission.html';}, timeBetween);
@@ -282,7 +282,7 @@ function setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, ti
                 x++;
                 document.getElementById('Sets').innerHTML = "Set: " + (x + 1).toString() + "/" + numTimes.toString()
             }
-            localStorage.setItem('skipVar', "false");
+            sessionStorage.setItem('skipVar', "false");
         }
     }, 10);
 

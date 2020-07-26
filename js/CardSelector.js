@@ -95,9 +95,9 @@ function CardSelectCustom() {
 
     path = path + number.toLowerCase() + "_of_" + suit.toLowerCase() + ".png";
     document.getElementById('cardOut').src = path;
-    var cards = JSON.parse(localStorage.getItem('cards'));
+    var cards = JSON.parse(sessionStorage.getItem('cards'));
     cards.push(number + " of " + suit);
-    localStorage.setItem("cards", JSON.stringify(cards));
+    sessionStorage.setItem("cards", JSON.stringify(cards));
 }
 
 function CardUpdate() {
@@ -143,10 +143,10 @@ function CardUpdate() {
         suit = "Spades";
     }
 
-    var cards = JSON.parse(localStorage.getItem('cards'));
-    var cardsGrade = JSON.parse(localStorage.getItem('cardsGrade'));
+    var cards = JSON.parse(sessionStorage.getItem('cards'));
+    var cardsGrade = JSON.parse(sessionStorage.getItem('cardsGrade'));
     cards.push(path + number.toLowerCase() + "_of_" + suit.toLowerCase() + ".png");
     cardsGrade.push(number + " of " + suit);
-    localStorage.setItem("cards", JSON.stringify(cards));
-    localStorage.setItem("cardsGrade", JSON.stringify(cardsGrade));
+    sessionStorage.setItem("cards", JSON.stringify(cards));
+    sessionStorage.setItem("cardsGrade", JSON.stringify(cardsGrade));
 }

@@ -25,6 +25,7 @@
         <div id = "mySidenav" class="navbar">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.html">Home</a>
+            <a href="instructions.html">Instructions</a>
             <button class="dropbtn">Competition Mode
                 <i class="fa fa-caret-down"></i>
             </button>
@@ -147,7 +148,7 @@
                 function highlight_row_name() {
                     var table = document.getElementById('nameDisplay');
                     var cells = table.getElementsByTagName('td');
-                    localStorage.removeItem('selectedRowName');
+                    sessionStorage.removeItem('selectedRowName');
 
                     setInterval(function() {
                         for (var i = 0; i < cells.length; i++) {
@@ -168,18 +169,18 @@
                                 }
                                 var rowSelected = table.getElementsByTagName('tr')[rowId];
                                 
-                                if(localStorage.getItem('currentCellNum') != i.toString()) {
-                                    localStorage.setItem('selectedRowName', rowId.toString());
+                                if(sessionStorage.getItem('currentCellNum') != i.toString()) {
+                                    sessionStorage.setItem('selectedRowName', rowId.toString());
                                     rowSelected.style.backgroundColor = "#B4D5FE";
                                     rowSelected.className += " selected";
-                                    localStorage.setItem('currentCellNum', i.toString())
+                                    sessionStorage.setItem('currentCellNum', i.toString())
                                 }
 
                                 else {
-                                    localStorage.removeItem('selectedRowName');
+                                    sessionStorage.removeItem('selectedRowName');
                                     rowSelected.style.backgroundColor = "";
                                     rowSelected.className -= " selected";
-                                    localStorage.removeItem('currentCellNum');
+                                    sessionStorage.removeItem('currentCellNum');
                                 }
                             }
                         }
@@ -193,7 +194,7 @@
                 function highlight_row_sentence() {
                     var table = document.getElementById('sentenceDisplay');
                     var cells = table.getElementsByTagName('td');
-                    localStorage.removeItem('selectedRowSentence');
+                    sessionStorage.removeItem('selectedRowSentence');
                     
                     setInterval(function() {
                         for (var i = 0; i < cells.length; i++) {
@@ -214,18 +215,18 @@
                                 }
                                 var rowSelected = table.getElementsByTagName('tr')[rowId];
                                 
-                                if(localStorage.getItem('currentCellNum') != i.toString()) {
-                                    localStorage.setItem('selectedRowSentence', rowId.toString());
+                                if(sessionStorage.getItem('currentCellNum') != i.toString()) {
+                                    sessionStorage.setItem('selectedRowSentence', rowId.toString());
                                     rowSelected.style.backgroundColor = "#B4D5FE";
                                     rowSelected.className += " selected";
-                                    localStorage.setItem('currentCellNum', i.toString())
+                                    sessionStorage.setItem('currentCellNum', i.toString())
                                 }
 
                                 else {
-                                    localStorage.removeItem('selectedRowSentence');
+                                    sessionStorage.removeItem('selectedRowSentence');
                                     rowSelected.style.backgroundColor = "";
                                     rowSelected.className -= " selected";
-                                    localStorage.removeItem('currentCellNum');
+                                    sessionStorage.removeItem('currentCellNum');
                                 }
                             }
                         }
@@ -239,7 +240,7 @@
                 function highlight_row_number() {
                     var table = document.getElementById('numberDisplay');
                     var cells = table.getElementsByTagName('td');
-                    localStorage.removeItem('selectedRowNumber');
+                    sessionStorage.removeItem('selectedRowNumber');
                     
                     setInterval(function() {
                         for (var i = 0; i < cells.length; i++) {
@@ -260,18 +261,18 @@
                                 }
                                 var rowSelected = table.getElementsByTagName('tr')[rowId];
                                 
-                                if(localStorage.getItem('currentCellNum') != i.toString()) {
-                                    localStorage.setItem('selectedRowNumber', rowId.toString());
+                                if(sessionStorage.getItem('currentCellNum') != i.toString()) {
+                                    sessionStorage.setItem('selectedRowNumber', rowId.toString());
                                     rowSelected.style.backgroundColor = "#B4D5FE";
                                     rowSelected.className += " selected";
-                                    localStorage.setItem('currentCellNum', i.toString())
+                                    sessionStorage.setItem('currentCellNum', i.toString())
                                 }
 
                                 else {
-                                    localStorage.removeItem('selectedRowNumber');
+                                    sessionStorage.removeItem('selectedRowNumber');
                                     rowSelected.style.backgroundColor = "";
                                     rowSelected.className -= " selected";
-                                    localStorage.removeItem('currentCellNum');
+                                    sessionStorage.removeItem('currentCellNum');
                                 }
                             }
                         }
@@ -285,7 +286,7 @@
                 function highlight_row_card() {
                     var table = document.getElementById('cardDisplay');
                     var cells = table.getElementsByTagName('td');
-                    localStorage.removeItem('selectedRowCard');
+                    sessionStorage.removeItem('selectedRowCard');
                     
                     setInterval(function() {
                         for (var i = 0; i < cells.length; i++) {
@@ -306,18 +307,18 @@
                                 }
                                 var rowSelected = table.getElementsByTagName('tr')[rowId];
                                 
-                                if(localStorage.getItem('currentCellNum') != i.toString()) {
-                                    localStorage.setItem('selectedRowCard', rowId.toString());
+                                if(sessionStorage.getItem('currentCellNum') != i.toString()) {
+                                    sessionStorage.setItem('selectedRowCard', rowId.toString());
                                     rowSelected.style.backgroundColor = "#B4D5FE";
                                     rowSelected.className += " selected";
-                                    localStorage.setItem('currentCellNum', i.toString())
+                                    sessionStorage.setItem('currentCellNum', i.toString())
                                 }
 
                                 else {
-                                    localStorage.removeItem('selectedRowCard');
+                                    sessionStorage.removeItem('selectedRowCard');
                                     rowSelected.style.backgroundColor = "";
                                     rowSelected.className -= " selected";
-                                    localStorage.removeItem('currentCellNum');
+                                    sessionStorage.removeItem('currentCellNum');
                                 }
                             }
                         }

@@ -11,45 +11,45 @@ function grade() {
     try {firebase.initializeApp(firebaseConfig);}
     catch {}
     var database = firebase.database();
-    var ID = localStorage.getItem('clientID');
-    var clientName = localStorage.getItem('clientName');
+    var ID = sessionStorage.getItem('clientID');
+    var clientName = sessionStorage.getItem('clientName');
     
     database.ref().child('GameInfo/' + ID).once('value').then(function(snapshot) {
-        localStorage.setItem('numbers', snapshot.val().numbers);
-        localStorage.setItem('names', snapshot.val().names);
-        localStorage.setItem('sentences', snapshot.val().sentences);
-        localStorage.setItem('cardsGrade', snapshot.val().cardsGrade);
+        sessionStorage.setItem('numbers', snapshot.val().numbers);
+        sessionStorage.setItem('names', snapshot.val().names);
+        sessionStorage.setItem('sentences', snapshot.val().sentences);
+        sessionStorage.setItem('cardsGrade', snapshot.val().cardsGrade);
     });
 
-    var numbers = JSON.parse(localStorage.getItem("numbers"));
-    localStorage.removeItem("numbers");
-    var names = JSON.parse(localStorage.getItem("names"));
-    localStorage.removeItem("names");
-    var sentences = JSON.parse(localStorage.getItem("sentences"));
-    localStorage.removeItem("sentences");
-    var cards = JSON.parse(localStorage.getItem("cardsGrade"));
-    localStorage.removeItem("cardsGrade");
+    var numbers = JSON.parse(sessionStorage.getItem("numbers"));
+    sessionStorage.removeItem("numbers");
+    var names = JSON.parse(sessionStorage.getItem("names"));
+    sessionStorage.removeItem("names");
+    var sentences = JSON.parse(sessionStorage.getItem("sentences"));
+    sessionStorage.removeItem("sentences");
+    var cards = JSON.parse(sessionStorage.getItem("cardsGrade"));
+    sessionStorage.removeItem("cardsGrade");
 
-    var userNumbers = JSON.parse(localStorage.getItem("userNumbers"));
+    var userNumbers = JSON.parse(sessionStorage.getItem("userNumbers"));
     if(userNumbers.length == null) {
         userNumbers.push(" ");
     }
-    localStorage.removeItem("userNumbers");
-    var userNames = JSON.parse(localStorage.getItem("userNames"));
+    sessionStorage.removeItem("userNumbers");
+    var userNames = JSON.parse(sessionStorage.getItem("userNames"));
     if(userNames.length == null) {
         userNames.push(" ");
     }
-    localStorage.removeItem("userNames");
-    var userSentences = JSON.parse(localStorage.getItem("userSentences"));
+    sessionStorage.removeItem("userNames");
+    var userSentences = JSON.parse(sessionStorage.getItem("userSentences"));
     if(userSentences.length == null) {
         userSentences.push(" ");
     }
-    localStorage.removeItem("userSentences");
-    var userCards = JSON.parse(localStorage.getItem("userCards"));
+    sessionStorage.removeItem("userSentences");
+    var userCards = JSON.parse(sessionStorage.getItem("userCards"));
     if(userCards.length == null) {
         userCards.push(" ");
     }
-    localStorage.removeItem("userCards");
+    sessionStorage.removeItem("userCards");
 
 
     var numberScore = 0;
@@ -186,6 +186,7 @@ function grade() {
 
     document.getElementById("Score").innerHTML = scoreMessage;
 
+    console.log(clientName);
     database.ref().child('ClientScores/' + ID + '/' + clientName).set({
         value: ((numberScore + nameScore + sentenceScore + cardScore).toString() + "/" + possibleScore.toString())
     });
