@@ -27,7 +27,7 @@ function easyMode() {
     sessionStorage.setItem('numTimes', '1');
     sessionStorage.setItem('gameType', "easy");
     timeDuring =  40 * 1000;
-    timeBetween = 5 * 1000;
+    timeBetween = 15 * 1000;
     document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
 }
 
