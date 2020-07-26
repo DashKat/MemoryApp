@@ -79,13 +79,13 @@
                     <h1>Customize</h1>
                 
                     <label for="numTimes"><b>Rounds</b></label>
-                    <input type="number" placeholder="Number of Rounds" id = "numTimes" required>
+                    <input type="number"  min="0" inputmode="numeric" pattern="[0-9]*" placeholder="Number of Rounds" id = "numTimes" required>
                 
                     <label for="timeDuring"><b>Round Duration</b></label>
-                    <input type="number" placeholder="Round Duration (seconds)" id = "timeDuring" required>
+                    <input type="number"  min="0" inputmode="numeric" pattern="[0-9]*" placeholder="Round Duration (seconds)" id = "timeDuring" required>
                 
                     <label for="timeBetween"><b>Waiting Period</b></label>
-                    <input type="number" placeholder="Waiting Period (seconds)" id = "timeBetween" required>
+                    <input type="number"  min="0" inputmode="numeric" pattern="[0-9]*" placeholder="Waiting Period (seconds)" id = "timeBetween" required>
 
                     <button type="button" class="btn" id = "formSubmitter" onclick="formSubmit()">Start</button>
                 </form>
