@@ -62,24 +62,30 @@ function timerBetweenSetter() {
 
 function formSubmit() {
     if(document.getElementById('timeDuring').value != "" && document.getElementById('timeBetween').value != "" && document.getElementById('numTimes').value != "") {
-        sessionStorage.setItem('numTimes', document.getElementById('numTimes').value);
-        var timeDuring = parseInt(document.getElementById('timeDuring').value, 10) * 1000;
-        var timeBetween = parseInt(document.getElementById('timeBetween').value, 10) * 1000;
-        document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
-        document.getElementById('myForm').style.display = "none";
-        var numbers = [];
-        var names = [];
-        var sentences = [];
-        var cards = [];
-        sessionStorage.setItem("numbers", JSON.stringify(numbers));
-        sessionStorage.setItem("names", JSON.stringify(names));
-        sessionStorage.setItem("sentences", JSON.stringify(sentences));
-        sessionStorage.setItem("cards", JSON.stringify(cards));
-        setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, timeBetween);
+        if(document.getElementById('timeDuring').value != "0" && document.getElementById('timeBetween').value != "0" && document.getElementById('numTimes').value != "0") {
+            sessionStorage.setItem('numTimes', document.getElementById('numTimes').value);
+            var timeDuring = parseInt(document.getElementById('timeDuring').value, 10) * 1000;
+            var timeBetween = parseInt(document.getElementById('timeBetween').value, 10) * 1000;
+            document.getElementById("timer").innerHTML = (timeDuring/1000).toString();
+            document.getElementById('myForm').style.display = "none";
+            var numbers = [];
+            var names = [];
+            var sentences = [];
+            var cards = [];
+            sessionStorage.setItem("numbers", JSON.stringify(numbers));
+            sessionStorage.setItem("names", JSON.stringify(names));
+            sessionStorage.setItem("sentences", JSON.stringify(sentences));
+            sessionStorage.setItem("cards", JSON.stringify(cards));
+            setRandsIntervalCustom(numbers, names, sentences, cards, timeDuring, timeBetween);
+        }
+
+        else {
+            alert("Please do not fill out the form with any zeros")
+        }
     }
 
     else {
-        alert("Please fill out all of the fields");
+        alert("Please fill out all of the fields with numerical values");
     }
 }
 
